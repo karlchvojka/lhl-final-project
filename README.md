@@ -18,18 +18,16 @@ This is just React.
 ### Setup
 
 #### Server
-cd into server folder from root
-Install bundle: bundle install
-Setup database: rake db:reset
-Start Server: bin/rails s -b 0.0.0.0
-
-localhost:3000
+1. cd into server folder from root
+2. Install bundle: bundle install
+3. Setup database: rake db:reset
+4. Start Server: bin/rails s -b 0.0.0.0
+5. In your browser: localhost:3000
 
 #### Client
-cd into /client
-npm install
-npm start
-
-localhost:3001
+1. cd into /client
+2. npm install
+3. npm start
+4. In your browser: localhost:3001
 
 ### Setup
