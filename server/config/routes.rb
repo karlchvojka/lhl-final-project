@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :fruits, only: [:index, :create, :destroy, :update]
 
       resources :budgets, only: [:index, :create, :destroy, :update, :show] do
         resources :line_items, only: [:index, :create, :destroy, :update, :show]
