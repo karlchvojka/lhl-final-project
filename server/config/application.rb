@@ -23,7 +23,6 @@ module Server
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.middleware.insert_before 0, "Rack::Cors" do
-      debugger
       allow do
         origins '*'
         resource '*', :headers => :any, :methods => :any

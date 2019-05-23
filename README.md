@@ -5,6 +5,9 @@
 ### Prerequisits
 
 #### Server
+clone
+bundle install
+rails 
 
 #### Client
 
