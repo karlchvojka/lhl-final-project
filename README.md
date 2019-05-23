@@ -31,11 +31,13 @@ This is just React.
 4. In your browser: localhost:3001
 
 ### Setup
-
+## stuff
 ## Git Flow
 
 1. Pull Develop and then Branch -> Feature/
 ```
+git checkout develop
+git pull origin master
 git pull origin develop
 git checkout -b feature/<branch name>
 ```
@@ -51,4 +53,4 @@ git merge feature/branch-name
 ```
 git push origin develop
 ```
-7. Create pull request. 
+7. Create pull request.atus
