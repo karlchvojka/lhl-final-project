@@ -9,6 +9,7 @@ class NavbarComp extends Component {
     return (
       <Router>
         <Navbar expand="md">
+          <div className="container">
           <Navbar.Brand href="#home">Squabble</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -17,6 +18,7 @@ class NavbarComp extends Component {
               <Link className="nav-link" to="/about">About</Link>
             </Nav>
           </Navbar.Collapse>
+          </div>
         </Navbar>
 
         <Route path="/" exact component={ Home } />
