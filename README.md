@@ -31,3 +31,24 @@ This is just React.
 4. In your browser: localhost:3001
 
 ### Setup
+
+## Git Flow
+
+1. Pull Develop and then Branch -> Feature/
+```
+git pull origin develop
+git checkout -b feature/<branch name>
+```
+2. Code done in FEATURE branches off develop
+3. Test in Feature branch.
+4. If 3 passes, Merge into Develop.
+```
+git checkout develop
+git merge feature/branch-name
+```
+5. Test on Develop branch
+6. Push into Remote develop
+```
+git push origin develop
+```
+7. Create pull request. 
