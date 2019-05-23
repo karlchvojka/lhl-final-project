@@ -1,15 +1,17 @@
+// React imports
 import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
 import ListApp from "./apitest.js"
+import NavbarComp from "./components/Nav_bar.js"
+
+// CSS Imports
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <ListApp />
-      </header>
+    <div className="container">
+      <NavbarComp />
     </div>
   );
 }
