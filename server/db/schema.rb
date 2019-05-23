@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20190523163946) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "budget_members", force: :cascade do |t|
     t.integer  "budget_id"
     t.integer  "user_id"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20190523163946) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "budget_members", ["budget_id"], name: "index_budget_members_on_budget_id"
-  add_index "budget_members", ["user_id"], name: "index_budget_members_on_user_id"
+  add_index "budget_members", ["budget_id"], name: "index_budget_members_on_budget_id", using: :btree
+  add_index "budget_members", ["user_id"], name: "index_budget_members_on_user_id", using: :btree
 
   create_table "budgets", force: :cascade do |t|
     t.string   "name"
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 20190523163946) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "line_items", ["budget_id"], name: "index_line_items_on_budget_id"
-  add_index "line_items", ["user_id"], name: "index_line_items_on_user_id"
+  add_index "line_items", ["budget_id"], name: "index_line_items_on_budget_id", using: :btree
+  add_index "line_items", ["user_id"], name: "index_line_items_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first"
@@ -55,4 +58,8 @@ ActiveRecord::Schema.define(version: 20190523163946) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "budget_members", "budgets"
+  add_foreign_key "budget_members", "users"
+  add_foreign_key "line_items", "budgets"
+  add_foreign_key "line_items", "users"
 end
