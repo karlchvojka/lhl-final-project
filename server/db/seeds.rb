@@ -18,6 +18,8 @@ puts "Seeding budget"
 
 budget = Budget.create(name: '3 Roomates Budget', total: 0.00)
 
+budget2 = Budget.create(name: 'testing', total: 0.00)
+
 ## USERS
 
 puts "Seeding users"
@@ -25,6 +27,8 @@ puts "Seeding users"
 user1 = budget.users.create_with({last: 'Johansson', email: 'karl@email.com'}).find_or_create_by! first: 'Karl'
 user2 = budget.users.create_with({last: 'Johansson', email: 'andrea@email.com'}).find_or_create_by! first: 'Andrea'
 user3 = budget.users.create_with({last: 'Yeung', email: 'eden@email.com'}).find_or_create_by! first: 'Eden'
+
+user4 = budget2.users.create_with({last: 'Mctest', email: 'eden@email.com'}).find_or_create_by! first: 'Testy'
 
 ## BUDGET_MEMBERS
 
@@ -59,6 +63,30 @@ budget.line_items.create!({
   name: "Hydro",
   amount: 100.00,
   user_id: user3.id,
+  paid: false
+})
+
+budget2.line_items.create!({
+  budget_id: budget.id,
+  name: "Rent",
+  amount: 1500.00,
+  user_id: user4.id,
+  paid: false
+})
+
+budget2.line_items.create!({
+  budget_id: budget.id,
+  name: "Internet",
+  amount: 100.00,
+  user_id: user4.id,
+  paid: false
+})
+
+budget2.line_items.create!({
+  budget_id: budget.id,
+  name: "Hydro",
+  amount: 100.00,
+  user_id: user4.id,
   paid: false
 })
 
