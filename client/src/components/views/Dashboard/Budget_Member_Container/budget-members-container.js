@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class BudgetMembersContainer extends Component {
   render() {
     return (
-      <div>
+      <div className="budgetMembers">
         <p>Budget Members Container</p>
       </div>
       )

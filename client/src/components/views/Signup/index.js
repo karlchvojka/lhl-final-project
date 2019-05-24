@@ -3,7 +3,7 @@ import NavbarComp from "../Home/home-nav-bar.js"
 
 export default ({handleFormSubmit}) => (
 
-  <div className='signup'>
+  <div className='signup container-fluid'>
     <NavbarComp />
     <form onSubmit={handleFormSubmit}>
       <label>
@@ -39,5 +39,3 @@ export default ({handleFormSubmit}) => (
     <p>Signup page</p>
   </div>
 )
-
-
