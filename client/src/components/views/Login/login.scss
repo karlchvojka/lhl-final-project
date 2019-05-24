@@ -1,0 +1,59 @@
+
+.loginPage {
+  padding:0px;
+
+  // START LOGIN NAV STYLES
+  .loginSignupNav {
+    height: 72px;
+  	background: linear-gradient(148.8deg, #1CC4C8 0%, #3DD6A5 100%);
+    padding:0px;
+
+    .col-2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a:link, a:visited {
+        color: #FFFFFF;
+        font-family: "Open Sans";
+        font-size: 18px;
+        line-height: 23px;
+        margin-bottom:0px;
+      }
+
+
+    }
+    .col-10{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .logoWrap {
+        width:200px;
+        display:flex;
+        margin:0 auto;
+
+        img {
+          margin-right:10px;
+        }
+
+        p {
+          color: #FFFFFF;
+          font-family: "Titillium Web";
+          font-size: 20px;
+          line-height: 30px;
+          margin-bottom:0px;
+        }
+      }
+    }
+  }
+  // END LOGIN NAV STYLES
+
+  .loginForm {
+
+    h1 {
+      text-align:center;
+    }
+  }
+
+}

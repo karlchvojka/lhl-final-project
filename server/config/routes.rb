@@ -11,11 +11,14 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       resources :budgets, only: [:index, :create, :destroy, :update, :show] do
-        resources :line_items, only: [:index, :create, :destroy, :update, :show]
+        resources :users, only: [:index] do
+          resources :line_items, only: [:index]
+        end
+        resources :line_items, only: [:create, :destroy, :update, :show] 
         resources :budget_members, only: [:index, :create, :destroy, :update, :show]
       end
 
-      resources :users, only: [:index, :create, :destroy, :update, :show]
+      resources :users, only: [:create, :destroy, :update, :show]
 
     end
   end

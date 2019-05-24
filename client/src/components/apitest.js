@@ -5,27 +5,27 @@ class ListApp extends Component {
     constructor(props){
         super(props);
         this.state = {
-            users: [],
+            budgets: [],
             isLoaded: false,
         }
     };
     componentDidMount = () => {
-        fetch('http://localhost:3000/api/v1/users.json')
+        fetch('http://localhost:3000/api/v1/budgets.json')
         .then(resp => resp.json())
         .then(resp => {
             this.setState({
                 isLoaded: true,
-                users: resp
+                 budgets: resp
             })
-            console.log(this.state.users)
+            console.log(this.state.budgets)
         })
     };
 
     render() {
-    var { isLoaded, users } = this.state;
+    var { isLoaded, budgets } = this.state;
     return (
       <div>
-        {users.map(user => (<Card key={user.id} user={user} />))}
+        {budgets.map(budget => (<Card key={budget.id} budget={budget} />))}
       </div>
     );
   }
