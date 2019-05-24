@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from './Home/';
-import Aboutpg from './About/';
+import { Link } from "react-router-dom";
 
 class NavbarComp extends Component {
   render() {
     return (
-      <Router>
         <Navbar expand="md">
           <div className="container">
           <Navbar.Brand href="#home">Squabble</Navbar.Brand>
@@ -16,21 +13,11 @@ class NavbarComp extends Component {
             <Nav className="mr-auto">
               <Link className="nav-link" to="/">Home</Link>
               <Link className="nav-link" to="/about">About</Link>
+              <Link className="nav-link" to="/login">Login</Link>
             </Nav>
           </Navbar.Collapse>
           </div>
         </Navbar>
-
-        <Route path="/" exact component={ Home } />
-        <Route path="/about" exact component={ Aboutpg  } />
-
-
-        <footer className="footer">
-          <p>
-            &copy; 2019 <span>soon&#8482;</span>  Squabble LLC. All rights (perhaps) reserved.
-          </p>
-        </footer>
-      </Router>
     )
   }
 }

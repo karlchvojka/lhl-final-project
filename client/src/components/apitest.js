@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card from "./components/Card";
+import Card from "./Card";
 
 class ListApp extends Component {
     constructor(props){
