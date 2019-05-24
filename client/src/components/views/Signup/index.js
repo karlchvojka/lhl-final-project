@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NavbarComp from "../Home/home-nav-bar.js"
 
 export default ({handleFormSubmit}) => (
