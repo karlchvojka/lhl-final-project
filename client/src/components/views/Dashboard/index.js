@@ -22,7 +22,7 @@ class Dashboard extends Component {
 
   componentDidMount() {
 
-    // var Promise = 
+    // var Promise =
 
     fetch(`http://localhost:3000/api/v1/budgets/1`)
     .then(resp => resp.json())
@@ -46,11 +46,11 @@ class Dashboard extends Component {
     fetch(`http://localhost:3000/api/v1/budgets/1/budget_members`)
 
     .then(resp => resp.json())
-        console.log('Budget members fetched.', resp)
     .then(resp => {
+      console.log('Budget members fetched.', resp)
         this.setState({
-          budget_membersLoaded: true
           budget_members: resp,
+          budget_membersLoaded: true
         });
     })
 
@@ -64,7 +64,7 @@ class Dashboard extends Component {
     }
     console.log("this is hte sum", sum, values);
     return sum
-  } 
+  }
 
   render() {
     var { budget, line_items, budget_members } = this.state;
