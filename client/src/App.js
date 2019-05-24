@@ -1,6 +1,5 @@
 // React imports
 import React, { Component } from 'react';
-import ListApp from "./components/apitest.js"
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './components/views/Home/';
 import Aboutpg from './components/views/About/';
@@ -36,7 +35,6 @@ export default class App extends Component {
  render() {
     return (
       <Router>
-        <div className="container-fluid">
         <Route path="/" exact component={ Home } />
         <Route path="/about" exact component={ Aboutpg  } />
         <Route path="/login" component={() => <Login handleFormSubmit={this.handleLoginFormSubmit}/> } />
@@ -44,7 +42,6 @@ export default class App extends Component {
         <Route path="/signup" component={() => <Signup handleFormSubmit={this.handleSignupFormSubmit}/> } />
         <Route path="/dashboard" component={ Dashboard } />
         <HomeFooter />
-        </div>
       </Router>
       );
     }

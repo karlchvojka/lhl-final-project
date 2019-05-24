@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class BudgetInfo extends Component {
   render() {
     return (
-      <div>
-        <p>Budget Info Top Nav Component</p>
+      <div className="budgetInfo">
+        <p>Budget Info Component</p>
       </div>
       )
     }
