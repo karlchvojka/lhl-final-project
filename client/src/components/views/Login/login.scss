@@ -2,6 +2,7 @@
 .loginPage {
   padding:0px;
 
+  // START LOGIN NAV STYLES
   .loginSignupNav {
     height: 72px;
   	background: linear-gradient(148.8deg, #1CC4C8 0%, #3DD6A5 100%);
@@ -46,4 +47,13 @@
       }
     }
   }
+  // END LOGIN NAV STYLES
+
+  .loginForm {
+
+    h1 {
+      text-align:center;
+    }
+  }
+
 }
