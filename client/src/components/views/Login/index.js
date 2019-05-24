@@ -1,26 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NavbarLoginSignup from '../login-signup-navbar.js'
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {firstName: '', lastName: '', email: '', password: ''};
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log(event.target.email.value,event.target.password.value )
-  }
-
-  render() {
-    return (
+  export default ({handleFormSubmit}) => (
       <div className="container-fluid loginPage">
         <NavbarLoginSignup />
 
         <div className="row loginForm">
           <div className="col-6 offset-3">
             <h1>Signup</h1>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleFormSubmit}>
               <div className="container">
                 <div className="row">
                   <div className="col-12">
@@ -49,7 +37,3 @@ class Login extends Component {
         </div>
         </div>
       )
-    }
-  }
-
-  export default Login;
