@@ -3,6 +3,11 @@ class Api::V1::BudgetsController < ApplicationController
     render json: Budget.all
   end
 
+  def show
+    budget = Budget.find(params[:id])
+    render json: budget
+  end
+  
   def create
     budget = Budget.create(budget_params)
     render json: budget

@@ -41,14 +41,9 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <Route path="/" exact component={Home} />
-        <Route path="/about" exact component={Aboutpg} />
-        <Route
-          path="/login"
-          component={() => (
-            <Login handleFormSubmit={this.handleLoginFormSubmit} />
-          )}
-        />
+        <Route path="/" exact component={ Home } />
+        <Route path="/about" exact component={ Aboutpg  } />
+        <Route path="/login" component={() => <Login handleFormSubmit={this.handleLoginFormSubmit}/> } />
         {/* <Route path="/signup" component={ Signup } /> */}
         <Route
           path="/signup"

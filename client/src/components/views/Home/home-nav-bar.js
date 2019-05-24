@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Nav, Navbar } from "react-bootstrap";
+import React from 'react';
+import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/Home/feather.svg";
 class NavbarComp extends Component {
