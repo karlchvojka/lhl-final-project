@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ListApp from '../../apitest.js'
+import NavbarComp from "./home-nav-bar.js"
+
 
 export default ({}) => {
 
   return (
-
-    <main className="content-area container">
+    <main className="content-area container home-page">
+    <NavbarComp />
       <h1>
         THIS IS SQUABBLE!!!!!!!
       </h1>
