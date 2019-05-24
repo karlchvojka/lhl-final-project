@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
       resources :budgets, only: [:index, :create, :destroy, :update, :show] do
         resources :users, only: [:index] do
-          resources :line_items, only: [:index]
+          # resources :line_items, only: [:index]
         end
-        resources :line_items, only: [:create, :destroy, :update, :show] 
+        resources :line_items, only: [:index, :create, :destroy, :update, :show] 
         resources :budget_members, only: [:index, :create, :destroy, :update, :show]
       end
 
