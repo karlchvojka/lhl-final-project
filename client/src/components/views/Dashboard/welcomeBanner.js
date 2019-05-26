@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class WelcomeBanner extends Component {
-  // let { budget, line_items, budget_members, sumObjectValues} = props;
 
   render() {
       return (

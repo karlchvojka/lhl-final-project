@@ -84,7 +84,24 @@
         	border-radius: 4px;
         	background-color: #FFFFFF;
         	box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+          padding:1rem;
 
+          h2 {
+
+          }
+
+          .budgetTotal {
+            text-align: right;
+
+            p {
+              font-size:15px;
+            }
+          }
+
+          .createdDate {
+            font-size:12px;
+            color: #AFB4B7;
+          }
         }
 
         .lineItemsContainer {
