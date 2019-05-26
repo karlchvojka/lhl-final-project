@@ -86,7 +86,7 @@ class Dashboard extends Component {
                   <LineItemsContainer line_items={line_items} />
                 </Col>
                 <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
-                  <BudgetMembersContainer />
+                  <BudgetMembersContainer budget_members={budget_members} />
                 </Col>
               </Row>
             </Container>

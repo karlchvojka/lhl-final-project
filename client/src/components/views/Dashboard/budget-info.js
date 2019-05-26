@@ -20,7 +20,6 @@ class BudgetInfo extends Component {
         <Row>
           <Col xl={12} lg={12} md={12} sm={12} xs={12}>
             <p className="createdDate">Created on: {new Date(newDate).toDateString()}</p>
-            <p>Budget Members: {this.props.budget_members.map(bm => <span>{bm.user_id}</span>)}</p>
           </Col>
         </Row>
       </Container>
