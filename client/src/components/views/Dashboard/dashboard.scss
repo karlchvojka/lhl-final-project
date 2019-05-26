@@ -1,4 +1,5 @@
 .budgetDashboard {
+  padding:0px;
 
   .dashboardTopNav {
     height:60px;
@@ -21,6 +22,44 @@
   }
   .sidebarComp {
     height: 100%;
+  	box-shadow: 4px 0 10px 0 rgba(23,128,224,0.11);
+
+
+    a:link, a:visited{
+    	height: 93px;
+      text-align:center;
+    	width: 138px;
+      padding-left:8px;
+
+      img {
+          color: #677897;
+          margin-top: .7rem;
+      }
+      p:first-child {
+        margin-top:0px;
+      }
+      p {
+        color: #677897;
+        font-family: "Open Sans";
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 20px;
+        text-align: center;
+        margin-bottom:0px;
+        margin-top:.5rem;
+      }
+
+    }
+    a:hover, a:active, a.active  {
+      background-color:#E9FEFF;
+      border-left: 4px solid #1CC4C8;
+      color: #1CC4C8;
+      padding-left:4px;
+
+      p {
+        color:#1CC4C8;
+      }
+    }
   }
 
   .budgetInfo {

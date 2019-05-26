@@ -70,9 +70,9 @@ class Dashboard extends Component {
   render() {
     var { budget, line_items, budget_members } = this.state;
     return (
-      <Container className="budgetDashboard" fluid="true">
+      <Container className="budgetDashboard no-gutters" fluid="true">
         <DashboardTopNav />
-        <Row>
+        <Row noGutters='true'>
           <Col xl={1} lg={1} md={1} sm={1} xs={1}>
             <DashboardSidebar />
           </Col>
