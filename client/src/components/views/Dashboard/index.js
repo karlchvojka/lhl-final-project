@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import DashboardTopNav from "./dashboard-top-nav.js";
 import DashboardSidebar from "./dashboard-sidebar.js";
 import BudgetInfo from "./budget-info.js";
@@ -72,24 +72,24 @@ class Dashboard extends Component {
     return (
       <Container className="budgetDashboard" fluid="true">
         <DashboardTopNav />
-        <div className="row">
-          <div className="col-2">
+        <Row>
+          <Col xl={1} lg={1} md={1} sm={1} xs={1}>
             <DashboardSidebar />
-          </div>
-          <div className="col-10">
-            <div className="container">
-              <div className="row">
-                <div className="col-10">
-      <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} sumObjectValues={this.sumObjectValues}/>
+          </Col>
+          <Col xl={11} lg={11} md={11} sm={11} xs={11}>
+            <Container fluid='true'>
+              <Row>
+                <Col xl={10} lg={10} md={10} sm={10} xs={10}>
+                  <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} sumObjectValues={this.sumObjectValues}/>
                   <LineItemsContainer />
-                </div>
-                <div className="col-2">
+                </Col>
+                <Col xl={2} lg={2} md={2} sm={2} xs={2}>
                   <BudgetMembersContainer />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                </Col>
+              </Row>
+            </Container>
+          </Col>
+        </Row>
       </Container>
       )
     }
