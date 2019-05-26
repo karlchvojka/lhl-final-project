@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container } from 'react-bootstrap';
 import DashboardTopNav from "./dashboard-top-nav.js";
 import DashboardSidebar from "./dashboard-sidebar.js";
 import BudgetInfo from "./budget-info.js";
@@ -69,7 +70,7 @@ class Dashboard extends Component {
   render() {
     var { budget, line_items, budget_members } = this.state;
     return (
-      <div className="container-fluid budgetDashboard">
+      <Container className="budgetDashboard" fluid="true">
         <DashboardTopNav />
         <div className="row">
           <div className="col-2">
@@ -89,7 +90,7 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
       )
     }
   }
