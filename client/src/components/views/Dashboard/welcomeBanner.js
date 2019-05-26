@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 
-class BudgetInfo extends Component {
+class WelcomeBanner extends Component {
   // let { budget, line_items, budget_members, sumObjectValues} = props;
 
   render() {
-      const totals = this.props.sumObjectValues(this.props.line_items, 'amount')
       return (
       <div className="welcomeBackBanner">
-
+        <h2>Hey Andrea, Welcome Back!</h2>
       </div>
     )
   }
 }
 
-export default BudgetInfo;
+export default WelcomeBanner;

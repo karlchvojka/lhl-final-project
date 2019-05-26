@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import DashboardTopNav from "./dashboard-top-nav.js";
+import WelcomeBanner from "./welcomeBanner.js";
 import DashboardSidebar from "./dashboard-sidebar.js";
 import BudgetInfo from "./budget-info.js";
 import BudgetMembersContainer from './Budget_Member_Container/budget-members-container.js';
@@ -72,18 +73,19 @@ class Dashboard extends Component {
     return (
       <Container className="budgetDashboard no-gutters" fluid="true">
         <DashboardTopNav />
-        <Row noGutters='true'>
+        <Row className="budgetDashboardInner" noGutters='true'>
           <Col xl={1} lg={1} md={1} sm={1} xs={1}>
             <DashboardSidebar />
           </Col>
-          <Col xl={11} lg={11} md={11} sm={11} xs={11}>
+          <Col className="mainSectionWrap" xl={11} lg={11} md={11} sm={11} xs={11}>
             <Container fluid='true'>
               <Row>
-                <Col xl={10} lg={10} md={10} sm={10} xs={10}>
+                <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
+                  <WelcomeBanner />
                   <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} sumObjectValues={this.sumObjectValues}/>
                   <LineItemsContainer />
                 </Col>
-                <Col xl={2} lg={2} md={2} sm={2} xs={2}>
+                <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
                   <BudgetMembersContainer />
                 </Col>
               </Row>

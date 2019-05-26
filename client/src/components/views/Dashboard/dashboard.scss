@@ -24,11 +24,9 @@
     height: 100%;
   	box-shadow: 4px 0 10px 0 rgba(23,128,224,0.11);
 
-
     a:link, a:visited{
     	height: 93px;
       text-align:center;
-    	width: 138px;
       padding-left:8px;
 
       img {
@@ -61,16 +59,50 @@
       }
     }
   }
+  .budgetDashboardInner {
+    margin-top:3.9rem;
 
-  .budgetInfo {
-    background-color:red;
-  }
+    .mainSectionWrap {
+      background: linear-gradient(#1CC4C8 0%, #3DD6A5 45%, #ffffff 45%);
+      padding-left:8.333333%;
 
-  .lineItemsContainer {
-    background-color:blue;
-  }
+      .innerMainSection {
 
-  .budgetMembers {
-    background-color:blue;
+        .welcomeBackBanner {
+        	height: 75px;
+
+          h2 {
+            margin: 3rem 0rem 0rem 0rem;
+            color: #FFFFFF;
+            font-family: "Open Sans";
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 32px;
+          }
+        }
+        .budgetInfo {
+        	border-radius: 4px;
+        	background-color: #FFFFFF;
+        	box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+
+        }
+
+        .lineItemsContainer {
+          border-radius: 4px;
+          background-color: #FFFFFF;
+          box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+          margin-top:20px;
+        }
+      }
+      .usersAside {
+        margin-top:7.6rem;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+
+        .budgetMembers {
+        }
+      }
+    }
   }
 }

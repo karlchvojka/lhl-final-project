@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Container, Row, Col } from 'react-bootstrap';
 import Logo from "../../../assets/Home/feather.svg";
 
 class DashboardTopNav extends Component {
   render() {
     return (
-      <div className="dashboardTopNav row">
-      <div className="col-12">
-        <Navbar expand="md" className="navbar fixed-top">
+      <Row>
+      <Col className="col-12">
+        <Navbar expand="md" className="fixed-top dashboardTopNav">
           <Navbar.Brand href="#home">
             <img alt="" src={Logo} />
             Squabble
@@ -23,8 +23,8 @@ class DashboardTopNav extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-      </div>
-      </div>
+      </Col>
+      </Row>
       )
     }
   }
