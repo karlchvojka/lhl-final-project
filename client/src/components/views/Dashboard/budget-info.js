@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 class BudgetInfo extends Component {
   // let { budget, line_items, budget_members, sumObjectValues} = props;
   render() {
-      const totals = this.props.sumObjectValues(this.props.line_items, 'amount')
+      // const totals = this.props.sumObjectValues(this.props.line_items, 'amount')
       let newDate = this.props.budget.created_at;
 
       return (

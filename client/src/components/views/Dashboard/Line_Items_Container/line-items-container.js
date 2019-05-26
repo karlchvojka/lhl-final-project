@@ -5,7 +5,7 @@ class LineItemsContainer extends Component {
   render() {
     return (
       <div className="lineItemsContainer">
-        <p>Line Items: {this.props.line_items.map(item => <LineItem name={item.name} price={item.amount} /> ) }</p>
+        {this.props.line_items.map(item => <LineItem key={item.id} name={item.name} price={item.amount} /> ) }
       </div>
       )
     }

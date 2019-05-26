@@ -6,7 +6,7 @@ class BudgetMembersContainer extends Component {
     return (
       <div className="budgetMembers">
         <p>Budget Members Container</p>
-        {this.props.budget_members.map(member => <BudgetMember name={member.id} />)}
+        {this.props.budget_members.map(member => <BudgetMember key={member.id} name={member.id} />)}
       </div>
       )
     }
