@@ -5,16 +5,23 @@ class LineItemsContainer extends Component {
   render() {
     return (
       <div className="lineItemsContainer">
-        {this.props.line_items.map(item => (
-          <LineItem
-            key={item.id}
-            line_item_creator={item.user_id}
-            name={item.name}
-            price={item.amount}
-            user={this.props.user}
-            total_members={this.props.total_members}
-          />
-        ))}
+        <form onSubmit={this.props.handleSubmit}>
+        <label>
+        New Budget Item Name:
+        <input type="text" name="name" />
+      </label>
+      <label>
+        New Budget Item Amount:
+        <input type="number" name="amount" />
+      </label>
+      <label>
+        Is this an incidental type of expense?  
+        <input type="checkbox" name="paid" placeholder="(ie. Toilet Paper, Cleaning Suplies, etc.)"/>
+      </label>
+      <input type='hidden' name="budget_id" value={this.props.budget_id} />
+      <input type="submit" value="Submit" />
+        </form>
+        {this.props.line_items.map(item => <LineItem key={item.id} name={item.name} price={item.amount} /> ) }
       </div>
     );
   }
