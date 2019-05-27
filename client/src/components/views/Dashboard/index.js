@@ -15,7 +15,7 @@ class Dashboard extends Component {
       budget: [],
       line_items: [],
       budget_members: [],
-      user: [{ id: 1 }],
+      user: { id: 1 },
       budget_total: 0
     };
   }
@@ -82,14 +82,14 @@ class Dashboard extends Component {
     const amount = evt.target.amount.value;
     const paid = evt.target.paid.checked;
 
-    axios.post(`/api/v1/budgets/${budget_id}/line_items`, {
+    axios.post(`http://localhost:3000/api/v1/budgets/${budget_id}/line_items`, {
       budget_id: budget_id,
       name: name,
       amount: amount,
       paid: paid,
       user_id: user_id
     })
-    .then(resp => console.log(resp));
+    .then(resp => console.log(resp)).catch(error => console.log(error));
   };
 
 
@@ -116,11 +116,14 @@ class Dashboard extends Component {
                   <Container>
                     <WelcomeBanner />
                     <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total}/>
-                  <LineItemsContainer
-                    line_items={line_items}
-                    user={user}
-                    budget_members={budget_members}
-                  />
+                    <LineItemsContainer
+                      line_items={line_items}
+                      user={user}
+                      budget_members={budget_members}
+                      handleFormSubmit={this.handleNewLineItemFormSubmit}
+                      budget_id={this.state.budget.id}
+                    />
+                  </Container>
                 </Col>
                 <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
                   <BudgetMembersContainer budget_members={budget_members} />

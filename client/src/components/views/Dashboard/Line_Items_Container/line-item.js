@@ -9,6 +9,7 @@ class LineItem extends Component {
       if (user_id === element.id) {
         return element;
       }
+      return null;
     });
     const yourShare = function name() {
       if (item.paid) {
@@ -34,6 +35,5 @@ class LineItem extends Component {
       )
     }
   }
-}
 
 export default LineItem;

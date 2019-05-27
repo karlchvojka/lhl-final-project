@@ -5,7 +5,7 @@ class LineItemsContainer extends Component {
   render() {
     return (
       <div className="lineItemsContainer">
-        <form onSubmit={this.props.handleSubmit}>
+        <form onSubmit={this.props.handleFormSubmit}>
         <label>
         New Budget Item Name:
         <input type="text" name="name" />
@@ -15,10 +15,10 @@ class LineItemsContainer extends Component {
         <input type="number" name="amount" />
       </label>
       <label>
-        Is this an incidental type of expense?  
+        Is this an incidental type of expense?
         <input type="checkbox" name="paid" placeholder="(ie. Toilet Paper, Cleaning Suplies, etc.)"/>
       </label>
-      <input type='hidden' name="budget_id" value={this.props.budget_id} />
+      <input type='hidden' name="budget_id" value={1} />
       <input type="submit" value="Submit" />
         </form>
         {this.props.line_items.map(item => (

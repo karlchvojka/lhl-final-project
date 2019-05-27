@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class LineItemsForm extends Component {
   render() {
     return (
-      <form onSubmit={this.props.handleNewLineItemFormSubmit}>
+      <form onSubmit={this.props.handleFormSubmit}>
         <label>
           New Budget Item Name:
           <input type="text" name="name" />
