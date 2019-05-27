@@ -1,18 +1,128 @@
 .budgetDashboard {
+  padding:0px;
+  height:100vh;
+
+  .dashboardTopNav {
+    height:60px;
+    background: linear-gradient(0deg, #FFFFFF 0%, #FAFBFC 100%);
+    box-shadow: 0 4px 10px 0 rgba(0,81,131,0.12);
+
+    .navbar-brand {
+    	color: #313A46;
+    	font-family: "Titillium Web";
+    	font-size: 20px;
+    	font-weight: 300;
+    	line-height: 30px;
+      text-transform:uppercase;
+
+      img {
+        width:35px;
+        margin-right:5px;
+      }
+    }
+  }
   .sidebarComp {
     height: 100%;
-    background-color: grey;
-  }
+  	box-shadow: 4px 0 10px 0 rgba(23,128,224,0.11);
 
-  .budgetInfo {
-    background-color:red;
-  }
+    a:link, a:visited{
+    	height: 93px;
+      text-align:center;
+      padding-left:8px;
 
-  .lineItemsContainer {
-    background-color:blue;
-  }
+      img {
+          color: #677897;
+          margin-top: .7rem;
+      }
+      p:first-child {
+        margin-top:0px;
+      }
+      p {
+        color: #677897;
+        font-family: "Open Sans";
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 20px;
+        text-align: center;
+        margin-bottom:0px;
+        margin-top:.5rem;
+      }
 
-  .budgetMembers {
-    background-color:blue;
+    }
+    a:hover, a:active, a.active  {
+      background-color:#E9FEFF;
+      border-left: 4px solid #1CC4C8;
+      color: #1CC4C8;
+      padding-left:4px;
+
+      p {
+        color:#1CC4C8;
+      }
+    }
+  }
+  .budgetDashboardInner {
+    margin-top:3.9rem;
+
+    .mainSectionWrap {
+      background: linear-gradient(#1CC4C8 0%, #3DD6A5 45%, #ffffff 45%);
+      padding-left:8.333333%;
+
+      .innerMainSection {
+
+        .welcomeBackBanner {
+        	height: 75px;
+
+          h2 {
+            margin: 3rem 0rem 0rem 0rem;
+            color: #FFFFFF;
+            font-family: "Open Sans";
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 32px;
+          }
+        }
+        .budgetInfo {
+        	border-radius: 4px;
+        	background-color: #FFFFFF;
+        	box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+          padding:1rem;
+
+          h2 {
+
+          }
+
+          .budgetTotal {
+            text-align: right;
+
+            p {
+              font-size:15px;
+            }
+          }
+
+          .createdDate {
+            font-size:12px;
+            color: #AFB4B7;
+          }
+        }
+
+        .lineItemsContainer {
+          border-radius: 4px;
+          background-color: #FFFFFF;
+          box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+          margin-top:20px;
+          padding:1rem;
+        }
+      }
+      .usersAside {
+        margin-top:7.6rem;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+        padding:1rem;
+
+        .budgetMembers {
+        }
+      }
+    }
   }
 }

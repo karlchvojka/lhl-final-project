@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import NavbarComp from "./home-nav-bar";
 import HomeImage from "../../../assets/Home/Img.svg";
 // test

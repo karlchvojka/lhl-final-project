@@ -4,7 +4,7 @@ class LineItem extends Component {
   render() {
     return (
       <div>
-        <p>Line Item Component</p>
+        <p>{this.props.name}: {this.props.price}</p>
       </div>
       )
     }

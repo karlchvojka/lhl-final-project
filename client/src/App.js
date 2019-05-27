@@ -1,6 +1,5 @@
 // React imports
 import React, { Component } from "react";
-import ListApp from "./components/apitest.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/views/Home/";
 import Aboutpg from "./components/views/About/";

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import DashboardTopNav from "./dashboard-top-nav.js";
+import WelcomeBanner from "./welcomeBanner.js";
 import DashboardSidebar from "./dashboard-sidebar.js";
 import BudgetInfo from "./budget-info.js";
 import BudgetMembersContainer from './Budget_Member_Container/budget-members-container.js';
@@ -65,27 +67,28 @@ class Dashboard extends Component {
   render() {
     var { budget, line_items, budget_members, budget_total } = this.state;
     return (
-      <div className="container-fluid budgetDashboard">
+      <Container className="budgetDashboard no-gutters" fluid="true">
         <DashboardTopNav />
-        <div className="row">
-          <div className="col-2">
+        <Row className="budgetDashboardInner" noGutters='true'>
+          <Col xl={1} lg={1} md={1} sm={1} xs={1}>
             <DashboardSidebar />
-          </div>
-          <div className="col-10">
-            <div className="container">
-              <div className="row">
-                <div className="col-10">
+          </Col>
+          <Col className="mainSectionWrap" xl={11} lg={11} md={11} sm={11} xs={11}>
+            <Container fluid='true'>
+              <Row>
+                <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
+                  <WelcomeBanner />
                   <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total}/>
-                  <LineItemsContainer />
-                </div>
-                <div className="col-2">
-                  <BudgetMembersContainer />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                  <LineItemsContainer line_items={line_items} />
+                </Col>
+                <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
+                  <BudgetMembersContainer budget_members={budget_members} />
+                </Col>
+              </Row>
+            </Container>
+          </Col>
+        </Row>
+      </Container>
       )
     }
   }
