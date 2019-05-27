@@ -7,7 +7,6 @@ class BudgetInfo extends Component {
       // const totals = this.props.sumObjectValues(this.props.line_items, 'amount')
       let newDate = this.props.budget.created_at;
 
-  render() {
       return (
       <Container className="budgetInfo">
         <Row>
