@@ -6,6 +6,7 @@ import DashboardSidebar from "./dashboard-sidebar.js";
 import BudgetInfo from "./budget-info.js";
 import BudgetMembersContainer from './Budget_Member_Container/budget-members-container.js';
 import LineItemsContainer from './Line_Items_Container/line-items-container.js';
+import axios from 'axios';
 
 class Dashboard extends Component {
 
@@ -64,6 +65,25 @@ class Dashboard extends Component {
 
   }
 
+  handleNewLineItemFormSubmit = evt => {
+    evt.preventDefault();
+    const budget_id = evt.target.budget_id.value;
+    const user_id = "1";
+    const name = evt.target.name.value;
+    const amount = evt.target.amount.value;
+    const paid = evt.target.paid.checked;
+
+    axios.post(`/api/v1/budgets/${budget_id}/line_items`, {
+      budget_id: budget_id,
+      name: name,
+      amount: amount,
+      paid: paid,
+      user_id: user_id
+    })
+    .then(resp => console.log(resp));
+  };
+
+
   render() {
     var { budget, line_items, budget_members, budget_total } = this.state;
     return (
@@ -80,7 +100,7 @@ class Dashboard extends Component {
                   <Container>
                     <WelcomeBanner />
                     <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total}/>
-                    <LineItemsContainer line_items={line_items} />
+                  <LineItemsContainer budget_id={1} line_items={line_items} handleSubmit={this.handleNewLineItemFormSubmit} />
                   </Container>
                 </Col>
                 <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
