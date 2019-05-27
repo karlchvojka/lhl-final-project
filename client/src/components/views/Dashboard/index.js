@@ -82,7 +82,7 @@ class Dashboard extends Component {
     const amount = evt.target.amount.value;
     const paid = evt.target.paid.checked;
 
-    axios.post(`http://localhost:3000/api/v1/budgets/${budget_id}/line_items`, {
+    axios.post(`api/v1/budgets/${budget_id}/line_items`, {
       budget_id: budget_id,
       name: name,
       amount: amount,
