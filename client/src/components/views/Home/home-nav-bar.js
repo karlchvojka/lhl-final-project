@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import React, { Component } from "react";
+import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/Home/feather.svg";
 class NavbarComp extends Component {
@@ -24,22 +24,45 @@ class NavbarComp extends Component {
                 <li />
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/">
+                    <Link
+                      className="nav-link"
+                      to="/"
+                      style={{ color: "white" }}
+                    >
                       Home
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/about">
+                    <Link
+                      className="nav-link"
+                      to="/about"
+                      style={{ color: "white" }}
+                    >
                       About
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/login">
+                    <Link
+                      className="nav-link"
+                      to="/login"
+                      style={{ color: "white" }}
+                    >
                       Features
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <button className="btn btn-primary">Sign up</button>
+                    <button
+                      className="btn btn-primary"
+                      style={{
+                        height: "46px",
+                        width: "120px",
+                        borderRadius: "100px",
+                        background:
+                          "linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%"
+                      }}
+                    >
+                      Sign in
+                    </button>
                   </li>
                 </div>
               </ul>
