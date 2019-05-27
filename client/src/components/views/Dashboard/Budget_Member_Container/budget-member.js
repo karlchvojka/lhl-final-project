@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React, { Component } from "react";
 
 
 class BudgetMember extends Component {
   render() {
+    const { member } = this.props;
+    const { first, last, email } = member;
     return (
-      <Row>
-        <Col xl={12} lg={12} md={12} sm={12} xs={12}>
-        {this.props.name}
-        </Col>
-      </Row>
-      )
-    }
+      <div>
+        {first} {last} {email}
+      </div>
+    );
   }
+}
 
-  export default BudgetMember;
+export default BudgetMember;
