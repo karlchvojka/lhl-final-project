@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { Row, Col} from 'react-bootstrap';
 
 class WelcomeBanner extends Component {
 
   render() {
       return (
-      <div className="welcomeBackBanner">
-        <h2>Hey Andrea, Welcome Back!</h2>
-      </div>
+      <Row className="welcomeBackBanner">
+        <Col>
+          <h2>Hey Andrea, Welcome Back!</h2>
+        </Col>
+      </Row>
     )
   }
 }

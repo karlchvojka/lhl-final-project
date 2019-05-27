@@ -21,7 +21,7 @@ class Api::V1::LineItemsController < ApplicationController
  private
 
  def line_item_params
-   params.require(:line_item).permit(:id, :name, :amount, :paid)
+   params.permit(:budget_id, :name, :amount, :paid, :user_id)
  end
 
 end

@@ -2,7 +2,7 @@ import React from "react";
 import NavbarComp from "./home-nav-bar";
 import HomeImage from "../../../assets/Home/Img.svg";
 // test
-export default ({}) => {
+export default () => {
   return (
     <main
       className="content-area container-fluid"

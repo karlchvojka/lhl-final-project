@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class BudgetMember extends Component {
   render() {
     const { member } = this.props;
