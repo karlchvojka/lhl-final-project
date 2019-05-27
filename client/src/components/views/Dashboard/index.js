@@ -64,6 +64,29 @@ class Dashboard extends Component {
 
   }
 
+  handleNewLineItemFormSubmit = evt => {
+    const budget_id = evt.target.budget_id.value;
+    const name = evt.target.name.value;
+    const amount = evt.target.amount.value;
+    const paid = evt.target.paid.value;
+
+    evt.preventDefault();
+
+    fetch(`http://localhost:3000/api/v1/budgets/${budget_id}/line_items`, {
+    method: "POST",
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: {
+      budget_id: budget_id,
+      name: name,
+      amount: amount,
+      paid: paid
+      }
+    })
+  };
+
+
   render() {
     var { budget, line_items, budget_members, budget_total } = this.state;
     return (
@@ -79,7 +102,7 @@ class Dashboard extends Component {
                 <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
                   <WelcomeBanner />
                   <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total}/>
-                  <LineItemsContainer line_items={line_items} />
+                  <LineItemsContainer budget_id={1} line_items={line_items} handleSubmit={this.handleNewLineItemFormSubmit} />
                 </Col>
                 <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
                   <BudgetMembersContainer budget_members={budget_members} />
