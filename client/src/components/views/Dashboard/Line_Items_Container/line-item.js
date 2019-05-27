@@ -13,6 +13,7 @@ class LineItem extends Component {
     });
     const yourShare = function name() {
       if (item.paid) {
+        console.log("THis is line item creator", lineItemCreator)
         if (lineItemCreator.id === user.id) {
           return amount * -1;
         }

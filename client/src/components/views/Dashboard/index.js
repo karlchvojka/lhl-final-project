@@ -81,6 +81,7 @@ class Dashboard extends Component {
     const name = evt.target.name.value;
     const amount = evt.target.amount.value;
     const paid = evt.target.paid.checked;
+    const oldLineitems = this.state.line_items
 
     axios.post(`api/v1/budgets/${budget_id}/line_items`, {
       budget_id: budget_id,
@@ -89,8 +90,25 @@ class Dashboard extends Component {
       paid: paid,
       user_id: user_id
     })
-    .then(resp => console.log(resp)).catch(error => console.log(error));
+    .then(resp => {
+      console.log("This is the response of post", resp)
+      this.setState({ line_items: [...oldLineitems, resp.data]  })
+    })
+    .catch(error => {
+      console.log("Error in posting a new line item", error)
+    });
   };
+
+  handleLineItemDelete = evt => {
+    // axios.post(`api/v1/budgets/${budget_id}/line_items`, {
+    //   budget_id: budget_id,
+    //   name: name,
+    //   amount: amount,
+    //   paid: paid,
+    //   user_id: user_id
+    // })
+    // .then(resp => console.log(resp)).catch(error => console.log(error));
+  }
 
 
   render() {
