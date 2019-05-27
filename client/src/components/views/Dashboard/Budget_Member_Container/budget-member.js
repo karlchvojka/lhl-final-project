@@ -4,7 +4,7 @@ class BudgetMember extends Component {
   render() {
     return (
       <div>
-        <p>Budget Member Component</p>
+        {this.props.name}
       </div>
       )
     }
