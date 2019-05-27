@@ -23,7 +23,7 @@ class LineItem extends Component {
       <div>
         <p>
           {lineItemCreator.first} {lineItemCreator.last}: {name} Total: {amount}{" "}
-          Your Share:{" $"}
+          You Owe:{" $"}
           {(myShare / budget_members.length).toFixed(2)}
         </p>
       </div>
