@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class BudgetMember extends Component {
   render() {
+    const { member } = this.props;
+    const { first, last, email } = member;
     return (
       <div>
-        {this.props.name}
+        {first} {last} {email}
       </div>
-      )
-    }
+    );
   }
+}
 
-  export default BudgetMember;
+export default BudgetMember;

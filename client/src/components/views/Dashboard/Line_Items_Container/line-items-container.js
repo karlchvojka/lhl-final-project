@@ -21,7 +21,14 @@ class LineItemsContainer extends Component {
       <input type='hidden' name="budget_id" value={this.props.budget_id} />
       <input type="submit" value="Submit" />
         </form>
-        {this.props.line_items.map(item => <LineItem key={item.id} name={item.name} price={item.amount} /> ) }
+        {this.props.line_items.map(item => (
+          <LineItem
+            key={item.id}
+            user={this.props.user}
+            budget_members={this.props.budget_members}
+            item={item}
+          />
+        ))}
       </div>
     );
   }
