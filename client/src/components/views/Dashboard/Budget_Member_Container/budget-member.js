@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
+
 
 class BudgetMember extends Component {
   render() {
     return (
-      <div>
+      <Row>
+        <Col xl={12} lg={12} md={12} sm={12} xs={12}>
         {this.props.name}
-      </div>
+        </Col>
+      </Row>
       )
     }
   }

@@ -77,9 +77,11 @@ class Dashboard extends Component {
             <Container fluid='true'>
               <Row>
                 <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
-                  <WelcomeBanner />
-                  <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total}/>
-                  <LineItemsContainer line_items={line_items} />
+                  <Container>
+                    <WelcomeBanner />
+                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total}/>
+                    <LineItemsContainer line_items={line_items} />
+                  </Container>
                 </Col>
                 <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
                   <BudgetMembersContainer budget_members={budget_members} />
