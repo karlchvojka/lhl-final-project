@@ -75,7 +75,6 @@ class Dashboard extends Component {
 
   render() {
     var { budget, line_items, budget_members, budget_total, user } = this.state;
-    console.log(this.state);
     return (
       <Container className="budgetDashboard no-gutters" fluid="true">
         <DashboardTopNav />

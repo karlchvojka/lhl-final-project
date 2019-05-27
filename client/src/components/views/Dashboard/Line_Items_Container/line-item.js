@@ -1,22 +1,30 @@
 import React, { Component } from "react";
+import LineItemsContainer from "./line-items-container";
 
 class LineItem extends Component {
   render() {
-    const { budget_members, item } = this.props;
+    const { budget_members, item, user } = this.props;
     const { user_id, amount, name } = item;
-    const yourShare = item.paid ? amount * -1 : amount * 1;
     const lineItemCreator = budget_members.find(function(element) {
       if (user_id === element.id) {
         return element;
       }
     });
-    console.log("TCL: LineItem -> render -> lineItemCreator", lineItemCreator);
+    const yourShare = function name() {
+      if (item.paid) {
+        if (lineItemCreator.id === user.id) {
+          return amount * -1;
+        }
+      }
+      return amount * 1;
+    };
+    const myShare = yourShare();
     return (
       <div>
         <p>
-          {lineItemCreator.first} {lineItemCreator.last}: {name}: Total:{" $"}{" "}
-          {amount} Your Share:{" $"} {item.paid ? "" : "+"}
-          {(yourShare / budget_members.length).toFixed(2)}
+          {lineItemCreator.first} {lineItemCreator.last}: {name} Total: {amount}{" "}
+          Your Share:{" $"}
+          {(myShare / budget_members.length).toFixed(2)}
         </p>
       </div>
     );
