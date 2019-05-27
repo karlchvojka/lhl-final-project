@@ -1,17 +1,26 @@
+import React, { Component } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import DashboardTopNav from "./dashboard-top-nav.js";
+import WelcomeBanner from "./welcomeBanner.js";
+import DashboardSidebar from "./dashboard-sidebar.js";
+import BudgetInfo from "./budget-info.js";
+import BudgetMembersContainer from "./Budget_Member_Container/budget-members-container.js";
+import LineItemsContainer from "./Line_Items_Container/line-items-container.js";
 
-                <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
-                  <BudgetMembersContainer budget_members={budget_members} />
-                </Col>
-              </Row>
-            </Container>
-          </Col>
-        </Row>
-      </Container>
-    );
+class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      budget: [],
+      line_items: [],
+      budget_members: [],
+      user: [{ id: 1 }],
+      budget_total: 0
+    };
   }
-}
 
-export default Dashboard;
+  componentDidMount() {
+    const that = this;
 
     function getBudgets(user_id) {
       return fetch(
