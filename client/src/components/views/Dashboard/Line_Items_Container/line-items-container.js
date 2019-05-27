@@ -8,11 +8,9 @@ class LineItemsContainer extends Component {
         {this.props.line_items.map(item => (
           <LineItem
             key={item.id}
-            line_item_creator={item.user_id}
-            name={item.name}
-            price={item.amount}
             user={this.props.user}
-            total_members={this.props.total_members}
+            budget_members={this.props.budget_members}
+            item={item}
           />
         ))}
       </div>

@@ -111,7 +111,7 @@ class Dashboard extends Component {
                   <LineItemsContainer
                     line_items={line_items}
                     user={user}
-                    total_members={budget_members.length}
+                    budget_members={budget_members}
                   />
                 </Col>
                 <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
