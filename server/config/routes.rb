@@ -10,15 +10,16 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
 
-      resources :budgets, only: [:index, :create, :destroy, :update, :show] do
-        resources :users, only: [:index] do
-          # resources :line_items, only: [:index]
-        end
+      resources :budgets, only: [:index, :create, :destroy, :update] do
         resources :line_items, only: [:index, :create, :destroy, :update, :show] 
         resources :budget_members, only: [:index, :create, :destroy, :update, :show]
       end
 
-      resources :users, only: [:create, :destroy, :update, :show]
+      resources :users, only: [:create, :destroy, :update, :show] do
+        resources :budgets, only: [:index]
+        resources :budget_members, only: [:index]
+        resources :line_items, only: [:index]
+      end
 
     end
   end

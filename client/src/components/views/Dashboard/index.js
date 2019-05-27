@@ -14,60 +14,56 @@ class Dashboard extends Component {
         line_items: [],
         budget_members: [],
         user: [ {id: 1} ],
-        budgetLoaded: false,
-        line_itemsLoaded: false,
-        budget_membersLoaded: false
+        budget_total: 0
     }
   }
 
   componentDidMount() {
 
-    // var Promise =
+    const that = this;
 
-    fetch(`http://localhost:3000/api/v1/budgets/1`)
-    .then(resp => resp.json())
-    .then(resp => {
-        console.log('Budgets fetched.')
-        this.setState({
-          budget: resp,
-          budgetLoaded: true
-        });
-    })
-
-    fetch(`http://localhost:3000/api/v1/budgets/1/line_items`)
-    .then(resp => resp.json())
-    .then(resp => {
-        console.log('Line items fetched.', resp)
-        this.setState({
-          line_items: resp,
-          line_itemsLoaded: true
-        });
-    })
-    fetch(`http://localhost:3000/api/v1/budgets/1/budget_members`)
-
-    .then(resp => resp.json())
-    .then(resp => {
-      console.log('Budget members fetched.', resp)
-        this.setState({
-          budget_members: resp,
-          budget_membersLoaded: true
-        });
-    })
-
-  }
-
-  sumObjectValues(obj, values) {
-    let sum;
-    for (var o in obj) {
-      console.log("This is the obj[o][values]", obj[o][values])
-      sum += obj[o][values]
+    function getBudgets(user_id) {
+      return fetch(`http://localhost:3000/api/v1/users/${user_id}/budgets`)
+      .then(resp => resp.json())
     }
-    console.log("this is hte sum", sum, values);
-    return sum
+
+    function getLineItems(budget_id) {
+      return fetch(`http://localhost:3000/api/v1/budgets/${budget_id}/line_items`)
+      .then(resp => resp.json())
+    }
+
+    function getBudgetMembers(budget_id) {
+      return fetch(`http://localhost:3000/api/v1/budgets/${budget_id}/budget_members`)
+      .then(resp => resp.json())
+    }
+
+    function getAPIdata(){
+      return Promise.all([getBudgets(that.state.user.id), getLineItems(1), getBudgetMembers(1)])
+    }
+
+    function sumObjectValues(obj, values) {
+      let sum = 0;
+      for (var o in obj) {
+        sum += obj[o][values]
+      }
+      return sum
+    }
+
+    function getUsersLineItems(line_items, user_id) {
+      return line_items.filter(item => item.user_id === user_id);
+    }
+
+    getAPIdata()
+      .then(([budgets, line_items, budget_members]) => {
+        that.setState({budget: budgets[0], line_items: line_items, budget_members: budget_members})
+        that.setState({ budget_total: sumObjectValues(line_items, 'amount')})
+        console.log(`user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`)
+      })
+
   }
 
   render() {
-    var { budget, line_items, budget_members } = this.state;
+    var { budget, line_items, budget_members, budget_total } = this.state;
     return (
       <div className="container-fluid budgetDashboard">
         <DashboardTopNav />
@@ -79,7 +75,7 @@ class Dashboard extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-10">
-      <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} sumObjectValues={this.sumObjectValues}/>
+                  <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total}/>
                   <LineItemsContainer />
                 </div>
                 <div className="col-2">
