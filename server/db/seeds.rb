@@ -66,6 +66,30 @@ budget.line_items.create!({
   paid: false
 })
 
+budget.line_items.create!({
+  budget_id: budget.id,
+  name: "Cups",
+  amount: 15.00,
+  user_id: user1.id,
+  paid: true
+})
+
+budget.line_items.create!({
+  budget_id: budget.id,
+  name: "BEEER",
+  amount: 60,
+  user_id: user2.id,
+  paid: true
+})
+
+budget.line_items.create!({
+  budget_id: budget.id,
+  name: "Pizza",
+  amount: 24,
+  user_id: user3.id,
+  paid: true
+})
+
 budget2.line_items.create!({
   budget_id: budget.id,
   name: "Rent",
