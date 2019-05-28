@@ -20,7 +20,7 @@ class LineItem extends Component {
       let name = this.name.value
       let amount = Number(this.amount.value)
       let id = this.props.item.id
-      let line_item = {id: id, name: name, amount: amount, user_id: user_id, budget_id: budget_id}
+      let line_item = { id: id, name: name, amount: amount, user_id: user_id, budget_id: budget_id }
       console.log("This is the line item being edited", line_item)
       this.props.handleLineItemUpdate(line_item)
     }
@@ -32,7 +32,7 @@ class LineItem extends Component {
   render() {
     const { budget_members, item, user } = this.props;
     const { user_id, amount, name, id, budget_id } = item;
-    const lineItemCreator = budget_members.find(function(element) {
+    const lineItemCreator = budget_members.find(function (element) {
       if (user_id === element.id) {
         return element;
       }
@@ -41,27 +41,27 @@ class LineItem extends Component {
     const yourShare = function name() {
       if (item.paid) {
         if (lineItemCreator.id === user.id) {
-          return amount * -1;
+          return ((amount * -1) / budget_members.length) * (budget_members.length - 1);
         }
       }
-      return amount * 1;
+      return amount / budget_members.length * 1;
     };
     const myShare = yourShare();
 
-    let itemNameField = this.state.editable ? <input type='text' ref={input => this.name = input} defaultValue={this.props.item.name}/>
-        : <p className="itemName">{name}</p>
+    let itemNameField = this.state.editable ? <input type='text' ref={input => this.name = input} defaultValue={this.props.item.name} />
+      : <p className="itemName">{name}</p>
 
-    let itemTotalField = this.state.editable? <input type='text' ref={input => this.amount = input} defaultValue={this.props.item.amount}/>
-        : <p className="itemTotal"><span>Total:</span> {amount}{" "}</p>
+    let itemTotalField = this.state.editable ? <input type='text' ref={input => this.amount = input} defaultValue={this.props.item.amount} />
+      : <p className="itemTotal"><span>Total:</span> {amount}{" "}</p>
 
-    let itemYouOweField = this.state.editable? <p></p> : <p className="itemOwe"><span>You Owe:</span>{" $"}{(myShare / budget_members.length).toFixed(2)}</p>
+    let itemYouOweField = this.state.editable ? <p></p> : <p className="itemOwe"><span>You Owe:</span>{" $"}{(myShare).toFixed(2)}</p>
 
 
     return (
       <Row className="lineItem">
         <Col xl={6} lg={6} md={6} sm={6} xs={6}>
           {itemNameField}
-        <p className="itemCreator">{lineItemCreator.first} {lineItemCreator.last}: </p>
+          <p className="itemCreator">{lineItemCreator.first} {lineItemCreator.last}: </p>
         </Col>
         <Col xl={2} lg={2} md={2} sm={2} xs={2}>
           {itemTotalField}
@@ -74,8 +74,8 @@ class LineItem extends Component {
           <p className="icon" onClick={ () => this.props.handleLineItemDelete(id)}><FontAwesomeIcon icon={faTrashAlt} /></p>
         </Col>
       </Row>
-      )
-    }
+    )
   }
+}
 
 export default LineItem;

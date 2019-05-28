@@ -16,6 +16,7 @@ class Dashboard extends Component {
       line_items: [],
       budget_members: [],
       user: { id: 1 },
+      budget_members_subtotals: [],
       budget_total: 0,
     };
   }
@@ -53,6 +54,7 @@ class Dashboard extends Component {
       return line_items.filter(item => item.user_id === user_id);
     }
 
+
     getAPIdata().then(([budgets, line_items, budget_members]) => {
       that.setState({
         budget: budgets[0],
@@ -60,10 +62,34 @@ class Dashboard extends Component {
         budget_members: budget_members
       });
       that.setState({ budget_total: this.sumObjectValues(line_items, "amount") });
+      that.setState({ budget_members_subtotals: this.budgetMembersSubtotals(line_items, budget_members) });
       console.log(
         // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
       );
     });
+  }
+
+  budgetMembersSubtotals(line_items, budget_members) {
+    const results = {};
+    budget_members.forEach(budget_member => {
+      results[budget_member.id] = []
+      line_items.forEach(line_item => {
+        const amountOwed = (line_item.amount) / budget_members.length
+        if (line_item.paid) {
+          if (line_item.user_id === budget_member.id) {
+            results[budget_member.id].push(amountOwed * (budget_members.length - 1) * -1)
+          } else {
+            results[budget_member.id].push(amountOwed)
+          }
+        } else {
+          results[budget_member.id].push(amountOwed)
+        }
+      })
+    });
+    for (let budget_member in results) {
+      results[budget_member] = results[budget_member].reduce((accumulator, currentValue) => accumulator + currentValue).toFixed(2)
+    }
+    return results
   }
 
   sumObjectValues = (obj, values) => {
@@ -94,14 +120,16 @@ class Dashboard extends Component {
       paid: paid,
       user_id: user_id
     })
-    .then(resp => {
-      this.setState({ line_items: [...oldLineitems, resp.data]  })
-      this.clearNewItemForm();
-    })
-    .catch(error => {
-      console.log("Error in posting a new line item", error)
-    });
-    this.setState({name: '', amount: '', paid: false}) // <= here
+      .then(resp => {
+        this.setState({ line_items: [...oldLineitems, resp.data] })
+        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) })
+        this.clearNewItemForm();
+      })
+      .catch(error => {
+        console.log("Error in posting a new line item", error)
+      });
+    this.setState({ name: '', amount: '', paid: false }) // <= here
   };
 
   handleLineItemDelete = id => {
@@ -109,37 +137,39 @@ class Dashboard extends Component {
     const oldLineitems = this.state.line_items
     const newLineItems = oldLineitems.filter(item => item.id !== id)
     axios.delete(`api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
-    .then( () => {
-      console.log("This is the delete", newLineItems)
-      this.setState({ line_items: [...newLineItems]  })
-    })
-    .then( () => {
-      this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
-    })
-    .catch(error => console.log(error));
+      .then(() => {
+        console.log("This is the delete", newLineItems)
+        this.setState({ line_items: [...newLineItems] })
+      })
+      .then(() => {
+        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) });
+      })
+      .catch(error => console.log(error));
   }
 
   handleLineItemUpdate = line_item => {
     fetch(`api/v1/budgets/${this.state.budget.id}/line_items/${line_item.id}`,
-    {
-      method: 'PUT',
-      body: JSON.stringify(line_item),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(() => {
-      console.log("update posted, now updating set state", line_item)
-      this.updateLineItem(line_item)
-      this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
-    })
-    .catch(error => {
-      console.log("Error in updating new line item", error)
-    })
+      {
+        method: 'PUT',
+        body: JSON.stringify(line_item),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(() => {
+        console.log("update posted, now updating set state", line_item)
+        this.updateLineItem(line_item)
+        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) });
+      })
+      .catch(error => {
+        console.log("Error in updating new line item", error)
+      })
   }
 
   updateLineItem = item => {
-    let newLineItems = this.state.line_items.filter((f) => f.id !== item.id )
+    let newLineItems = this.state.line_items.filter((f) => f.id !== item.id)
     console.log("this is items", this.state.line_items, "this is new fruits", newLineItems)
     newLineItems.push(item)
     newLineItems.sort(function (a, b) {
@@ -152,9 +182,11 @@ class Dashboard extends Component {
   }
 
   render() {
-    var { budget, line_items, budget_members, budget_total, user } = this.state;
+    var { budget, line_items, budget_members, budget_total, user, budget_members_subtotals } = this.state;
+    var currentUserSubtotal = budget_members_subtotals[user.id]
     return (
-      <Container className="budgetDashboard no-gutters" fluid="true">
+
+      < Container className="budgetDashboard no-gutters" fluid="true" >
         <DashboardTopNav />
         <Row className="budgetDashboardInner" noGutters="true">
           <Col xl={1} lg={1} md={1} sm={1} xs={1}>
@@ -173,26 +205,26 @@ class Dashboard extends Component {
                 <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
                   <Container fluid="true">
                     <WelcomeBanner />
-                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total}/>
+                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} currentUserSubtotal={currentUserSubtotal} />
                     <LineItemsContainer
                       line_items={line_items}
                       user={user}
                       budget_members={budget_members}
                       handleFormSubmit={this.handleNewLineItemFormSubmit}
                       budget_id={this.state.budget.id}
-                      handleLineItemDelete = {this.handleLineItemDelete}
-                      handleLineItemUpdate = {this.handleLineItemUpdate}
+                      handleLineItemDelete={this.handleLineItemDelete}
+                      handleLineItemUpdate={this.handleLineItemUpdate}
                     />
                   </Container>
                 </Col>
                 <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
-                  <BudgetMembersContainer budget_members={budget_members} />
+                  <BudgetMembersContainer budget_members={budget_members} subtotals={budget_members_subtotals} />
                 </Col>
               </Row>
             </Container>
           </Col>
         </Row>
-      </Container>
+      </Container >
     );
   }
 }
