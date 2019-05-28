@@ -54,28 +54,6 @@ class Dashboard extends Component {
       return line_items.filter(item => item.user_id === user_id);
     }
 
-    function budgetMembersSubtotals(line_items, budget_members) {
-      const results = {};
-      budget_members.forEach(budget_member => {
-        results[budget_member.id] = []
-        line_items.forEach(line_item => {
-          const amountOwed = (line_item.amount) / budget_members.length
-          if (line_item.paid) {
-            if (line_item.user_id === budget_member.id) {
-              results[budget_member.id].push(amountOwed * (budget_members.length - 1) * -1)
-            } else {
-              results[budget_member.id].push(amountOwed)
-            }
-          } else {
-            results[budget_member.id].push(amountOwed)
-          }
-        })
-      });
-      for (let budget_member in results) {
-        results[budget_member] = results[budget_member].reduce((accumulator, currentValue) => accumulator + currentValue).toFixed(2)
-      }
-      return results
-    }
 
     getAPIdata().then(([budgets, line_items, budget_members]) => {
       that.setState({
@@ -84,11 +62,34 @@ class Dashboard extends Component {
         budget_members: budget_members
       });
       that.setState({ budget_total: this.sumObjectValues(line_items, "amount") });
-      that.setState({ budget_members_subtotals: budgetMembersSubtotals(line_items, budget_members) });
+      that.setState({ budget_members_subtotals: this.budgetMembersSubtotals(line_items, budget_members) });
       console.log(
         // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
       );
     });
+  }
+
+  budgetMembersSubtotals(line_items, budget_members) {
+    const results = {};
+    budget_members.forEach(budget_member => {
+      results[budget_member.id] = []
+      line_items.forEach(line_item => {
+        const amountOwed = (line_item.amount) / budget_members.length
+        if (line_item.paid) {
+          if (line_item.user_id === budget_member.id) {
+            results[budget_member.id].push(amountOwed * (budget_members.length - 1) * -1)
+          } else {
+            results[budget_member.id].push(amountOwed)
+          }
+        } else {
+          results[budget_member.id].push(amountOwed)
+        }
+      })
+    });
+    for (let budget_member in results) {
+      results[budget_member] = results[budget_member].reduce((accumulator, currentValue) => accumulator + currentValue).toFixed(2)
+    }
+    return results
   }
 
   sumObjectValues = (obj, values) => {
@@ -121,6 +122,8 @@ class Dashboard extends Component {
     })
       .then(resp => {
         this.setState({ line_items: [...oldLineitems, resp.data] })
+        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) })
         this.clearNewItemForm();
       })
       .catch(error => {
@@ -130,41 +133,43 @@ class Dashboard extends Component {
   };
 
   handleLineItemDelete = id => {
-    
+
     const oldLineitems = this.state.line_items
     const newLineItems = oldLineitems.filter(item => item.id !== id)
     axios.delete(`api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
-    .then( () => {
-      console.log("This is the delete", newLineItems)
-      this.setState({ line_items: [...newLineItems]  })
-    })
-    .then( () => {
-      this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
-    })
-    .catch(error => console.log(error));
+      .then(() => {
+        console.log("This is the delete", newLineItems)
+        this.setState({ line_items: [...newLineItems] })
+      })
+      .then(() => {
+        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) });
+      })
+      .catch(error => console.log(error));
   }
 
   handleLineItemUpdate = line_item => {
     fetch(`api/v1/budgets/${this.state.budget.id}/line_items/${line_item.id}`,
-    {
-      method: 'PUT',
-      body: JSON.stringify(line_item),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(() => { 
-      console.log("update posted, now updating set state", line_item)
-      this.updateLineItem(line_item)
-      this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
-    })
-    .catch(error => {
-      console.log("Error in updating new line item", error)
-    })
+      {
+        method: 'PUT',
+        body: JSON.stringify(line_item),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(() => {
+        console.log("update posted, now updating set state", line_item)
+        this.updateLineItem(line_item)
+        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) });
+      })
+      .catch(error => {
+        console.log("Error in updating new line item", error)
+      })
   }
 
   updateLineItem = item => {
-    let newLineItems = this.state.line_items.filter((f) => f.id !== item.id )
+    let newLineItems = this.state.line_items.filter((f) => f.id !== item.id)
     console.log("this is items", this.state.line_items, "this is new fruits", newLineItems)
     newLineItems.push(item)
     newLineItems.sort(function (a, b) {
@@ -207,8 +212,8 @@ class Dashboard extends Component {
                       budget_members={budget_members}
                       handleFormSubmit={this.handleNewLineItemFormSubmit}
                       budget_id={this.state.budget.id}
-                      handleLineItemDelete = {this.handleLineItemDelete}
-                      handleLineItemUpdate = {this.handleLineItemUpdate}
+                      handleLineItemDelete={this.handleLineItemDelete}
+                      handleLineItemUpdate={this.handleLineItemUpdate}
                     />
                   </Container>
                 </Col>
