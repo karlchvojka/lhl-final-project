@@ -28,7 +28,7 @@ class NavbarComp extends Component {
                     className="btn btn-primary" href="/login">
                     Sign in
                   </button>
-                </Link>
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
