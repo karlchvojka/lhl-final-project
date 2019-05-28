@@ -27,6 +27,7 @@ class LineItemsContainer extends Component {
             user={this.props.user}
             budget_members={this.props.budget_members}
             item={item}
+            handleLineItemDelete = {this.props.handleLineItemDelete}
           />
         ))}
       </div>

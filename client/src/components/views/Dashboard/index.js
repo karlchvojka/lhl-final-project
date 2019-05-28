@@ -95,7 +95,6 @@ class Dashboard extends Component {
       user_id: user_id
     })
     .then(resp => {
-      console.log("This is the response of post", resp)
       this.setState({ line_items: [...oldLineitems, resp.data]  })
       this.clearNewItemForm();
     })
@@ -146,6 +145,7 @@ class Dashboard extends Component {
                       budget_members={budget_members}
                       handleFormSubmit={this.handleNewLineItemFormSubmit}
                       budget_id={this.state.budget.id}
+                      handleLineItemDelete = {this.handleLineItemDelete}
                     />
                   </Container>
                 </Col>
