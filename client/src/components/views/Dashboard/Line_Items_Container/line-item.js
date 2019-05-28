@@ -50,18 +50,20 @@ class LineItem extends Component {
     let itemTotalField = this.state.editable? <input type='text' ref={input => this.amount = input} defaultValue={this.props.item.amount}/>
         : <p className="itemTotal"><span>Total:</span> {amount}{" "}</p>
 
+    let itemYouOweField = this.state.editable? <p></p> : <p className="itemOwe"><span>You Owe:</span>{" $"}{(myShare / budget_members.length).toFixed(2)}</p>
+
+
     return (
       <Row className="lineItem">
         <Col xl={6} lg={6} md={6} sm={6} xs={6}>
-        {itemNameField}
+          {itemNameField}
         <p className="itemCreator">{lineItemCreator.first} {lineItemCreator.last}: </p> 
         </Col>
         <Col xl={2} lg={2} md={2} sm={2} xs={2}>
-        {itemTotalField}
+          {itemTotalField}
         </Col>
         <Col xl={3} lg={3} md={3} sm={3} xs={3}>
-          <p className="itemOwe"><span>You Owe:</span>{" $"}
-          {(myShare / budget_members.length).toFixed(2)}</p>
+          {itemYouOweField}
         </Col>
         <Col xl={1} lg={1} md={1} sm={1} xs={1}>
           <p onClick={ () => this.props.handleLineItemDelete(id)}>delete</p>

@@ -113,6 +113,9 @@ class Dashboard extends Component {
       console.log("This is the delete", newLineItems)
       this.setState({ line_items: [...newLineItems]  })
     })
+    .then( () => {
+      this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+    })
     .catch(error => console.log(error));
   }
 
