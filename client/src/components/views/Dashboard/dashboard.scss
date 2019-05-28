@@ -2,6 +2,17 @@
   padding:0px;
 }
 
+.showForm {
+  display:block;
+}
+
+.hiddenForm {
+  display:none;
+}
+
+:focus {
+  border-color:none !important;
+}
 .budgetDashboard {
   padding:0px;
   margin-bottom:10px;
@@ -114,9 +125,37 @@
           margin-top:20px;
           padding:1rem;
 
-          #create-new-item-form {
-            input {
-              width:100%;
+          .addFormButtonRow {
+            margin-bottom:10px;
+
+            button.addItems {
+              background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
+              border: none;
+            }
+          }
+
+          #addItemForm {
+
+            #create-new-item-form {
+              border:1px solid #e6e6e6;
+              padding: 10px;
+              margin-bottom: 10px;
+
+              input {
+                width:100%;
+                border-radius:5px;
+                border: 1px solid #e6e6e6;
+              }
+
+              p {
+                font-weight:700;
+              }
+
+              .addItemSubmit {
+                background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
+                color:#fff;
+                padding:5px 0px;
+              }
             }
           }
 

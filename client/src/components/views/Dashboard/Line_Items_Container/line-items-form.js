@@ -4,13 +4,13 @@ import { Container, Row, Col } from "react-bootstrap";
 class LineItemsForm extends Component {
   render() {
     return (
-      <Row>
-        <Col xl={12} lg={12} md={12} sm={12} xs={12}>
+      <Row id="addItemForm" className={this.props.visbilityClass ? 'showForm' : 'hiddenForm' }>
+        <Col className="noGutters" xl={12} lg={12} md={12} sm={12} xs={12}>
         <form id="create-new-item-form" onSubmit={this.props.handleFormSubmit}>
           <Container fluid="true" className="noGutters">
           <Row>
             <Col xl={5} lg={5} md={5} sm={5} xs={5}>
-            New Budget Item Name:
+            <p>New Budget Item Name:</p>
             </Col>
             <Col xl={7} lg={7} md={7} sm={7} xs={7}>
             <input type="text" name="name" />
@@ -18,7 +18,7 @@ class LineItemsForm extends Component {
           </Row>
           <Row>
             <Col xl={5} lg={5} md={5} sm={5} xs={5}>
-            New Budget Item Amount:
+            <p>New Budget Item Amount:</p>
             </Col>
             <Col xl={7} lg={7} md={7} sm={7} xs={7}>
             <input type="number" name="amount" />
@@ -26,7 +26,7 @@ class LineItemsForm extends Component {
           </Row>
           <Row>
             <Col xl={5} lg={5} md={5} sm={5} xs={5}>
-            Did you pay the full amount?
+            <p>Did you pay the full amount?</p>
             </Col>
             <Col xl={7} lg={7} md={7} sm={7} xs={7}>
             <input type="checkbox" name="paid" placeholder="(ie. Toilet Paper, Cleaning Suplies, etc.)"/>
@@ -41,7 +41,7 @@ class LineItemsForm extends Component {
           </Row>
           <Row>
           <Col xl={12} lg={12} md={12} sm={12} xs={12}>
-            <input type="submit" value="Submit" />
+            <input class="addItemSubmit" type="submit" value="Submit" />
           </Col>
 
           </Row>
