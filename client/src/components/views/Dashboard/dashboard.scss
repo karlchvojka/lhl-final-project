@@ -1,6 +1,7 @@
+
 .budgetDashboard {
   padding:0px;
-  height:100vh;
+  margin-bottom:10px;
 
   .dashboardTopNav {
     height:60px;
@@ -64,8 +65,9 @@
     margin-top:3.9rem;
 
     .mainSectionWrap {
-      background: linear-gradient(#1CC4C8 0%, #3DD6A5 45%, #ffffff 45%);
+      background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
       padding-left:8.333333%;
+      min-height:100vh;
 
       .innerMainSection {
 
@@ -110,6 +112,64 @@
           box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
           margin-top:20px;
           padding:1rem;
+
+          .addFormButtonRow {
+            margin-bottom:10px;
+
+            button.addItems {
+              background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
+              border: none;
+            }
+          }
+
+          #addItemForm {
+
+            #create-new-item-form {
+              border:1px solid #e6e6e6;
+              padding: 10px;
+              margin-bottom: 10px;
+
+              input {
+                width:100%;
+                border-radius:5px;
+                border: 1px solid #e6e6e6;
+              }
+
+              p {
+                font-weight:700;
+              }
+
+              .addItemSubmit {
+                background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
+                color:#fff;
+                padding:5px 0px;
+              }
+            }
+          }
+
+          .lineItem {
+            border-bottom: solid 1px #1CC4C8;
+            margin-bottom: 10px;
+
+            .itemName {
+              margin-bottom: 0px;
+              font-weight:700;
+            }
+
+            .itemCreator {
+              font-size:12px;
+              color: grey;
+            }
+
+            .itemTotal, .itemOwe, .itemDelete {
+              padding-top:15px;
+              font-size:15px;
+
+              span {
+                font-weight:700;
+              }
+            }
+          }
         }
       }
       .usersAside {
