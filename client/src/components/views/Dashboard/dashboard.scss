@@ -96,7 +96,11 @@
             text-align: right;
 
             p {
-              font-size:15px;
+              font-size:18px;
+
+              span {
+                font-weight: bold;
+              }
             }
           }
 
@@ -119,6 +123,7 @@
             button.addItems {
               background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
               border: none;
+              font-weight:bold;
             }
           }
 
@@ -169,6 +174,11 @@
                 font-weight:700;
               }
             }
+
+            .icon {
+              margin-bottom:5px;
+              color:#FB6649;
+            }
           }
         }
       }
@@ -180,6 +190,18 @@
         padding:1rem;
 
         .budgetMembers {
+          .userName {
+            margin-bottom:0px;
+            font-weight:bold;
+          }
+          .userEmail {
+            font-size: 12px;
+            color: #AFB4B7;
+          }
+
+          span {
+            font-weight:bold;
+          }
         }
       }
     }

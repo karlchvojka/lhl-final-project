@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Row, Col } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 import Logo from "../../../assets/Home/feather.svg";
 class NavbarComp extends Component {
   render() {
     return (
       <Row>
         <Col xl={12} lg={12} md={12} sm={12} xs={12}>
-          <Navbar expand="md" className="navbar fixed-top navbar-light container">
+          <Navbar expand="md" className="navbar fixed-top navbar-light container-fluid">
             <Navbar.Brand href="#home">
               <img alt="" src={Logo} />
               Squabble
@@ -15,18 +14,18 @@ class NavbarComp extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="nav navbar-nav" style={{ width: "100%" }}>
               <Nav className="ml-auto">
-                <Link className="nav-link" to="/">
+                <Nav.Link className="nav-link" href="/">
                   Home
-                </Link>
-                <Link className="nav-link" to="/about">
+                </Nav.Link>
+                <Nav.Link className="nav-link" href="/">
                   About
-                </Link>
-                <Link className="nav-link" to="/">
+                </Nav.Link>
+                <Nav.Link className="nav-link" href="/">
                   Features
-                </Link>
-                <Link className="homeButton" to="/login">
+                </Nav.Link>
+                <Nav.Link className="homeButton" href="/login">
                   <button
-                    className="btn btn-primary">
+                    className="btn btn-primary" href="/login">
                     Sign in
                   </button>
                 </Link>

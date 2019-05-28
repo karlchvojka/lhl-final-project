@@ -15,7 +15,7 @@ class Dashboard extends Component {
       budget: [],
       line_items: [],
       budget_members: [],
-      user: { id: 1 },
+      user: { id: 1, first: 'Karl', last: 'Johansson' },
       budget_members_subtotals: [],
       budget_total: 0,
     };
@@ -187,7 +187,7 @@ class Dashboard extends Component {
     return (
 
       < Container className="budgetDashboard no-gutters" fluid="true" >
-        <DashboardTopNav />
+        <DashboardTopNav userName={user} />
         <Row className="budgetDashboardInner" noGutters="true">
           <Col xl={1} lg={1} md={1} sm={1} xs={1}>
             <DashboardSidebar />
@@ -204,7 +204,7 @@ class Dashboard extends Component {
               <Row>
                 <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
                   <Container fluid="true">
-                    <WelcomeBanner />
+                    <WelcomeBanner userName={user} />
                     <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} currentUserSubtotal={currentUserSubtotal} />
                     <LineItemsContainer
                       line_items={line_items}

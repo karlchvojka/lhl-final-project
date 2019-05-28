@@ -15,7 +15,7 @@ export default () => {
     >
       <NavbarComp />
       <Row>
-        <Col xl={5} lg={5} md={5} sm={5} xs={5} style={{ paddingTop: "300px" }}>
+        <Col xl={5} lg={5} md={5} sm={5} xs={5} style={{ paddingTop: "300px", paddingLeft: '3rem' }}>
           <h2>Easily split expenses and bills with your roommates</h2>
           <Link to="/signup">
             <button className="btn btn-primary" >          

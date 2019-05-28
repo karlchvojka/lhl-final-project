@@ -19,11 +19,23 @@ main.content-area {
   background-repeat: no-repeat;
   background-position: right top;
   background-size: contain;
+  .navbar-brand {
+    text-transform: uppercase;
 
+    img {
+      margin-right:10px;
+    }
+  }
   .navbar-nav {
     a:link, a:visited {
-      padding-top:18px;
+      padding-top:20px;
       color:#ffffff;
+      font-weight:bold;
+      font-size:1em;
+      text-transform:uppercase;
+    }
+    a:hover {
+      color:#FB6649 !important;
     }
 
     .homeButton {
@@ -35,5 +47,7 @@ main.content-area {
     width: 270px;
     border-radius: 100px;
     background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
+    border-color: #FB6649;
+    font-weight:700;
   }
 }
