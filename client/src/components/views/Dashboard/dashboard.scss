@@ -1,7 +1,10 @@
+.noGutters {
+  padding:0px;
+}
+
 .budgetDashboard {
   padding:0px;
-  height:100vh;
-
+  margin-bottom:10px;
   .dashboardTopNav {
     height:60px;
     background: linear-gradient(0deg, #FFFFFF 0%, #FAFBFC 100%);
@@ -110,6 +113,30 @@
           box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
           margin-top:20px;
           padding:1rem;
+
+          .lineItem {
+            border-bottom: solid 1px #1CC4C8;
+            margin-bottom: 10px;
+
+            .itemName {
+              margin-bottom: 0px;
+              font-weight:700;
+            }
+
+            .itemCreator {
+              font-size:12px;
+              color: grey;
+            }
+
+            .itemTotal, .itemOwe {
+              padding-top:15px;
+              font-size:15px;
+
+              span {
+                font-weight:700;
+              }
+            }
+          }
         }
       }
       .usersAside {
