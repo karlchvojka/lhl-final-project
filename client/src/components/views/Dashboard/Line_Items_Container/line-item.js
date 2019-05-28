@@ -34,7 +34,7 @@ class LineItem extends Component {
           {(myShare / budget_members.length).toFixed(2)}</p>
         </Col>
         <Col xl={1} lg={1} md={1} sm={1} xs={1}>
-          <p>delete</p>
+          <p className="itemOwe">X</p>
         </Col>
       </Row>
       )

@@ -114,6 +114,12 @@
           margin-top:20px;
           padding:1rem;
 
+          #create-new-item-form {
+            input {
+              width:100%;
+            }
+          }
+
           .lineItem {
             border-bottom: solid 1px #1CC4C8;
             margin-bottom: 10px;
@@ -128,7 +134,7 @@
               color: grey;
             }
 
-            .itemTotal, .itemOwe {
+            .itemTotal, .itemOwe, .itemDelete {
               padding-top:15px;
               font-size:15px;
 
