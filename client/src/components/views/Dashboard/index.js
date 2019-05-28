@@ -16,7 +16,8 @@ class Dashboard extends Component {
       line_items: [],
       budget_members: [],
       user: { id: 1 },
-      budget_total: 0
+      budget_total: 0,
+      budget_members_subtotals: []
     };
   }
 
@@ -89,7 +90,7 @@ class Dashboard extends Component {
       paid: paid,
       user_id: user_id
     })
-    .then(resp => console.log(resp)).catch(error => console.log(error));
+      .then(resp => console.log(resp)).catch(error => console.log(error));
   };
 
 
@@ -115,7 +116,7 @@ class Dashboard extends Component {
                 <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
                   <Container>
                     <WelcomeBanner />
-                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total}/>
+                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} />
                     <LineItemsContainer
                       line_items={line_items}
                       user={user}
