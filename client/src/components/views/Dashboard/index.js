@@ -49,14 +49,6 @@ class Dashboard extends Component {
       ]);
     }
 
-    function sumObjectValues(obj, values) {
-      let sum = 0;
-      for (var o in obj) {
-        sum += obj[o][values];
-      }
-      return sum;
-    }
-
     function getUsersLineItems(line_items, user_id) {
       return line_items.filter(item => item.user_id === user_id);
     }
@@ -67,11 +59,19 @@ class Dashboard extends Component {
         line_items: line_items,
         budget_members: budget_members
       });
-      that.setState({ budget_total: sumObjectValues(line_items, "amount") });
+      that.setState({ budget_total: this.sumObjectValues(line_items, "amount") });
       console.log(
         // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
       );
     });
+  }
+
+  sumObjectValues = (obj, values) => {
+    let sum = 0;
+    for (var o in obj) {
+      sum += obj[o][values];
+    }
+    return sum;
   }
 
   clearNewItemForm = () => {
@@ -104,17 +104,52 @@ class Dashboard extends Component {
     this.setState({name: '', amount: '', paid: false}) // <= here
   };
 
-  handleLineItemDelete = evt => {
-    // axios.post(`api/v1/budgets/${budget_id}/line_items`, {
-    //   budget_id: budget_id,
-    //   name: name,
-    //   amount: amount,
-    //   paid: paid,
-    //   user_id: user_id
-    // })
-    // .then(resp => console.log(resp)).catch(error => console.log(error));
+  handleLineItemDelete = id => {
+    
+    const oldLineitems = this.state.line_items
+    const newLineItems = oldLineitems.filter(item => item.id !== id)
+    axios.delete(`api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
+    .then( () => {
+      console.log("This is the delete", newLineItems)
+      this.setState({ line_items: [...newLineItems]  })
+    })
+    .then( () => {
+      this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+    })
+    .catch(error => console.log(error));
   }
 
+  handleLineItemUpdate = line_item => {
+    fetch(`api/v1/budgets/${this.state.budget.id}/line_items/${line_item.id}`,
+    {
+      method: 'PUT',
+      body: JSON.stringify(line_item),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(() => { 
+      console.log("update posted, now updating set state", line_item)
+      this.updateLineItem(line_item)
+      this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+    })
+    .catch(error => {
+      console.log("Error in updating new line item", error)
+    })
+  }
+
+  updateLineItem = item => {
+    let newLineItems = this.state.line_items.filter((f) => f.id !== item.id )
+    console.log("this is items", this.state.line_items, "this is new fruits", newLineItems)
+    newLineItems.push(item)
+    newLineItems.sort(function (a, b) {
+      return a.id - b.id;
+    });
+    this.setState({
+      line_items: newLineItems
+    })
+
+  }
 
   render() {
     var { budget, line_items, budget_members, budget_total, user } = this.state;
@@ -146,6 +181,7 @@ class Dashboard extends Component {
                       handleFormSubmit={this.handleNewLineItemFormSubmit}
                       budget_id={this.state.budget.id}
                       handleLineItemDelete = {this.handleLineItemDelete}
+                      handleLineItemUpdate = {this.handleLineItemUpdate}
                     />
                   </Container>
                 </Col>

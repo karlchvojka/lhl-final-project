@@ -13,3 +13,27 @@
   opacity: 0.6;
   background-color: rgba(216, 216, 216, 0);
 }
+
+main.content-area {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: contain;
+
+  .navbar-nav {
+    a:link, a:visited {
+      padding-top:18px;
+      color:#ffffff;
+    }
+
+    .homeButton {
+      padding-top:0px !important;
+    }
+  }
+  .btn-primary {
+    height: 58px;
+    width: 270px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
+  }
+}
