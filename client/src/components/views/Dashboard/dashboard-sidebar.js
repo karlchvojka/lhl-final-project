@@ -8,7 +8,7 @@ class DashboardSidebar extends Component {
   render() {
     return (
       <Nav defaultActiveKey="/home" className="flex-column sidebarComp">
-        <Nav.Link href="/home">
+        <Nav.Link href="/">
           <p><img alt="icon of a house" src={houseIcon} /></p>
           <p>Dashboard</p>
         </Nav.Link>

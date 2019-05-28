@@ -1,6 +1,24 @@
 // IMPORT FONTS
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Titillium+Web:400,600,700&display=swap');
 // IMPORT SIZE FILES
+
+// DEFAULT STYLES
+
+.noGutters {
+  padding:0px;
+}
+
+.showForm {
+  display:block;
+}
+
+.hiddenForm {
+  display:none;
+}
+
+:focus {
+  border-color:none !important;
+}
 @import "/styles/large.scss";
 @import "/styles/home-page.scss";
 
