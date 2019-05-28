@@ -1,7 +1,8 @@
 import React from "react";
 import NavbarComp from "./home-nav-bar";
 import HomeImage from "../../../assets/Home/Img.png";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 // test
 export default () => {
@@ -16,7 +17,11 @@ export default () => {
       <Row>
         <Col xl={5} lg={5} md={5} sm={5} xs={5} style={{ paddingTop: "300px" }}>
           <h2>Easily split expenses and bills with your roommates</h2>
-          <button className="btn btn-primary">Sign up</button>
+          <Link to="/signup">
+            <button className="btn btn-primary" >          
+              Sign up
+            </button>
+          </Link>
         </Col>
         <Col xl={7} lg={7} md={7} sm={7} xs={7} />
       </Row>

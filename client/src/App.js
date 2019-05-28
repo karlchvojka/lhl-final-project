@@ -20,21 +20,26 @@ export default class App extends Component {
 
   handleLoginSubmit = evt => {
     evt.preventDefault();
-    console.log(evt.target.email.value, evt.target.password.value);
+    // console.log(evt.target.email.value, evt.target.password.value);
+    window.location.href = '/dashboard';
+    return false;
   };
 
   handleSignupFormSubmit = evt => {
     evt.preventDefault();
-    console.log(
-      "These are the signup form values",
-      evt.target.first.value,
-      evt.target.last.value,
-      evt.target.email.value,
-      evt.target.password.value,
-      evt.target.passwordconf.value,
-      evt.target.phone.value,
-      evt.target.photo.value
-    );
+    // console.log(
+    //   "These are the signup form values",
+    //   evt.target.first.value,
+    //   evt.target.last.value,
+    //   evt.target.email.value,
+    //   evt.target.password.value,
+    //   evt.target.passwordconf.value,
+    //   evt.target.phone.value,
+    //   evt.target.photo.value
+    // );
+    window.location.href = '/dashboard';
+    return false;
+
   };
 
   render() {
@@ -42,7 +47,7 @@ export default class App extends Component {
       <Router>
         <Route path="/" exact component={ Home } />
         <Route path="/about" exact component={ Aboutpg  } />
-        <Route path="/login" component={() => <Login handleFormSubmit={this.handleLoginFormSubmit}/> } />
+        <Route path="/login" component={() => <Login handleFormSubmit={this.handleLoginSubmit}/> } />
         {/* <Route path="/signup" component={ Signup } /> */}
         <Route
           path="/signup"
