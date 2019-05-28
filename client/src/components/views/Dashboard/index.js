@@ -49,9 +49,9 @@ class Dashboard extends Component {
       ]);
     }
 
-    function getUsersLineItems(line_items, user_id) {
-      return line_items.filter(item => item.user_id === user_id);
-    }
+    // function getUsersLineItems(line_items, user_id) {
+    //   return line_items.filter(item => item.user_id === user_id);
+    // }
 
     getAPIdata().then(([budgets, line_items, budget_members]) => {
       that.setState({

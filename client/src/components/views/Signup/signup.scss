@@ -1,0 +1,30 @@
+.signup {
+  margin-top:67px;
+  
+  #signupForm {
+    height: 100vh;
+    margin-top: 10px;
+
+    #signup-form {
+      border:1px solid #e6e6e6;
+      padding: 10px;
+    margin-bottom: 10px;
+    }
+    
+    input {
+      width:100%;
+      border-radius:5px;
+      border: 1px solid #e6e6e6;
+    }
+    
+    p {
+      font-weight:700;
+    }
+    
+    .signupSubmit {
+      background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
+      color:#fff;
+      padding:5px 0px;
+    }
+  }
+}

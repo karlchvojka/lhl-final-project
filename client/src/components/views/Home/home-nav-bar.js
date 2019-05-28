@@ -15,21 +15,21 @@ class NavbarComp extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="nav navbar-nav" style={{ width: "100%" }}>
               <Nav className="ml-auto">
-                <Nav.Link className="nav-link" to="/">
+                <Link className="nav-link" to="/">
                   Home
-                </Nav.Link>
-                <Nav.Link className="nav-link" to="/about">
+                </Link>
+                <Link className="nav-link" to="/about">
                   About
-                </Nav.Link>
-                <Nav.Link className="nav-link" to="/login">
+                </Link>
+                <Link className="nav-link" to="/">
                   Features
-                </Nav.Link>
-                <Nav.Link className="homeButton">
+                </Link>
+                <Link className="homeButton" to="/login">
                   <button
                     className="btn btn-primary">
                     Sign in
                   </button>
-                </Nav.Link>
+                </Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
