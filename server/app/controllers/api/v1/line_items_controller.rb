@@ -9,8 +9,8 @@ class Api::V1::LineItemsController < ApplicationController
  end
 
  def destroy
-   LineItem.destroy(params[:id])
-   puts (params[:id])
+   Budget.find(params[:budget_id]).line_items.find(params[:id]).destroy
+   render 'layouts/application'
  end
 
  def update
