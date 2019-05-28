@@ -62,6 +62,29 @@ class Dashboard extends Component {
       return line_items.filter(item => item.user_id === user_id);
     }
 
+    function budgetMembersSubtotals(line_items, budget_members) {
+      const results = {};
+      budget_members.forEach(budget_member => {
+        results[budget_member.id] = []
+        line_items.forEach(line_item => {
+          const amountOwed = (line_item.amount) / budget_members.length
+          if (line_item.paid) {
+            if (line_item.user_id === budget_member.id) {
+              results[budget_member.id].push(amountOwed * (budget_members.length - 1) * -1)
+            } else {
+              results[budget_member.id].push(amountOwed)
+            }
+          } else {
+            results[budget_member.id].push(amountOwed)
+          }
+        })
+      });
+      for (let budget_member in results) {
+        results[budget_member] = results[budget_member].reduce((accumulator, currentValue) => accumulator + currentValue).toFixed(2)
+      }
+      return results
+    }
+
     getAPIdata().then(([budgets, line_items, budget_members]) => {
       that.setState({
         budget: budgets[0],
@@ -69,6 +92,8 @@ class Dashboard extends Component {
         budget_members: budget_members
       });
       that.setState({ budget_total: sumObjectValues(line_items, "amount") });
+      that.setState({ budget_members_subtotals: budgetMembersSubtotals(line_items, budget_members) });
+
       console.log(
         // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
       );
@@ -118,9 +143,11 @@ class Dashboard extends Component {
 
 
   render() {
-    var { budget, line_items, budget_members, budget_total, user } = this.state;
+    var { budget, line_items, budget_members, budget_total, user, budget_members_subtotals } = this.state;
+    var currentUserSubtotal = budget_members_subtotals[user.id]
     return (
-      <Container className="budgetDashboard no-gutters" fluid="true">
+
+      < Container className="budgetDashboard no-gutters" fluid="true" >
         <DashboardTopNav />
         <Row className="budgetDashboardInner" noGutters="true">
           <Col xl={1} lg={1} md={1} sm={1} xs={1}>
@@ -139,7 +166,7 @@ class Dashboard extends Component {
                 <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
                   <Container fluid="true">
                     <WelcomeBanner />
-                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} />
+                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} currentUserSubtotal={currentUserSubtotal} />
                     <LineItemsContainer
                       line_items={line_items}
                       user={user}
@@ -151,13 +178,13 @@ class Dashboard extends Component {
                   </Container>
                 </Col>
                 <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={4}>
-                  <BudgetMembersContainer budget_members={budget_members} />
+                  <BudgetMembersContainer budget_members={budget_members} subtotals={budget_members_subtotals} />
                 </Col>
               </Row>
             </Container>
           </Col>
         </Row>
-      </Container>
+      </Container >
     );
   }
 }

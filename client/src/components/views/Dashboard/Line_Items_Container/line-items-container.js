@@ -9,7 +9,7 @@ class LineItemsContainer extends Component {
       <Row className="lineItemsContainer">
         <Col xl={12} lg={12} md={12} sm={12} xs={12}>
           <Container>
-            <LineItemsForm handleFormSubmit={this.props.handleFormSubmit}/>
+            <LineItemsForm handleFormSubmit={this.props.handleFormSubmit} />
             {this.props.line_items.map(item => (
               <LineItem
                 key={item.id}
