@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { faStroopwafel, faEdit, faTrashAlt, faSave } from '@fortawesome/free-solid-svg-icons';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 class LineItem extends Component {
 
@@ -57,7 +61,7 @@ class LineItem extends Component {
       <Row className="lineItem">
         <Col xl={6} lg={6} md={6} sm={6} xs={6}>
           {itemNameField}
-        <p className="itemCreator">{lineItemCreator.first} {lineItemCreator.last}: </p> 
+        <p className="itemCreator">{lineItemCreator.first} {lineItemCreator.last}: </p>
         </Col>
         <Col xl={2} lg={2} md={2} sm={2} xs={2}>
           {itemTotalField}
@@ -66,8 +70,8 @@ class LineItem extends Component {
           {itemYouOweField}
         </Col>
         <Col xl={1} lg={1} md={1} sm={1} xs={1}>
-          <p onClick={ () => this.props.handleLineItemDelete(id)}>delete</p>
-          <p onClick={ () => this.handleEdit(user.id, budget_id)}>{this.state.editable? 'Submit' : 'Edit'}</p>
+          <p className="icon" onClick={ () => this.handleEdit(user.id, budget_id)}>{this.state.editable? <FontAwesomeIcon icon={faSave} /> : <FontAwesomeIcon icon={faEdit} /> }</p>
+          <p className="icon" onClick={ () => this.props.handleLineItemDelete(id)}><FontAwesomeIcon icon={faTrashAlt} /></p>
         </Col>
       </Row>
       )

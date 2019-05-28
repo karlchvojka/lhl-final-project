@@ -105,7 +105,7 @@ class Dashboard extends Component {
   };
 
   handleLineItemDelete = id => {
-    
+
     const oldLineitems = this.state.line_items
     const newLineItems = oldLineitems.filter(item => item.id !== id)
     axios.delete(`api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
@@ -128,7 +128,7 @@ class Dashboard extends Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(() => { 
+    .then(() => {
       console.log("update posted, now updating set state", line_item)
       this.updateLineItem(line_item)
       this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });

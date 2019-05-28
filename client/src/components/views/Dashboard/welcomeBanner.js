@@ -7,7 +7,7 @@ class WelcomeBanner extends Component {
       return (
       <Row className="welcomeBackBanner">
         <Col>
-          <h2>Hey Andrea, Welcome Back!</h2>
+          <h2>Hey Karl, Welcome Back!</h2>
         </Col>
       </Row>
     )

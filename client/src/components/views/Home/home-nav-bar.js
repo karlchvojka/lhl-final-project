@@ -7,7 +7,7 @@ class NavbarComp extends Component {
     return (
       <Row>
         <Col xl={12} lg={12} md={12} sm={12} xs={12}>
-          <Navbar expand="md" className="navbar fixed-top navbar-light container">
+          <Navbar expand="md" className="navbar fixed-top navbar-light container-fluid">
             <Navbar.Brand href="#home">
               <img alt="" src={Logo} />
               Squabble
@@ -15,18 +15,18 @@ class NavbarComp extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="nav navbar-nav" style={{ width: "100%" }}>
               <Nav className="ml-auto">
-                <Nav.Link className="nav-link" to="/">
+                <Nav.Link className="nav-link" href="/">
                   Home
                 </Nav.Link>
-                <Nav.Link className="nav-link" to="/about">
+                <Nav.Link className="nav-link" href="/">
                   About
                 </Nav.Link>
-                <Nav.Link className="nav-link" to="/login">
+                <Nav.Link className="nav-link" href="/">
                   Features
                 </Nav.Link>
-                <Nav.Link className="homeButton">
+                <Nav.Link className="homeButton" href="/login">
                   <button
-                    className="btn btn-primary">
+                    className="btn btn-primary" href="/login">
                     Sign in
                   </button>
                 </Nav.Link>
