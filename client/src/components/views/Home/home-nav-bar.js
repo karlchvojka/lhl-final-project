@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Row, Col } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 import Logo from "../../../assets/Home/feather.svg";
 class NavbarComp extends Component {
   render() {

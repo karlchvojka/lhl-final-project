@@ -41,7 +41,7 @@ class LineItemsForm extends Component {
               </Row>
               <Row>
                 <Col xl={12} lg={12} md={12} sm={12} xs={12}>
-                  <input className="addItemSubmit" type="submit" value="Submit" />
+                  <input className="addItemSubmit" type="submit" value="Add Item" />
                 </Col>
 
               </Row>

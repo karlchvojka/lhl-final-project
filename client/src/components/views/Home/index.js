@@ -1,7 +1,7 @@
 import React from "react";
 import NavbarComp from "./home-nav-bar";
 import HomeImage from "../../../assets/Home/Img.png";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 // test
 export default () => {

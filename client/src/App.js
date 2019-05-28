@@ -10,9 +10,6 @@ import Dashboard from "./components/views/Dashboard/";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStroopwafel, faEdit, faTrashAlt, faSave } from '@fortawesome/free-solid-svg-icons';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
 // CSS Imports
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";

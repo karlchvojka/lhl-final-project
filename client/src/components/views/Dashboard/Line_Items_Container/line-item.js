@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import { faStroopwafel, faEdit, faTrashAlt, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt, faSave } from '@fortawesome/free-solid-svg-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -52,7 +52,7 @@ class LineItem extends Component {
       : <p className="itemName">{name}</p>
 
     let itemTotalField = this.state.editable ? <input type='text' ref={input => this.amount = input} defaultValue={this.props.item.amount} />
-      : <p className="itemTotal"><span>Total:</span> {amount}{" "}</p>
+      : <p className="itemTotal"><span>Total:</span> ${amount}{" "}</p>
 
     let itemYouOweField = this.state.editable ? <p></p> : <p className="itemOwe"><span>You Owe:</span>{" $"}{(myShare).toFixed(2)}</p>
 
