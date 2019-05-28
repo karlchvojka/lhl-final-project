@@ -5,7 +5,7 @@ class LineItemsContainer extends Component {
   render() {
     return (
       <div className="lineItemsContainer">
-        <form onSubmit={this.props.handleFormSubmit}>
+        <form id="create-new-item-form" onSubmit={this.props.handleFormSubmit}>
         <label>
         New Budget Item Name:
         <input type="text" name="name" />

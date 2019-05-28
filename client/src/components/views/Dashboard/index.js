@@ -16,7 +16,7 @@ class Dashboard extends Component {
       line_items: [],
       budget_members: [],
       user: { id: 1 },
-      budget_total: 0
+      budget_total: 0,
     };
   }
 
@@ -69,9 +69,13 @@ class Dashboard extends Component {
       });
       that.setState({ budget_total: sumObjectValues(line_items, "amount") });
       console.log(
-        `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
+        // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
       );
     });
+  }
+
+  clearNewItemForm = () => {
+    document.getElementById("create-new-item-form").reset();
   }
 
   handleNewLineItemFormSubmit = evt => {
@@ -93,10 +97,12 @@ class Dashboard extends Component {
     .then(resp => {
       console.log("This is the response of post", resp)
       this.setState({ line_items: [...oldLineitems, resp.data]  })
+      this.clearNewItemForm();
     })
     .catch(error => {
       console.log("Error in posting a new line item", error)
     });
+    this.setState({name: '', amount: '', paid: false}) // <= here
   };
 
   handleLineItemDelete = evt => {
