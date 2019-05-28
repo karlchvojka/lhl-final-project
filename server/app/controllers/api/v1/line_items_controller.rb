@@ -10,6 +10,7 @@ class Api::V1::LineItemsController < ApplicationController
 
  def destroy
    LineItem.destroy(params[:id])
+   puts (params[:id])
  end
 
  def update
@@ -21,7 +22,7 @@ class Api::V1::LineItemsController < ApplicationController
  private
 
  def line_item_params
-   params.permit(:budget_id, :name, :amount, :paid, :user_id)
+   params.permit(:budget_id, :name, :amount, :paid, :user_id, :id)
  end
 
 end

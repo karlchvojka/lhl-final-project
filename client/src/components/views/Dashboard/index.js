@@ -104,17 +104,17 @@ class Dashboard extends Component {
     this.setState({name: '', amount: '', paid: false}) // <= here
   };
 
-  handleLineItemDelete = evt => {
-    // axios.post(`api/v1/budgets/${budget_id}/line_items`, {
-    //   budget_id: budget_id,
-    //   name: name,
-    //   amount: amount,
-    //   paid: paid,
-    //   user_id: user_id
-    // })
-    // .then(resp => console.log(resp)).catch(error => console.log(error));
+  handleLineItemDelete = id => {
+    
+    const oldLineitems = this.state.line_items
+    const newLineItems = oldLineitems.filter(item => item.id !== id)
+    axios.delete(`api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
+    .then( () => {
+      console.log("This is the delete", newLineItems)
+      this.setState({ line_items: [...newLineItems]  })
+    })
+    .catch(error => console.log(error));
   }
-
 
   render() {
     var { budget, line_items, budget_members, budget_total, user } = this.state;

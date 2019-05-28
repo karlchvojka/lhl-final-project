@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 class LineItem extends Component {
   render() {
     const { budget_members, item, user } = this.props;
-    const { user_id, amount, name } = item;
+    const { user_id, amount, name, id } = item;
     const lineItemCreator = budget_members.find(function(element) {
       if (user_id === element.id) {
         return element;
@@ -34,7 +34,7 @@ class LineItem extends Component {
           {(myShare / budget_members.length).toFixed(2)}</p>
         </Col>
         <Col xl={1} lg={1} md={1} sm={1} xs={1}>
-          <p>delete</p>
+          <p onClick={ () => this.props.handleLineItemDelete(id)}>delete</p>
         </Col>
       </Row>
       )
