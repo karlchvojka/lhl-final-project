@@ -54,7 +54,7 @@ class LineItem extends Component {
     let itemTotalField = this.state.editable ? <input type='text' ref={input => this.amount = input} defaultValue={this.props.item.amount} />
       : <p className="itemTotal"><span>Total:</span> ${amount}{" "}</p>
 
-    let itemYouOweField = this.state.editable ? <p></p> : <p className="itemOwe"><span>You Owe:</span>{" $"}{(myShare).toFixed(2)}</p>
+    let itemYouOweField = this.state.editable ? <p></p> : <p className="itemOwe" style={myShare < 0 ? { color: "green" } : { color: "red" }}><span>{myShare < 0 ? "You Earned:" : "You Owe:"}</span>{" $"}{(myShare).toFixed(2)}</p>
 
 
     return (
@@ -70,8 +70,8 @@ class LineItem extends Component {
           {itemYouOweField}
         </Col>
         <Col xl={1} lg={1} md={1} sm={1} xs={1}>
-          <p className="icon" onClick={ () => this.handleEdit(user.id, budget_id)}>{this.state.editable? <FontAwesomeIcon icon={faSave} /> : <FontAwesomeIcon icon={faEdit} /> }</p>
-          <p className="icon" onClick={ () => this.props.handleLineItemDelete(id)}><FontAwesomeIcon icon={faTrashAlt} /></p>
+          <p className="icon" onClick={() => this.handleEdit(user.id, budget_id)}>{this.state.editable ? <FontAwesomeIcon icon={faSave} /> : <FontAwesomeIcon icon={faEdit} />}</p>
+          <p className="icon" onClick={() => this.props.handleLineItemDelete(id)}><FontAwesomeIcon icon={faTrashAlt} /></p>
         </Col>
       </Row>
     )
