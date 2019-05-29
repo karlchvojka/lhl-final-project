@@ -120,10 +120,20 @@
           .addFormButtonRow {
             margin-bottom:10px;
 
+            span {
+              font-weight:bold;
+            }
+            .yourTotal {
+
+              p {
+                margin-top:.5rem;
+              }
+            }
             button.addItems {
               background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
               border: none;
               font-weight:bold;
+              width:9rem;
             }
           }
 

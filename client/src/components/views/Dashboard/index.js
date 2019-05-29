@@ -205,7 +205,7 @@ class Dashboard extends Component {
                 <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
                   <Container fluid="true">
                     <WelcomeBanner userName={user} />
-                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} currentUserSubtotal={currentUserSubtotal} />
+                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} />
                     <LineItemsContainer
                       line_items={line_items}
                       user={user}
@@ -214,6 +214,7 @@ class Dashboard extends Component {
                       budget_id={this.state.budget.id}
                       handleLineItemDelete={this.handleLineItemDelete}
                       handleLineItemUpdate={this.handleLineItemUpdate}
+                      currentUserSubtotal={currentUserSubtotal}
                     />
                   </Container>
                 </Col>
