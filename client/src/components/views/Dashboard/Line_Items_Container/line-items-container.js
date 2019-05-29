@@ -23,7 +23,10 @@ class LineItemsContainer extends Component {
             <Row className="addFormButtonRow">
               <Button className="addItems Butto ml-auto" onClick={this.handleClick} variant="primary">Create Item</Button>
             </Row>
-            <LineItemsForm visbilityClass={this.state.formVisible} handleFormSubmit={this.props.handleFormSubmit}/>
+            <LineItemsForm 
+              visbilityClass={this.state.formVisible} 
+              handleFormSubmit={this.props.handleFormSubmit} 
+            />
             {this.props.line_items.map(item => (
               <LineItem
                 key={item.id}

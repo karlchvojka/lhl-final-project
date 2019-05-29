@@ -17,7 +17,7 @@ export default ({handleFormSubmit}) => (
           <p>First Name:</p>
           </Col>
           <Col xl={7} lg={7} md={7} sm={7} xs={7}>
-          <input type="text" name="first" />
+          <input type="text" name="first" placeholder="Enter First Name" />
           </Col>
         </Row>
         <Row>
@@ -25,7 +25,7 @@ export default ({handleFormSubmit}) => (
           <p>Last Name:</p>
           </Col>
           <Col xl={7} lg={7} md={7} sm={7} xs={7}>
-          <input type="text" name="last" />
+          <input type="text" name="last" placeholder="Enter First Name" />
           </Col>
         </Row>
         <Row>
@@ -33,7 +33,7 @@ export default ({handleFormSubmit}) => (
           <p>Email:</p>
           </Col>
           <Col xl={7} lg={7} md={7} sm={7} xs={7}>
-          <input type="email" name="email" />
+          <input type="email" name="email" placeholder="Enter Email (eg. email@email.com)" />
           </Col>
         </Row>
         <Row>
@@ -41,7 +41,7 @@ export default ({handleFormSubmit}) => (
           <p>Password:</p>
           </Col>
           <Col xl={7} lg={7} md={7} sm={7} xs={7}>
-          <input type="password" name="password" />
+          <input type="password" name="password" placeholder="Enter Password" />
           </Col>
         </Row>
         <Row>
@@ -49,7 +49,7 @@ export default ({handleFormSubmit}) => (
           <p>Confirmation:</p>
           </Col>
           <Col xl={7} lg={7} md={7} sm={7} xs={7}>
-          <input type="password" name="password" />
+          <input type="password" name="password" placeholder="Confirm Password" />
           </Col>
         </Row>
         <Row>
@@ -57,15 +57,15 @@ export default ({handleFormSubmit}) => (
           <p>Phone:</p>
           </Col>
           <Col xl={7} lg={7} md={7} sm={7} xs={7}>
-          <input type="text" name="phone" />
+          <input type="text" name="phone" placeholder="Enter Phone Number (eg. 111-111-1111)" />
           </Col>
         </Row>
         <Row>
           <Col xl={5} lg={5} md={5} sm={5} xs={5}>
-          <p>Photo:</p>
+          <p>Profile Photo:</p>
           </Col>
           <Col xl={7} lg={7} md={7} sm={7} xs={7}>
-          <input type="text" name="photo" />
+          <input type="text" name="photo" placeholder="(eg. https://www.placecage.com/200/200)" />
           </Col>
         </Row>
         <Row>
