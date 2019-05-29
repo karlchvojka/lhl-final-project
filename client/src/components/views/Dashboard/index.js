@@ -87,7 +87,11 @@ class Dashboard extends Component {
       })
     });
     for (let budget_member in results) {
-      results[budget_member] = results[budget_member].reduce((accumulator, currentValue) => accumulator + currentValue).toFixed(2)
+      if (results[budget_member].length !== 0) {
+        results[budget_member] = results[budget_member].reduce((accumulator, currentValue) => accumulator + currentValue).toFixed(2)
+      } else {
+        results[budget_member] = 0
+      }
     }
     return results
   }
