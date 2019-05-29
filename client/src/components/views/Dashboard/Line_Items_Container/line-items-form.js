@@ -10,7 +10,7 @@ class LineItemsForm extends Component {
             <Container fluid="true" className="noGutters">
               <Row>
                 <Col xl={5} lg={5} md={5} sm={5} xs={5}>
-                  <p>New Budget Item Name:</p>
+                  <p>Budget Item Name:</p>
                 </Col>
                 <Col xl={7} lg={7} md={7} sm={7} xs={7}>
                   <input type="text" name="name" />
@@ -18,7 +18,7 @@ class LineItemsForm extends Component {
               </Row>
               <Row>
                 <Col xl={5} lg={5} md={5} sm={5} xs={5}>
-                  <p>New Budget Item Amount:</p>
+                  <p>Budget Item Amount:</p>
                 </Col>
                 <Col xl={7} lg={7} md={7} sm={7} xs={7}>
                   <input type="number" name="amount" />
@@ -26,7 +26,7 @@ class LineItemsForm extends Component {
               </Row>
               <Row>
                 <Col xl={5} lg={5} md={5} sm={5} xs={5}>
-                  <p>Did you pay the full amount?</p>
+                  <p>Have you paid this full amount?</p>
                 </Col>
                 <Col xl={7} lg={7} md={7} sm={7} xs={7}>
                   <input type="checkbox" name="paid" placeholder="(ie. Toilet Paper, Cleaning Suplies, etc.)" />
