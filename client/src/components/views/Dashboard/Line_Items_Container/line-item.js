@@ -54,7 +54,7 @@ class LineItem extends Component {
     let itemTotalField = this.state.editable ? <input type='text' ref={input => this.amount = input} defaultValue={this.props.item.amount} />
       : <p className="itemTotal"><span>Total:</span> ${amount}{" "}</p>
 
-    let itemYouOweField = this.state.editable ? <p></p> : <p className="itemOwe" style={myShare < 0 ? { color: "green" } : { color: "red" }}><span>{myShare < 0 ? "You Earned:" : "You Owe:"}</span>{" $"}{(myShare).toFixed(2)}</p>
+    let itemYouOweField = this.state.editable ? <p></p> : <p className="itemOwe" style={myShare < 0 ? { color: "green" } : { color: "red" }}><span>{myShare < 0 ? "Squabbled:" : "You Owe:"}</span>{" $"}{(myShare).toFixed(2)}</p>
 
 
     return (
