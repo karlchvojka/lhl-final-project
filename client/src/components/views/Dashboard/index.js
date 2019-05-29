@@ -101,16 +101,15 @@ class Dashboard extends Component {
   }
 
   clearNewItemForm = () => {
-    document.getElementById("create-new-item-form").reset();
+    document.getElementById("create-new-item-form").reset()
+    document.getElementById("create-new-item-form").onChange();
+    document.querySelector("NumericInput").setValue("0");
   }
 
-  handleNewLineItemFormSubmit = evt => {
-    evt.preventDefault();
-    const budget_id = evt.target.budget_id.value;
-    const user_id = "1";
-    const name = evt.target.name.value;
-    const amount = evt.target.amount.value;
-    const paid = evt.target.paid.checked;
+  handleNewLineItemFormSubmit = line_item => {
+    const { name, amount, paid } = line_item;
+    const budget_id = this.state.budget.id;
+    const user_id = this.state.user.id;
     const oldLineitems = this.state.line_items
 
     axios.post(`api/v1/budgets/${budget_id}/line_items`, {
@@ -121,14 +120,19 @@ class Dashboard extends Component {
       user_id: user_id
     })
       .then(resp => {
-        this.setState({ line_items: [...oldLineitems, resp.data] })
-        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
-        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) })
-        this.clearNewItemForm();
+        if (resp.data.code === 2000) {
+          this.setState({ line_items: [...oldLineitems, resp.data.message] })
+          this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+          this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) })
+          this.clearNewItemForm();
+        } else {
+          throw new Error(resp.data.message)
+        }
       })
       .catch(error => {
         console.log("Error in posting a new line item", error)
       });
+
     this.setState({ name: '', amount: '', paid: false }) // <= here
   };
 
@@ -138,7 +142,6 @@ class Dashboard extends Component {
     const newLineItems = oldLineitems.filter(item => item.id !== id)
     axios.delete(`api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
       .then(() => {
-        console.log("This is the delete", newLineItems)
         this.setState({ line_items: [...newLineItems] })
       })
       .then(() => {
@@ -170,7 +173,6 @@ class Dashboard extends Component {
 
   updateLineItem = item => {
     let newLineItems = this.state.line_items.filter((f) => f.id !== item.id)
-    console.log("this is items", this.state.line_items, "this is new fruits", newLineItems)
     newLineItems.push(item)
     newLineItems.sort(function (a, b) {
       return a.id - b.id;

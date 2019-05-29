@@ -16,7 +16,7 @@ puts "Seeding db data"
 
 puts "Seeding budget"
 
-budget = Budget.create(name: '3 Roomates Budget', total: 0.00)
+budget = Budget.create(name: '24 Sussex Drive', total: 0.00)
 
 budget2 = Budget.create(name: 'testing', total: 0.00)
 
@@ -26,7 +26,7 @@ puts "Seeding users"
 
 user1 = budget.users.create_with({last: 'Johansson', email: 'karl@email.com'}).find_or_create_by! first: 'Karl'
 user2 = budget.users.create_with({last: 'Johansson', email: 'andrea@email.com'}).find_or_create_by! first: 'Andrea'
-user3 = budget.users.create_with({last: 'Yeung', email: 'eden@email.com'}).find_or_create_by! first: 'Eden'
+user3 = budget.users.create_with({last: 'Johansson', email: 'eden@email.com'}).find_or_create_by! first: 'Eden'
 
 user4 = budget2.users.create_with({last: 'Mctest', email: 'eden@email.com'}).find_or_create_by! first: 'Testy'
 

@@ -16,7 +16,7 @@ export default ({ handleFormSubmit }) => (
           <p>Email:</p>
           </Col>
           <Col xl={7} lg={7} md={7} sm={7} xs={7}>
-          <input type="email" name="email" />
+          <input type="email" name="email" placeholder="Enter Email" />
           </Col>
         </Row>
         <Row>
@@ -24,7 +24,7 @@ export default ({ handleFormSubmit }) => (
           <p>Password:</p>
           </Col>
           <Col xl={7} lg={7} md={7} sm={7} xs={7}>
-          <input type="password" name="password" />
+          <input type="password" name="password" placeholder="Enter Password"/>
           </Col>
         </Row>
         <Row>

@@ -32,7 +32,10 @@ class LineItemsContainer extends Component {
                 <p style={{textAlign: 'right'}}><span>You owe:</span> ${this.props.currentUserSubtotal}</p>
               </Col>
             </Row>
-            <LineItemsForm visbilityClass={this.state.formVisible} handleFormSubmit={this.props.handleFormSubmit}/>
+            <LineItemsForm 
+              visbilityClass={this.state.formVisible} 
+              handleFormSubmit={this.props.handleFormSubmit} 
+            />
             {this.props.line_items.map(item => (
               <LineItem
                 key={item.id}
