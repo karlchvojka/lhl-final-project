@@ -1,6 +1,6 @@
 class Api::V1::LineItemsController < ApplicationController
   def index
-    render json: Budget.find(params[:budget_id]).line_items.all
+    render json: Budget.find(params[:budget_id]).line_items.order(created_at: :desc)
  end
 
  def create

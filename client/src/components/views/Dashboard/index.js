@@ -125,7 +125,7 @@ class Dashboard extends Component {
       user_id: user_id
     })
       .then(resp => {
-        this.setState({ line_items: [...oldLineitems, resp.data] })
+        this.setState({ line_items: [resp.data, ...oldLineitems] })
         this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
         this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) })
         this.clearNewItemForm();
@@ -177,7 +177,7 @@ class Dashboard extends Component {
     console.log("this is items", this.state.line_items, "this is new fruits", newLineItems)
     newLineItems.push(item)
     newLineItems.sort(function (a, b) {
-      return a.id - b.id;
+      return b.id - a.id;
     });
     this.setState({
       line_items: newLineItems
