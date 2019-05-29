@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import { faEdit, faTrashAlt, faSave } from '@fortawesome/free-solid-svg-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+const numeral = require('numeral');
 
 
 class LineItem extends Component {
@@ -20,7 +21,8 @@ class LineItem extends Component {
       let name = this.name.value
       let amount = Number(this.amount.value)
       let id = this.props.item.id
-      let line_item = { id: id, name: name, amount: amount, user_id: user_id, budget_id: budget_id }
+      let paid = this.props.item.paid
+      let line_item = { id: id, name: name, amount: amount, user_id: user_id, budget_id: budget_id, paid: paid }
       console.log("This is the line item being edited", line_item)
       this.props.handleLineItemUpdate(line_item)
     }
@@ -52,9 +54,9 @@ class LineItem extends Component {
       : <p className="itemName">{name}</p>
 
     let itemTotalField = this.state.editable ? <input type='text' ref={input => this.amount = input} defaultValue={this.props.item.amount} />
-      : <p className="itemTotal"><span>Total:</span> ${amount}{" "}</p>
+      : <p className="itemTotal"><span>Total:</span> {numeral(amount).format('$ 0,0[.]00')}{" "}</p>
 
-    let itemYouOweField = this.state.editable ? <p></p> : <p className="itemOwe" style={myShare < 0 ? { color: "green" } : { color: "red" }}><span>{myShare < 0 ? "Squabbled:" : "You Owe:"}</span>{" $"}{(myShare).toFixed(2)}</p>
+    let itemYouOweField = this.state.editable ? <p></p> : <p className="itemOwe" style={myShare < 0 ? { color: "green" } : { color: "red" }}><span>{myShare < 0 ? "Squabbled:" : "You Owe:"}</span>{" "}{numeral(myShare).format('$ 0,0[.]00')}</p>
 
 
     return (
