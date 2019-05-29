@@ -17,7 +17,7 @@ class Dashboard extends Component {
       budget_members: [],
       user: { id: 1, first: 'Karl', last: 'Johansson' },
       budget_members_subtotals: [],
-      budget_total: 0,
+      budget_total: {},
     };
   }
 
@@ -61,7 +61,7 @@ class Dashboard extends Component {
         line_items: line_items,
         budget_members: budget_members
       });
-      that.setState({ budget_total: this.sumObjectValues(line_items, "amount") });
+      that.setState({ budget_total: this.sumObjectValues(line_items) });
       that.setState({ budget_members_subtotals: this.budgetMembersSubtotals(line_items, budget_members) });
       console.log(
         // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
@@ -96,12 +96,21 @@ class Dashboard extends Component {
     return results
   }
 
-  sumObjectValues = (obj, values) => {
-    let sum = 0;
-    for (var o in obj) {
-      sum += obj[o][values];
-    }
-    return sum;
+  sumObjectValues = (line_items) => {
+    let sum = {
+      overall_total: 0,
+      shared_total: 0,
+      other_total: 0,
+    };
+    line_items.forEach(line_item => {
+      sum.overall_total += line_item.amount
+      if (line_item.paid) {
+        sum.other_total += line_item.amount
+      } else {
+        sum.shared_total += line_item.amount
+      }
+    });
+    return sum
   }
 
   clearNewItemForm = () => {
@@ -126,7 +135,7 @@ class Dashboard extends Component {
     })
       .then(resp => {
         this.setState({ line_items: [resp.data, ...oldLineitems] })
-        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+        this.setState({ budget_total: this.sumObjectValues(this.state.line_items) });
         this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) })
         this.clearNewItemForm();
       })
@@ -146,7 +155,7 @@ class Dashboard extends Component {
         this.setState({ line_items: [...newLineItems] })
       })
       .then(() => {
-        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+        this.setState({ budget_total: this.sumObjectValues(this.state.line_items) });
         this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) });
       })
       .catch(error => console.log(error));
@@ -164,7 +173,7 @@ class Dashboard extends Component {
       .then(() => {
         console.log("update posted, now updating set state", line_item)
         this.updateLineItem(line_item)
-        this.setState({ budget_total: this.sumObjectValues(this.state.line_items, "amount") });
+        this.setState({ budget_total: this.sumObjectValues(this.state.line_items) });
         this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) });
       })
       .catch(error => {
