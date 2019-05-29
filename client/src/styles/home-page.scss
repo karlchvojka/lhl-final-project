@@ -18,7 +18,23 @@ main.content-area {
   height: 100vh;
   background-repeat: no-repeat;
   background-position: right top;
-  background-size: contain;
+  background-size: 69%;
+
+  .btn-primary {
+    height: 58px;
+    width: 270px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
+    border-color: #FB6649;
+    font-weight:700;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
+    border-color: #1CC4C8;
+  }
+}
+.homeNav {
   .navbar-brand {
     text-transform: uppercase;
 
@@ -27,21 +43,22 @@ main.content-area {
     }
   }
   .navbar-nav {
-    a:link, a:visited {
-      padding-top:20px;
-      color:#ffffff;
-      font-weight:bold;
-      font-size:1em;
-      text-transform:uppercase;
-    }
-    a:hover {
-      color:#FB6649 !important;
-    }
+      a:link, a:visited {
+        padding-top:20px;
+        color:#ffffff;
+        font-weight:bold;
+        font-size:1em;
+        text-transform:uppercase;
+      }
+      a:hover {
+        color:#FB6649 !important;
+      }
 
-    .homeButton {
-      padding-top:0px !important;
-    }
+      .homeButton {
+        padding-top:0px !important;
+      }
   }
+
   .btn-primary {
     height: 58px;
     width: 270px;
@@ -49,5 +66,10 @@ main.content-area {
     background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
     border-color: #FB6649;
     font-weight:700;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
+    border-color: #1CC4C8;
   }
 }

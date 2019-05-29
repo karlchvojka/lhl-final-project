@@ -4,10 +4,10 @@ import Logo from "../../../assets/Home/feather.svg";
 class NavbarComp extends Component {
   render() {
     return (
-      <Row>
+      <Row className="homeNav">
         <Col xl={12} lg={12} md={12} sm={12} xs={12}>
           <Navbar expand="md" className="navbar fixed-top navbar-light container-fluid">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
               <img alt="" src={Logo} />
               Squabble
             </Navbar.Brand>

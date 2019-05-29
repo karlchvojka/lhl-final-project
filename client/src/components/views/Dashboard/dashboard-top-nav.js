@@ -10,7 +10,7 @@ class DashboardTopNav extends Component {
       <Row>
       <Col className="col-12">
         <Navbar expand="md" className="fixed-top dashboardTopNav">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img alt="" src={Logo} />
             Squabble
           </Navbar.Brand>
@@ -20,7 +20,7 @@ class DashboardTopNav extends Component {
               <NavDropdown title={userName} id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Budgets</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Log out</NavDropdown.Item>
+                <NavDropdown.Item href="/">Log out</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

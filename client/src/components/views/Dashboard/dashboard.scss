@@ -29,11 +29,19 @@
     a:link, a:visited{
     	height: 93px;
       text-align:center;
-      padding-left:8px;
+      padding:1rem 8px;
+      color:#677897;
+
+      svg {
+        fill: #677897;
+        color:#677897;
+        font-size:26px;
+      }
 
       img {
-          color: #677897;
-          margin-top: .7rem;
+        margin-top: .7rem;
+        fill: #677897;
+
       }
       p:first-child {
         margin-top:0px;
@@ -55,6 +63,12 @@
       border-left: 4px solid #1CC4C8;
       color: #1CC4C8;
       padding-left:4px;
+
+      svg {
+        color: #1CC4C8;
+        color: #1CC4C8;
+
+      }
 
       p {
         color:#1CC4C8;
@@ -135,6 +149,11 @@
               font-weight:bold;
               width:9rem;
             }
+
+            button.addItems:hover {
+              background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
+              border-color: #1CC4C8;
+            }
           }
 
           #addItemForm {
@@ -158,6 +177,12 @@
                 background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
                 color:#fff;
                 padding:5px 0px;
+                font-weight:700;
+              }
+
+              .addItemSubmit:hover {
+                background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
+                border-color: #1CC4C8;
               }
             }
           }
@@ -177,7 +202,6 @@
             }
 
             .itemTotal, .itemOwe, .itemDelete {
-              padding-top:15px;
               font-size:15px;
 
               span {
@@ -187,7 +211,7 @@
 
             .icon {
               margin-bottom:5px;
-              color:#FB6649;
+              color:#1CC4C8;
             }
           }
         }

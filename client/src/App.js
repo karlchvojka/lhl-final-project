@@ -8,13 +8,13 @@ import Login from "./components/views/Login/";
 import Signup from "./components/views/Signup";
 import Dashboard from "./components/views/Dashboard/";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStroopwafel, faEdit, faTrashAlt, faSave, faSortDown, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faStroopwafel, faEdit, faTrashAlt, faSave, faSortDown, faChevronUp, faChevronDown, faUser, faHome, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
 
 // CSS Imports
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 
-library.add(faStroopwafel, faEdit, faTrashAlt, faSave, faSortDown, faChevronUp, faChevronDown)
+library.add(faStroopwafel, faEdit, faTrashAlt, faSave, faSortDown, faChevronUp, faChevronDown, faUser, faHome, faFileInvoiceDollar)
 
 
 export default class App extends Component {
