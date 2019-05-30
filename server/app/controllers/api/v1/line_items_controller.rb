@@ -4,18 +4,8 @@ class Api::V1::LineItemsController < ApplicationController
  end
 
   def create
-    
-    if params[:name]=="" || !params[:amount]
-      render json: {status: "error", code: 4000, message: "Can't create a new line item with blank name or amount."}    
-    elsif params[:amount].to_i < 1
-      render json: {status: "error", code: 4000, message: "Can't create a new line item with amount of $0 or less."}
-    else
-      puts params[:name], params[:amount]
       line_item = LineItem.create(line_item_params)
-      response = {status: "success", code: 2000, message: line_item}
-      render json: response
-    end
-
+      render json: line_item
   end
 
   def destroy
