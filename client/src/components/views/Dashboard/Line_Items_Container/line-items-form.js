@@ -68,10 +68,22 @@ class LineItemsForm extends Component {
       this.setState({ errors });
       return;
     } else {
+      this.setState({ errors });
       this.props.handleFormSubmit(formData)
+      this._reset()
     }
 
   };
+
+  _reset = () => {
+    this.setState({
+      formData: {
+        name: "",
+        amount: "",
+        paid: false
+      }
+    })
+  }
 
   render() {
     const { errors } = this.state;
@@ -93,12 +105,9 @@ class LineItemsForm extends Component {
                     type="text" 
                     name="name" 
                     onChange={this.handleChange}
+                    value={this.state.formData.name}
                   />
-                  {this.state.errors.name &&
-               //display an error here
-              <p>{this.state.errors.name}</p>
-            }
-                </Col>
+                 </Col>
               </Row>
               <Row>
                 <Col xl={5} lg={5} md={5} sm={5} xs={5}>
@@ -111,11 +120,8 @@ class LineItemsForm extends Component {
                     precision={2}                     
                     onChange={this.handleAmountchange}
                     style={false}
+                    value={this.state.formData.amount}
                   />
-                {this.state.errors.amount &&
-               //display an error here
-              <p>{this.state.errors.amount}</p>
-            }
                 </Col>
               </Row>
               <Row>
@@ -126,7 +132,8 @@ class LineItemsForm extends Component {
                   <input 
                     type="checkbox" 
                     name="paid"
-                    onChange={this.handleChange} 
+                    onChange={this.handleChange}
+                    value={this.state.formData.paid}
                   />
                 </Col>
               </Row>

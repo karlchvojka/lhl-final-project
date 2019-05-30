@@ -102,8 +102,6 @@ class Dashboard extends Component {
 
   clearNewItemForm = () => {
     document.getElementById("create-new-item-form").reset()
-    document.getElementById("create-new-item-form").onChange();
-    document.querySelector("NumericInput").setValue("0");
   }
 
   handleNewLineItemFormSubmit = line_item => {
