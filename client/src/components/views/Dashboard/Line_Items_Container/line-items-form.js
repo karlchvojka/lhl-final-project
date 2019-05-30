@@ -8,14 +8,19 @@ const validate = ( name, amount ) => {
   console.log("THis is validating", name, amount)
 
   if (name.length === 0) {
-    errors.push("Name can't be empty");
+    errors.push("Please enter a name for your item");
   }
 
   if (amount && amount <= 0) {
-    errors.push("Amount can't be $0.00 or less");
+    errors.push("Please enter an amount greater than $0.00");
   }
+
+  if (amount === 0) {
+    errors.push("Please enter an amount greater than $0.00");
+  }
+
   if (amount === undefined || amount === "" || amount === null) {
-    errors.push("Amount can't be blank");
+    errors.push("Please enter a valid amount");
   }
 
   return errors;
