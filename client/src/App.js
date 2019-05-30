@@ -7,10 +7,15 @@ import HomeFooter from "./components/views/footer.js";
 import Login from "./components/views/Login/";
 import Signup from "./components/views/Signup";
 import Dashboard from "./components/views/Dashboard/";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStroopwafel, faEdit, faTrashAlt, faSave, faSortDown, faChevronUp, faChevronDown, faUser, faHome, faFileInvoiceDollar, faBars } from '@fortawesome/free-solid-svg-icons';
 
 // CSS Imports
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
+
+library.add(faStroopwafel, faEdit, faTrashAlt, faSave, faSortDown, faChevronUp, faChevronDown, faUser, faHome, faFileInvoiceDollar, faBars)
+
 
 export default class App extends Component {
   constructor(props) {
@@ -20,21 +25,26 @@ export default class App extends Component {
 
   handleLoginSubmit = evt => {
     evt.preventDefault();
-    console.log(evt.target.email.value, evt.target.password.value);
+    // console.log(evt.target.email.value, evt.target.password.value);
+    window.location.href = '/dashboard';
+    return false;
   };
 
   handleSignupFormSubmit = evt => {
     evt.preventDefault();
-    console.log(
-      "These are the signup form values",
-      evt.target.first.value,
-      evt.target.last.value,
-      evt.target.email.value,
-      evt.target.password.value,
-      evt.target.passwordconf.value,
-      evt.target.phone.value,
-      evt.target.photo.value
-    );
+    // console.log(
+    //   "These are the signup form values",
+    //   evt.target.first.value,
+    //   evt.target.last.value,
+    //   evt.target.email.value,
+    //   evt.target.password.value,
+    //   evt.target.passwordconf.value,
+    //   evt.target.phone.value,
+    //   evt.target.photo.value
+    // );
+    window.location.href = '/dashboard';
+    return false;
+
   };
 
   render() {
@@ -42,7 +52,7 @@ export default class App extends Component {
       <Router>
         <Route path="/" exact component={ Home } />
         <Route path="/about" exact component={ Aboutpg  } />
-        <Route path="/login" component={() => <Login handleFormSubmit={this.handleLoginFormSubmit}/> } />
+        <Route path="/login" component={() => <Login handleFormSubmit={this.handleLoginSubmit}/> } />
         {/* <Route path="/signup" component={ Signup } /> */}
         <Route
           path="/signup"
