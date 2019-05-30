@@ -1,53 +1,182 @@
-.logotext {
-  height: 30px;
-  width: 141px;
-  color: #313a46;
-  font-family: "Titillium Web";
-  font-size: 30px;
-  font-weight: 300;
-  line-height: 30px;
-}
-.renting-with-roommates-trio-of {
-  height: 89.02%;
-  width: 79.38%;
-  opacity: 0.6;
-  background-color: rgba(216, 216, 216, 0);
+/* GLOBAL VARIABLES */
+$tealBlue: #1CC4C8;
+$tealGreen: #3DD6A5;
+$orange1: #FB6649;
+$orange2: #FB4E5B;
+/* END GLOBAL VARIABLES */
+
+/* GLOBAL STYLES */
+.btn {
+  height: 50px;
+  width: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, $orange1 0%, #FB4E5B 100%);
+  border-color: $orange1;
+  font-weight:700;
 }
 
-main.content-area {
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: contain;
-  .navbar-brand {
-    text-transform: uppercase;
+.btn:hover {
+  background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+  border-color: $tealBlue;
+}
+/* END GLOBAL STYLES */
 
-    img {
-      margin-right:10px;
+.content-area {
+  height:95vh;
+
+  .homeNav {
+
+    .navbar-brand {
+      text-transform: uppercase;
+
+      img {
+        margin-right:10px;
+      }
+
+      .logotext {
+        height: 30px;
+        width: 141px;
+        color: #313a46;
+        font-family: "Titillium Web";
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 30px;
+        text-transform:uppercase;
+      }
+    }
+
+    .navbar {
+
+      .navbar-toggler {
+        color: $tealGreen;
+        border-color: $tealGreen;
+      }
+      .navbar-nav {
+        background-color:#ffffff;
+
+        a:link, a:visited {
+          padding:10px 5px;
+          border-bottom:1px solid $tealBlue;
+          font-weight:bold;
+          font-size:1em;
+          text-transform:uppercase;
+          margin:0px 5px;
+
+          button {
+            border-radius:10px;
+          }
+        }
+        a:last-of-type {
+          border-bottom:none;
+        }
+      }
     }
   }
-  .navbar-nav {
-    a:link, a:visited {
-      padding-top:20px;
-      color:#ffffff;
-      font-weight:bold;
-      font-size:1em;
-      text-transform:uppercase;
-    }
-    a:hover {
-      color:#FB6649 !important;
-    }
+  .overWrap {
+    height:95vh;
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 60%;
 
-    .homeButton {
-      padding-top:0px !important;
+  }
+
+  .homeTextWrap {
+    padding-top: 100px;
+    padding-left: 3rem;
+  }
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media only screen and (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media only screen and (min-width: 768px){
+  .content-area {
+    .homeNav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1030;
+
+      .navbar {
+
+        .navbar-nav {
+          background-color:transparent;
+
+          a:link, a:visited {
+            padding-top:35px;
+            color:#ffffff;
+            border-bottom:none;
+            margin:0px;
+
+            .btn {
+              border-radius:50px;
+              width:125px;
+            }
+          }
+          a:hover {
+            color:$orange1;
+          }
+          a:last-of-type {
+            padding-top:20px;
+          }
+
+        }
+      }
     }
   }
-  .btn-primary {
-    height: 58px;
-    width: 270px;
-    border-radius: 100px;
-    background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
-    border-color: #FB6649;
-    font-weight:700;
+}
+
+// Large devices (desktops, 992px and up)
+@media only screen and (min-width: 992px) {
+
+}
+// Extra large devices (large desktops, 1200px and up)
+@media only screen and (min-width: 1200px) {
+
+  .renting-with-roommates-trio-of {
+    height: 89.02%;
+    width: 79.38%;
+    opacity: 0.6;
+    background-color: rgba(216, 216, 216, 0);
+  }
+
+  .content-area {
+    .homeNav {
+      .navbar {
+        .navbar-nav {
+          background-color: transparent;
+
+          a:link, a:visited {
+            color:#ffffff;
+            border-bottom:none;
+            margin:0px;
+          }
+          a:hover {
+            color:$orange1;
+          }
+
+          .homeButton {
+            width:150px;
+            padding-top:0px;
+
+            .btn {
+            }
+          }
+        }
+      }
+    } // End of Homenav
+
+    .overWrap {
+      height: 100vh;
+    }
+  }
+
+  .homeTextWrap {
+    padding-top: 300px;
   }
 }

@@ -1,6 +1,28 @@
 .signup {
   margin-top:67px;
-  
+
+  .homeNav {
+    .navbar-nav {
+      a:link, a:visited {
+        padding-top:20px;
+        color:#FB6649 !important;
+        font-weight:bold;
+        font-size:1em;
+        text-transform:uppercase;
+      }
+      a:hover {
+        border-bottom:1px solid #FB6649;
+      }
+
+      .homeButton:hover {
+        border-bottom:0px;
+      }
+      .homeButton {
+        padding-top:0px !important;
+      }
+    }
+  }
+
   #signupForm {
     height: 100vh;
     margin-top: 10px;
@@ -10,17 +32,17 @@
       padding: 10px;
     margin-bottom: 10px;
     }
-    
+
     input {
       width:100%;
       border-radius:5px;
       border: 1px solid #e6e6e6;
     }
-    
+
     p {
       font-weight:700;
     }
-    
+
     .signupSubmit {
       background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
       color:#fff;
