@@ -71,8 +71,8 @@ class LineItem extends Component {
           {itemYouOweField}
         </Col>
         <Col xl={1} lg={1} md={1} sm={1} xs={1}>
-          <p className="icon" onClick={() => this.handleEdit(user.id, budget_id)}>{this.state.editable ? <FontAwesomeIcon icon={faSave} /> : <FontAwesomeIcon icon={faEdit} />}</p>
-          <p className="icon" onClick={() => this.props.handleLineItemDelete(id)}><FontAwesomeIcon icon={faTrashAlt} /></p>
+          {lineItemCreator.id === user.id ? <p className="icon" onClick={() => this.handleEdit(user.id, budget_id)}>{this.state.editable ? <FontAwesomeIcon icon={faSave} /> : <FontAwesomeIcon icon={faEdit} />}</p> : <p></p>}
+          {lineItemCreator.id === user.id ? <p className="icon" onClick={() => this.props.handleLineItemDelete(id)}><FontAwesomeIcon icon={faTrashAlt} /></p> : <p></p>}
         </Col>
       </Row>
     )
