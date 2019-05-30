@@ -7,6 +7,8 @@ import BudgetInfo from "./budget-info.js";
 import BudgetMembersContainer from "./Budget_Member_Container/budget-members-container.js";
 import LineItemsContainer from "./Line_Items_Container/line-items-container.js";
 import axios from 'axios';
+import Logo from "../../../assets/Home/feather.svg";
+
 
 class Dashboard extends Component {
   constructor(props) {
@@ -42,11 +44,18 @@ class Dashboard extends Component {
       ).then(resp => resp.json());
     }
 
+    function delay(t, v) {
+      return new Promise(function(resolve) { 
+          setTimeout(resolve.bind(null, v), t)
+      });
+   }
+
     function getAPIdata() {
       return Promise.all([
         getBudgets(that.state.user.id),
         getLineItems(1),
-        getBudgetMembers(1)
+        getBudgetMembers(1),
+        delay(1500)
       ]);
     }
 
@@ -54,8 +63,8 @@ class Dashboard extends Component {
     //   return line_items.filter(item => item.user_id === user_id);
     // }
 
-
     getAPIdata().then(([budgets, line_items, budget_members]) => {
+      let spinnerElement = document.getElementsByClassName("loadingSpinner");
       that.setState({
         budget: budgets[0],
         line_items: line_items,
@@ -63,6 +72,7 @@ class Dashboard extends Component {
       });
       that.setState({ budget_total: this.sumObjectValues(line_items) });
       that.setState({ budget_members_subtotals: this.budgetMembersSubtotals(line_items, budget_members) });
+      spinnerElement[0].style.display = "none";
       console.log(
         // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
       );
@@ -196,6 +206,12 @@ class Dashboard extends Component {
     return (
 
       <Container className="budgetDashboard no-gutters noGutters" fluid="true" >
+        <div className="loadingSpinner">
+          <div className="spinnerContent">
+            <img alt="feathers-logo" src={Logo} className="rotate-center" width="200px"/>
+            <p>Settling your squabbles...</p>
+          </div>
+        </div>
         <DashboardTopNav userName={user} />
         <Row className="budgetDashboardInner" noGutters="true">
           <Col xl={1} lg={12} md={12} sm={12} xs={12}>
