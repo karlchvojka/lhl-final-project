@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Odometer from 'react-odometerjs'
+import 'odometer/themes/odometer-theme-plaza.css'
 const numeral = require('numeral');
 
 class BudgetInfo extends Component {
@@ -10,6 +12,12 @@ class BudgetInfo extends Component {
 
     return (
       <Row className="budgetInfo">
+        <Odometer
+          animation="count"
+          format="d"
+          duration={1000}
+          value={this.props.budget_total.overall_total}
+        />
         <Col xl={12} lg={12} md={12} sm={12} xs={12}>
           <Container>
             <Row>
