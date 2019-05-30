@@ -23,7 +23,6 @@ class LineItem extends Component {
       let id = this.props.item.id
       let paid = this.props.item.paid
       let line_item = { id: id, name: name, amount: amount, user_id: user_id, budget_id: budget_id, paid: paid }
-      console.log("This is the line item being edited", line_item)
       this.props.handleLineItemUpdate(line_item)
     }
     this.setState({

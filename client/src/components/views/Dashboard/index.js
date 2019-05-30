@@ -114,16 +114,13 @@ class Dashboard extends Component {
   }
 
   clearNewItemForm = () => {
-    document.getElementById("create-new-item-form").reset();
+    document.getElementById("create-new-item-form").reset()
   }
 
-  handleNewLineItemFormSubmit = evt => {
-    evt.preventDefault();
-    const budget_id = evt.target.budget_id.value;
-    const user_id = "1";
-    const name = evt.target.name.value;
-    const amount = evt.target.amount.value;
-    const paid = evt.target.paid.checked;
+  handleNewLineItemFormSubmit = line_item => {
+    const { name, amount, paid } = line_item;
+    const budget_id = this.state.budget.id;
+    const user_id = this.state.user.id;
     const oldLineitems = this.state.line_items
 
     axios.post(`api/v1/budgets/${budget_id}/line_items`, {
@@ -142,6 +139,7 @@ class Dashboard extends Component {
       .catch(error => {
         console.log("Error in posting a new line item", error)
       });
+
     this.setState({ name: '', amount: '', paid: false }) // <= here
   };
 
@@ -151,7 +149,6 @@ class Dashboard extends Component {
     const newLineItems = oldLineitems.filter(item => item.id !== id)
     axios.delete(`api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
       .then(() => {
-        console.log("This is the delete", newLineItems)
         this.setState({ line_items: [...newLineItems] })
       })
       .then(() => {
@@ -183,7 +180,6 @@ class Dashboard extends Component {
 
   updateLineItem = item => {
     let newLineItems = this.state.line_items.filter((f) => f.id !== item.id)
-    console.log("this is items", this.state.line_items, "this is new fruits", newLineItems)
     newLineItems.push(item)
     newLineItems.sort(function (a, b) {
       return b.id - a.id;
@@ -218,7 +214,7 @@ class Dashboard extends Component {
                 <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={7}>
                   <Container fluid="true">
                     <WelcomeBanner userName={user} />
-                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} currentUserSubtotal={currentUserSubtotal} />
+                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} />
                     <LineItemsContainer
                       line_items={line_items}
                       user={user}
@@ -227,6 +223,7 @@ class Dashboard extends Component {
                       budget_id={this.state.budget.id}
                       handleLineItemDelete={this.handleLineItemDelete}
                       handleLineItemUpdate={this.handleLineItemUpdate}
+                      currentUserSubtotal={currentUserSubtotal}
                     />
                   </Container>
                 </Col>
