@@ -102,23 +102,23 @@ class LineItemsForm extends Component {
             ))}
             <Container fluid="true" className="noGutters">
               <Row>
-                <Col xl={5} lg={5} md={5} sm={5} xs={5}>
+                <Col xl={5} lg={5} md={5} sm={2} xs={12}>
                   <p>Budget Item Name:</p>
                 </Col>
-                <Col xl={7} lg={7} md={7} sm={7} xs={7}>
+                <Col xl={7} lg={7} md={7} sm={7} xs={12}>
                   <input 
                     type="text" 
                     name="name" 
                     onChange={this.handleChange}
                     value={this.state.formData.name}
                   />
-                 </Col>
+                </Col>
               </Row>
               <Row>
-                <Col xl={5} lg={5} md={5} sm={5} xs={5}>
+                <Col xl={5} lg={5} md={5} sm={5} xs={12}>
                   <p>Budget Item Amount:</p>
                 </Col>
-                <Col xl={7} lg={7} md={7} sm={7} xs={7}>
+                <Col xl={7} lg={7} md={7} sm={7} xs={12}>
                   <NumericInput 
                     className="lineAmount"
                     step={0.01} 
@@ -130,10 +130,10 @@ class LineItemsForm extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col xl={5} lg={5} md={5} sm={5} xs={5}>
+                <Col xl={5} lg={5} md={5} sm={8} xs={8}>
                   <p>Have you paid this full amount?</p>
                 </Col>
-                <Col xl={7} lg={7} md={7} sm={7} xs={7}>
+                <Col xl={7} lg={7} md={7} sm={4} xs={4}>
                   <input 
                     type="checkbox" 
                     name="paid"
@@ -143,10 +143,10 @@ class LineItemsForm extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col xl={5} lg={5} md={5} sm={5} xs={5}>
+                <Col xl={5} lg={5} md={5} sm={12} xs={12}>
                   <input type='hidden' name="budget_id" value={1} />
                 </Col>
-                <Col xl={7} lg={7} md={7} sm={7} xs={7}>
+                <Col xl={7} lg={7} md={7} sm={12} xs={12}>
                 </Col>
               </Row>
               <Row>
