@@ -7,7 +7,7 @@ class DashboardTopNav extends Component {
     var { first, last } = this.props.userName;
     var userName = first + " " + last;
     return (
-      <Row>
+      <Row style={{marginRight: '0px'}}>
       <Col className="col-12 noGutters">
         <Navbar expand="md" className="dashboardTopNav">
           <Navbar.Brand href="/">
