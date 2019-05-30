@@ -45,7 +45,7 @@ class Dashboard extends Component {
     }
 
     function delay(t, v) {
-      return new Promise(function(resolve) { 
+      return new Promise(function(resolve) {
           setTimeout(resolve.bind(null, v), t)
       });
    }
@@ -237,7 +237,7 @@ class Dashboard extends Component {
                   </Container>
                 </Col>
                 <Col className="usersAside" xl={4} lg={6} md={12} sm={12} xs={12}>
-                  <BudgetMembersContainer budget_members={budget_members} subtotals={budget_members_subtotals} />
+                  <BudgetMembersContainer budget_members={budget_members} subtotals={budget_members_subtotals} budgetName={budget.name} />
                 </Col>
               </Row>
             </Container>
