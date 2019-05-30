@@ -189,13 +189,13 @@ class Dashboard extends Component {
       <Container className="budgetDashboard no-gutters noGutters" fluid="true" >
         <DashboardTopNav userName={user} />
         <Row className="budgetDashboardInner" noGutters="true">
-          <Col xl={1} lg={1} md={1} sm={1} xs={12}>
+          <Col xl={1} lg={12} md={12} sm={12} xs={12}>
             <DashboardSidebar />
           </Col>
-          <Col className="mainSectionWrap" xl={11} lg={11} md={11} sm={11} xs={12}>
+          <Col className="mainSectionWrap" xl={11} lg={12} md={12} sm={12} xs={12}>
             <Container fluid="true">
               <Row>
-                <Col className="innerMainSection" xl={7} lg={7} md={7} sm={7} xs={12}>
+                <Col className="innerMainSection" xl={7} lg={6} md={12} sm={12} xs={12}>
                   <Container fluid="true">
                     <WelcomeBanner userName={user} />
                     <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} />
@@ -211,7 +211,7 @@ class Dashboard extends Component {
                     />
                   </Container>
                 </Col>
-                <Col className="usersAside" xl={4} lg={4} md={4} sm={4} xs={12}>
+                <Col className="usersAside" xl={4} lg={6} md={12} sm={12} xs={12}>
                   <BudgetMembersContainer budget_members={budget_members} subtotals={budget_members_subtotals} />
                 </Col>
               </Row>

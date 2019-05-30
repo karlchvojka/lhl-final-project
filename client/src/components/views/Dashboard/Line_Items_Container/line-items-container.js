@@ -23,7 +23,7 @@ class LineItemsContainer extends Component {
     return (
       <Row className="lineItemsContainer">
         <Col xl={12} lg={12} md={12} sm={12} xs={12}>
-          <Container>
+          <Container fluid="true">
             <Row className="addFormButtonRow">
               <Col className="noGutters" xl={6} lg={6} md={6} sm={6} xs={6}>
                 <Button className="addItems Butto ml-auto" onClick={this.handleClick} variant="primary">{this.state.formVisible ? 'Close' : 'New Item' } <FontAwesomeIcon icon={ this.state.formVisible ? faChevronUp : faChevronDown } /></Button>
