@@ -21,7 +21,6 @@ class BudgetInfo extends Component {
                 <p><span>Overall total:</span> {numeral(this.props.budget_total.overall_total).format('$ 0,0[.]00')}</p>
                 <p><span>Shared total:</span> {numeral(this.props.budget_total.shared_total).format('$ 0,0[.]00')}</p>
                 <p><span>Squabbled expenses:</span> {numeral(this.props.budget_total.other_total).format('$ 0,0[.]00')}</p>
-                <p><span>You owe:</span> {numeral(this.props.currentUserSubtotal).format('$ 0,0[.]00')}</p>
               </Col>
             </Row>
           </Container>
