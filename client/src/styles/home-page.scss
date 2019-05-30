@@ -1,5 +1,8 @@
-/* GLOBAL VARIABLS */
-
+/* GLOBAL VARIABLES */
+$tealBlue: #1CC4C8;
+$tealGreen: #3DD6A5;
+$orange1: #FB6649;
+$orange2: #FB4E5B;
 /* END GLOBAL VARIABLES */
 
 /* GLOBAL STYLES */
@@ -7,14 +10,14 @@
   height: 50px;
   width: 100%;
   border-radius: 100px;
-  background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
-  border-color: #FB6649;
+  background: linear-gradient(90deg, $orange1 0%, #FB4E5B 100%);
+  border-color: $orange1;
   font-weight:700;
 }
 
 .btn:hover {
-  background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
-  border-color: #1CC4C8;
+  background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+  border-color: $tealBlue;
 }
 /* END GLOBAL STYLES */
 
@@ -22,11 +25,6 @@
   height:95vh;
 
   .homeNav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
 
     .navbar-brand {
       text-transform: uppercase;
@@ -50,21 +48,26 @@
     .navbar {
 
       .navbar-toggler {
-        color:#ffffff;
-        border-color:#ffffff;
+        color: $tealGreen;
+        border-color: $tealGreen;
       }
       .navbar-nav {
+        background-color:#ffffff;
+
         a:link, a:visited {
-          background-color:#ffffff;
           padding:10px 5px;
-          border-bottom:1px solid #1CC4C8;
+          border-bottom:1px solid $tealBlue;
           font-weight:bold;
           font-size:1em;
           text-transform:uppercase;
+          margin:0px 5px;
 
           button {
             border-radius:10px;
           }
+        }
+        a:last-of-type {
+          border-bottom:none;
         }
       }
     }
@@ -85,21 +88,55 @@
 
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 767px) {
+@media only screen and (min-width: 576px) {
+
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) and (max-width: 992px) {
+@media only screen and (min-width: 768px){
+  .content-area {
+    .homeNav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1030;
 
+      .navbar {
+
+        .navbar-nav {
+          background-color:transparent;
+
+          a:link, a:visited {
+            padding-top:35px;
+            color:#ffffff;
+            border-bottom:none;
+            margin:0px;
+
+            .btn {
+              border-radius:50px;
+              width:125px;
+            }
+          }
+          a:hover {
+            color:$orange1;
+          }
+          a:last-of-type {
+            padding-top:20px;
+          }
+
+        }
+      }
+    }
+  }
 }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1200px) {
+@media only screen and (min-width: 992px) {
 
 }
-
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
 
   .renting-with-roommates-trio-of {
     height: 89.02%;
@@ -110,23 +147,25 @@
 
   .content-area {
     .homeNav {
-      .navbar-nav {
-        a:link, a:visited {
-          padding-top:20px;
-          color:#ffffff;
+      .navbar {
+        .navbar-nav {
           background-color: transparent;
-          border-bottom:none;
-        }
-        a:hover {
-          color:#FB6649;
-        }
 
-        .homeButton {
-          width:150px;
-          padding-top:0px;
+          a:link, a:visited {
+            color:#ffffff;
+            border-bottom:none;
+            margin:0px;
+          }
+          a:hover {
+            color:$orange1;
+          }
 
-          .btn {
-            border-radius:50px;
+          .homeButton {
+            width:150px;
+            padding-top:0px;
+
+            .btn {
+            }
           }
         }
       }

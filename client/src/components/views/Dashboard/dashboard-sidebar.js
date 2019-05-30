@@ -7,7 +7,7 @@ import { faUser, faHome, faFileInvoiceDollar } from '@fortawesome/free-solid-svg
 class DashboardSidebar extends Component {
   render() {
     return (
-      <Nav defaultActiveKey="/home" className="flex-column sidebarComp">
+      <Nav defaultActiveKey="/home" className="sidebarComp">
         <Nav.Link href="/">
           <FontAwesomeIcon icon={faHome} />
           <p>Dashboard</p>

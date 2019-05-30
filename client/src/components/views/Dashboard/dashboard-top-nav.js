@@ -8,8 +8,8 @@ class DashboardTopNav extends Component {
     var userName = first + " " + last;
     return (
       <Row>
-      <Col className="col-12">
-        <Navbar expand="md" className="fixed-top dashboardTopNav">
+      <Col className="col-12 noGutters">
+        <Navbar expand="md" className="dashboardTopNav">
           <Navbar.Brand href="/">
             <img alt="" src={Logo} />
             Squabble

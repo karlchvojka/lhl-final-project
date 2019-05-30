@@ -1,10 +1,249 @@
 /* GLOBAL VARIABLS */
-
+$tealBlue: #1CC4C8;
+$tealGreen: #3DD6A5;
+$orange1: #FB6649;
+$orange2: #FB4E5B;
 /* END GLOBAL VARIABLES */
 
 /* GLOBAL STYLES */
 /* END GLOBAL STYLES */
 
+.budgetDashboard {
+  padding:0px;
+  margin-bottom:10px;
+  .dashboardTopNav {
+    background: linear-gradient(0deg, #FFFFFF 0%, #FAFBFC 100%);
+    box-shadow: 0 4px 10px 0 rgba(0,81,131,0.12);
+
+    .navbar-brand {
+      color: #313A46;
+      font-family: "Titillium Web";
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 30px;
+      text-transform:uppercase;
+      img {
+        width:35px;
+        margin-right:5px;
+      }
+    }
+  }
+  .sidebarComp {
+    box-shadow: 4px 0 10px 0 rgba(23,128,224,0.11);
+    display:flex;
+    flex-direction:row;
+
+    a:link, a:visited {
+      display:block;
+      width:33.33%;
+      text-align:center;
+      padding:1rem 8px;
+      color:#677897;
+
+      svg {
+        fill: #677897;
+        color:#677897;
+        font-size:26px;
+      }
+      img {
+        margin-top: .7rem;
+        fill: #677897;
+      }
+
+      p {
+        color: #677897;
+        font-family: "Open Sans";
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 20px;
+        text-align: center;
+        margin-bottom:0px;
+        margin-top:.5rem;
+      }
+    }
+    a:hover, a:active, a.active  {
+      background-color:#E9FEFF;
+      border-left: 0px;
+      border-bottom:4px solid $tealBlue;
+      color: $tealBlue;
+      padding-left:0px;
+      padding-bottom:4px;
+
+      svg {
+        color: $tealBlue;
+
+      }
+
+      p {
+        color:$tealBlue;
+      }
+    }
+  }
+
+  .budgetDashboardInner {
+    .mainSectionWrap {
+      background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+      padding-left:0px;
+      padding-top:20px;
+      min-height:100vh;
+
+      .innerMainSection {
+        .welcomeBackBanner {
+          margin-bottom:20px;
+
+          h2 {
+            margin: 0rem 0rem 0rem 0rem;
+            color: #FFFFFF;
+            font-family: "Open Sans";
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 32px;
+          }
+        }
+        .budgetInfo {
+          border-radius: 4px;
+          background-color: #FFFFFF;
+          box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+          padding:1rem;
+          margin-bottom:20px;
+
+          .budgetTotal {
+            text-align:left;
+
+            p {
+              font-size:18px;
+              span {
+                font-weight:bold;
+              }
+            }
+          }
+          .createdDate {
+            font-size:12px;
+            color: #AFB4B7;
+          }
+        }
+      }
+    }
+  }
+
+  .lineItemsContainer {
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+    margin-top:20px;
+    padding:1rem;
+
+    .addFormButtonRow {
+      margin-bottom:10px;
+
+      span {
+        font-weight:bold;
+      }
+      .yourTotal {
+
+        p {
+          margin-top:.5rem;
+        }
+      }
+      button.addItems {
+        background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+        border: none;
+        font-weight:bold;
+        width:9rem;
+      }
+
+      button.addItems:hover {
+        background: linear-gradient(90deg, $orange1 0%, $orange2 100%);
+        border-color: $tealBlue;
+      }
+    }
+
+    #addItemForm {
+
+      #create-new-item-form {
+        border:1px solid #e6e6e6;
+        padding: 10px;
+        margin-bottom: 10px;
+
+        input {
+          width:100%;
+          border-radius:5px;
+          border: 1px solid #e6e6e6;
+          margin-bottom:10px;
+        }
+
+        p {
+          font-weight:700;
+          margin-bottom:0px;
+        }
+
+        .addItemSubmit {
+          background: linear-gradient(90deg, $orange1 0%, $orange2 100%);
+          color:#fff;
+          padding:5px 0px;
+          font-weight:700;
+        }
+
+        .addItemSubmit:hover {
+          background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+          border-color: $tealBlue;
+        }
+      }
+    }
+
+    .lineItem {
+      border-bottom: solid 1px $tealBlue;
+      margin-bottom: 10px;
+
+      .itemName {
+        margin-bottom: 0px;
+        font-weight:700;
+      }
+
+      .itemCreator {
+        font-size:12px;
+        color: grey;
+      }
+
+      .itemTotal, .itemOwe, .itemDelete {
+        font-size:15px;
+
+        span {
+          font-weight:700;
+        }
+      }
+
+      .icon {
+        margin-bottom:5px;
+        color:$tealBlue;
+      }
+    }
+  }
+  .usersAside {
+    margin-top:1rem;
+
+    .budgetMembers {
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+      h3 {
+        margin-top:1rem;
+      }
+      .userName {
+        margin-bottom:0px;
+        font-weight:bold;
+      }
+      .userEmail {
+        font-size: 12px;
+        color: #AFB4B7;
+      }
+
+      span {
+        font-weight:bold;
+      }
+    }
+  }
+}
 footer {
   p {
     font-size:12px;
@@ -29,243 +268,49 @@ footer {
 @media (min-width: 1200px) {
 
   .budgetDashboard {
-    padding:0px;
-    margin-bottom:10px;
-
     .dashboardTopNav {
-      height:60px;
-      background: linear-gradient(0deg, #FFFFFF 0%, #FAFBFC 100%);
-      box-shadow: 0 4px 10px 0 rgba(0,81,131,0.12);
-
       .navbar-brand {
-      	color: #313A46;
-      	font-family: "Titillium Web";
-      	font-size: 20px;
-      	font-weight: 300;
-      	line-height: 30px;
-        text-transform:uppercase;
-
         img {
-          width:35px;
-          margin-right:5px;
+          margin-left:15px;
         }
       }
     }
     .sidebarComp {
       height: 100%;
-    	box-shadow: 4px 0 10px 0 rgba(23,128,224,0.11);
+      flex-direction:column;
 
       a:link, a:visited{
-      	height: 93px;
-        text-align:center;
-        padding:1rem 8px;
-        color:#677897;
-
-        svg {
-          fill: #677897;
-          color:#677897;
-          font-size:26px;
-        }
-
-        img {
-          margin-top: .7rem;
-          fill: #677897;
-
-        }
-        p:first-child {
-          margin-top:0px;
-        }
-        p {
-          color: #677897;
-          font-family: "Open Sans";
-          font-size: 15px;
-          font-weight: 600;
-          line-height: 20px;
-          text-align: center;
-          margin-bottom:0px;
-          margin-top:.5rem;
-        }
-
+        width:100%;
       }
       a:hover, a:active, a.active  {
-        background-color:#E9FEFF;
-        border-left: 4px solid #1CC4C8;
-        color: #1CC4C8;
+        border-left: 4px solid $tealBlue;
+        border-bottom:0px;
         padding-left:4px;
-
-        svg {
-          color: #1CC4C8;
-          color: #1CC4C8;
-
-        }
-
-        p {
-          color:#1CC4C8;
-        }
+        padding-bottom:1rem;
       }
     }
     .budgetDashboardInner {
-      margin-top:3.9rem;
 
       .mainSectionWrap {
-        background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
         padding-left:8.333333%;
-        min-height:100vh;
 
         .innerMainSection {
 
           .welcomeBackBanner {
-            margin-bottom:20px;
             h2 {
               margin: 3rem 0rem 0rem 0rem;
-              color: #FFFFFF;
-              font-family: "Open Sans";
-              font-size: 28px;
-              font-weight: bold;
-              line-height: 32px;
             }
           }
           .budgetInfo {
-          	border-radius: 4px;
-          	background-color: #FFFFFF;
-          	box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
-            padding:1rem;
-
-            h2 {
-
-            }
-
             .budgetTotal {
-              text-align: right;
-
-              p {
-                font-size:18px;
-
-                span {
-                  font-weight: bold;
-                }
-              }
-            }
-
-            .createdDate {
-              font-size:12px;
-              color: #AFB4B7;
-            }
-          }
-
-          .lineItemsContainer {
-            border-radius: 4px;
-            background-color: #FFFFFF;
-            box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
-            margin-top:20px;
-            padding:1rem;
-
-            .addFormButtonRow {
-              margin-bottom:10px;
-
-              span {
-                font-weight:bold;
-              }
-              .yourTotal {
-
-                p {
-                  margin-top:.5rem;
-                }
-              }
-              button.addItems {
-                background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
-                border: none;
-                font-weight:bold;
-                width:9rem;
-              }
-
-              button.addItems:hover {
-                background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
-                border-color: #1CC4C8;
-              }
-            }
-
-            #addItemForm {
-
-              #create-new-item-form {
-                border:1px solid #e6e6e6;
-                padding: 10px;
-                margin-bottom: 10px;
-
-                input {
-                  width:100%;
-                  border-radius:5px;
-                  border: 1px solid #e6e6e6;
-                }
-
-                p {
-                  font-weight:700;
-                }
-
-                .addItemSubmit {
-                  background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
-                  color:#fff;
-                  padding:5px 0px;
-                  font-weight:700;
-                }
-
-                .addItemSubmit:hover {
-                  background: linear-gradient(#1CC4C8 0%, #3DD6A5 100%);
-                  border-color: #1CC4C8;
-                }
-              }
-            }
-
-            .lineItem {
-              border-bottom: solid 1px #1CC4C8;
-              margin-bottom: 10px;
-
-              .itemName {
-                margin-bottom: 0px;
-                font-weight:700;
-              }
-
-              .itemCreator {
-                font-size:12px;
-                color: grey;
-              }
-
-              .itemTotal, .itemOwe, .itemDelete {
-                font-size:15px;
-
-                span {
-                  font-weight:700;
-                }
-              }
-
-              .icon {
-                margin-bottom:5px;
-                color:#1CC4C8;
-              }
+              text-align:right;
             }
           }
         }
         .usersAside {
-          margin-top:6.2rem;
-          border-radius: 4px;
-          background-color: #FFFFFF;
-          box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+          margin-top:5.2rem;
           padding:1rem;
 
-          .budgetMembers {
-            .userName {
-              margin-bottom:0px;
-              font-weight:bold;
-            }
-            .userEmail {
-              font-size: 12px;
-              color: #AFB4B7;
-            }
-
-            span {
-              font-weight:bold;
-            }
-          }
         }
       }
     }
