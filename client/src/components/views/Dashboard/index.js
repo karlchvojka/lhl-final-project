@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DashboardTopNav from "../../common/Topnav/dashboard-top-nav.js";
 import DashboardSidebar from "../../common/Sidebar/dashboard-sidebar.js";
-
+import WelcomeBanner from "../../common/WelcomeBanner/welcomeBanner.js";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class Dashboard extends Component {
               <Row>
                 <Col className="innerMainSection" xl={7} lg={6} md={12} sm={12} xs={12}>
                   <Container fluid="true">
-                    <h1>Dashboard</h1>
+                    <WelcomeBanner userName={user} />
                   </Container>
                 </Col>
               </Row>
