@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faHome, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
 
 
-class DashboardSidebar extends Component {
+class BudgetSidebar extends Component {
   render() {
     return (
       <Nav defaultActiveKey="/home" className="sidebarComp">
@@ -25,4 +25,4 @@ class DashboardSidebar extends Component {
     }
   }
 
-  export default DashboardSidebar;
+  export default BudgetSidebar;
