@@ -18,17 +18,18 @@ puts "Seeding budget"
 
 budget = Budget.create(name: '24 Sussex Drive', total: 0.00)
 
-budget2 = Budget.create(name: 'testing', total: 0.00)
+budget2 = Budget.create(name: 'Vaction', total: 0.00)
 
 ## USERS
 
 puts "Seeding users"
 
-user1 = budget.users.create_with({last: 'Johansson', email: 'karl@email.com'}).find_or_create_by! first: 'Karl'
-user2 = budget.users.create_with({last: 'Johansson', email: 'andrea@email.com'}).find_or_create_by! first: 'Andrea'
-user3 = budget.users.create_with({last: 'Johansson', email: 'eden@email.com'}).find_or_create_by! first: 'Eden'
+user1 = budget.users.create_with({last: 'Mastrantoni', email: 'andrea@email.com'}).find_or_create_by! first: 'Andrea'
+user2 = budget.users.create_with({last: 'Chvojka', email: 'karl@email.com'}).find_or_create_by! first: 'Karl'
+user3 = budget.users.create_with({last: 'Yeung', email: 'eden@email.com'}).find_or_create_by! first: 'Eden'
 
-user4 = budget2.users.create_with({last: 'Mctest', email: 'eden@email.com'}).find_or_create_by! first: 'Testy'
+user4 = budget2.users.create_with({last: 'Mackey', email: 'britney@email.com'}).find_or_create_by! first: 'Britney'
+
 
 ## BUDGET_MEMBERS
 
@@ -89,12 +90,12 @@ budget.line_items.create!({
   user_id: user3.id,
   paid: true
 })
-
+#------Budget 2 -----------
 budget2.line_items.create!({
   budget_id: budget.id,
   name: "Rent",
   amount: 1500.00,
-  user_id: user4.id,
+  user_id: user1.id,
   paid: false
 })
 
@@ -110,7 +111,7 @@ budget2.line_items.create!({
   budget_id: budget.id,
   name: "Hydro",
   amount: 100.00,
-  user_id: user4.id,
+  user_id: user1.id,
   paid: false
 })
 
