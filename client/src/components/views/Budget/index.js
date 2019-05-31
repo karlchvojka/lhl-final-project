@@ -17,7 +17,7 @@ class Budget extends Component {
       budget: [],
       line_items: [],
       budget_members: [],
-      user: { id: 1, first: 'Karl', last: 'Johansson' },
+      user: { id: 1, first: 'Andrea', last: 'Mastrantoni' },
       budget_members_subtotals: [],
       budget_total: {},
     };
@@ -47,10 +47,10 @@ class Budget extends Component {
     }
 
     function delay(t, v) {
-      return new Promise(function(resolve) {
-          setTimeout(resolve.bind(null, v), t)
+      return new Promise(function (resolve) {
+        setTimeout(resolve.bind(null, v), t)
       });
-   }
+    }
 
     function getAPIdata() {
       return Promise.all([
