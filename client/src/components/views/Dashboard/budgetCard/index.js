@@ -5,7 +5,7 @@ class BudgetCard extends Component {
   render() {
     const url = "/budgets/" + this.props.budgetID
     return(
-      <Col className="budgetCardWrap" xl={4} lg={4} md={4} sm={2} xs={2}>
+      <Col className="budgetCardWrap" xl={4} lg={4} md={4} sm={6} xs={12}>
         <Card>
           <Card.Img variant="top" src={this.props.imgSrc} />
           <Card.Body>

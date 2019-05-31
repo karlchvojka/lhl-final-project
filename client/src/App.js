@@ -29,7 +29,7 @@ export default class App extends Component {
   handleLoginSubmit = evt => {
     evt.preventDefault();
     // console.log(evt.target.email.value, evt.target.password.value);
-    window.location.href = '/budget';
+    window.location.href = '/dashboard';
     return false;
   };
 
