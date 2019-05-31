@@ -66,9 +66,9 @@ class Dashboard extends Component {
                   <Container fluid="true">
                     <WelcomeBanner userName={user} />
                     <Row className="budgetCardWraps">
-                      {this.state.budget.map(item => (
-                        <BudgetCard key={item.id} budgetName={item.name} />
-                      ))}
+                    {this.state.budget.map(item => (
+                      <BudgetCard key={item.id} budgetName={item.name} budgetID={item.id} />
+                    ))}
                     </Row>
                   </Container>
                 </Col>

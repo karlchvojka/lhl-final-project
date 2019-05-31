@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
 class BudgetCard extends Component {
   render() {
+    const url = "/budgets/" + this.props.budgetID
     return(
       <Col className="budgetCardWrap" xl={4} lg={4} md={4} sm={2} xs={2}>
         <Card>
@@ -12,7 +13,7 @@ class BudgetCard extends Component {
             <Card.Text>
               This is a BUDGET!!!!!!
             </Card.Text>
-            <Button variant="primary" href="/budget">Go to Budget</Button>
+            <Button variant="primary" href={url}>Go to Budget</Button>
           </Card.Body>
         </Card>
       </Col>

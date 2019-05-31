@@ -25,10 +25,12 @@ class Budget extends Component {
 
   componentDidMount() {
     const that = this;
+    const { match: { params } } = that.props;
+    console.log("This is the id", params.id)
 
-    function getBudgets(user_id) {
+    function getBudget() {
       return fetch(
-        `http://localhost:3000/api/v1/users/${user_id}/budgets`
+        `http://localhost:3000/api/v1/budgets/${params.id}`
       ).then(resp => resp.json());
     }
 
@@ -52,9 +54,9 @@ class Budget extends Component {
 
     function getAPIdata() {
       return Promise.all([
-        getBudgets(that.state.user.id),
-        getLineItems(1),
-        getBudgetMembers(1),
+        getBudget(),
+        getLineItems(params.id),
+        getBudgetMembers(params.id),
         delay(1500)
       ]);
     }
@@ -63,10 +65,10 @@ class Budget extends Component {
     //   return line_items.filter(item => item.user_id === user_id);
     // }
 
-    getAPIdata().then(([budgets, line_items, budget_members]) => {
+    getAPIdata().then(([budget, line_items, budget_members]) => {
       let spinnerElement = document.getElementsByClassName("loadingSpinner");
       that.setState({
-        budget: budgets[0],
+        budget: budget,
         line_items: line_items,
         budget_members: budget_members
       });
