@@ -1,8 +1,8 @@
+// Standard imports
 import React, { Component } from 'react';
 import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faHome, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
-
 
 class BudgetSidebar extends Component {
   render() {

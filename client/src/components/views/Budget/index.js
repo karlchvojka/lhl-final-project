@@ -3,12 +3,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import DashboardTopNav from "../../common/Topnav/dashboard-top-nav.js";
 import WelcomeBanner from "./welcomeBanner.js";
 import DashboardSidebar from "../../common/Sidebar/dashboard-sidebar.js";
-import BudgetInfo from "./budget-info.js";
+import BudgetInfo from "./Budget_Info/budget-info.js";
 import BudgetMembersContainer from "./Budget_Member_Container/budget-members-container.js";
 import LineItemsContainer from "./Line_Items_Container/line-items-container.js";
 import LoadingSpinner from '../../common/Loading/';
 import axios from 'axios';
-import Logo from "../../../assets/Home/feather.svg";
 
 
 class Budget extends Component {

@@ -1,6 +1,7 @@
 import React from 'react';
 import NavbarComp from "../Home/home-nav-bar.js"
 import { Container, Row, Col } from "react-bootstrap";
+import './css_module.scss';
 
 export default ({handleFormSubmit}) => (
 
