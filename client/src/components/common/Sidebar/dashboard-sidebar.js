@@ -16,10 +16,10 @@ class BudgetSidebar extends Component {
           <FontAwesomeIcon icon={faFileInvoiceDollar} />
           <p>Bills</p>
         </Nav.Link>
-        <Nav.Link eventKey="link-2">
+        {/* <Nav.Link eventKey="link-2">
           <FontAwesomeIcon icon={faUser} />
           <p>Roommates</p>
-        </Nav.Link>
+        </Nav.Link> */}
       </Nav>
       )
     }

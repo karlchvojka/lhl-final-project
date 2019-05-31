@@ -16,9 +16,9 @@ puts "Seeding db data"
 
 puts "Seeding budget"
 
-budget = Budget.create(name: '24 Sussex Drive', total: 0.00)
+budget = Budget.create(name: '24 Sussex Drive', total: 0.00, url: "https://postmediaottawacitizen2.files.wordpress.com/2015/09/undated-undated-handout-photo-of-exterior-of-24-sussex-dr.jpeg")
 
-budget2 = Budget.create(name: 'Vaction', total: 0.00)
+budget2 = Budget.create(name: 'Vacation', total: 0.00, url: "https://www.tourismpei.com/sites/default/files/homepage-cta/aboutpei_homepage_cta.jpg")
 
 ## USERS
 

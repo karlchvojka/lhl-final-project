@@ -67,7 +67,7 @@ class Dashboard extends Component {
                     <WelcomeBanner userName={user} />
                     <Row className="budgetCardWraps">
                     {this.state.budget.map(item => (
-                      <BudgetCard key={item.id} budgetName={item.name} budgetID={item.id} />
+                      <BudgetCard key={item.id} budgetName={item.name} budgetID={item.id} imgSrc={item.url}/>
                     ))}
                     </Row>
                   </Container>
