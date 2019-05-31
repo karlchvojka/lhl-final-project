@@ -35,7 +35,7 @@ user4 = budget2.users.create_with({last: 'Mackey', email: 'britney@email.com'}).
 
 puts "Add budget members"
 
-# BudgetMember.find_or_create_by!(user_id: user1.id, budget_id: budget.id)
+BudgetMember.find_or_create_by!(user_id: user1.id, budget_id: budget2.id)
 # BudgetMember.find_or_create_by!(user_id: user2.id, budget_id: budget.id)
 # BudgetMember.find_or_create_by!(user_id: user3.id, budget_id: budget.id)
 
