@@ -7,6 +7,9 @@ import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import Odometer from 'react-odometerjs'
+import 'odometer/themes/odometer-theme-plaza.css'
+
 class LineItemsContainer extends Component {
   constructor(props) {
     super(props);
@@ -26,15 +29,15 @@ class LineItemsContainer extends Component {
           <Container fluid="true">
             <Row className="addFormButtonRow">
               <Col className="noGutters" xl={6} lg={6} md={6} sm={6} xs={6}>
-                <Button className="addItems Butto ml-auto" onClick={this.handleClick} variant="primary">{this.state.formVisible ? 'Close' : 'New Item' } <FontAwesomeIcon icon={ this.state.formVisible ? faChevronUp : faChevronDown } /></Button>
+                <Button className="addItems Butto ml-auto" onClick={this.handleClick} variant="primary">{this.state.formVisible ? 'Close' : 'New Item'} <FontAwesomeIcon icon={this.state.formVisible ? faChevronUp : faChevronDown} /></Button>
               </Col>
               <Col className="yourTotal" xl={6} lg={6} md={6} sm={6} xs={6}>
-                <p style={{textAlign: 'right'}}><span>You owe:</span> ${this.props.currentUserSubtotal}</p>
+                <p style={{ textAlign: 'right' }}><span>You owe:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.currentUserSubtotal} /></p>
               </Col>
             </Row>
-            <LineItemsForm 
-              visbilityClass={this.state.formVisible} 
-              handleFormSubmit={this.props.handleFormSubmit} 
+            <LineItemsForm
+              visbilityClass={this.state.formVisible}
+              handleFormSubmit={this.props.handleFormSubmit}
             />
             {this.props.line_items.map(item => (
               <LineItem
