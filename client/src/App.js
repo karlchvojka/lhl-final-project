@@ -64,7 +64,7 @@ export default class App extends Component {
           )}
         />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/budget" component={Budget} />
+        <Route path="/budgets/:id" component={Budget} />
         <HomeFooter />
       </Router>
     );
