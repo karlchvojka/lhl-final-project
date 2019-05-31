@@ -1,0 +1,64 @@
+.budgetDashboard {
+  padding:0px;
+  margin-bottom:10px;
+
+
+  .budgetDashboardInner {
+    .mainSectionWrap {
+      background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+      padding-left:0px;
+      padding-top:20px;
+      min-height:100vh;
+
+      .innerMainSection {
+        .welcomeBackBanner {
+          margin-bottom:20px;
+
+          h2 {
+            margin: 0rem 0rem 0rem 0rem;
+            color: #FFFFFF;
+            font-family: "Open Sans";
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 32px;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .budgetInfo {
+    .container {
+      width:100%;
+      margin:0px;
+      padding:0px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .budgetDashboard {
+
+    .budgetDashboardInner {
+
+      .mainSectionWrap {
+        padding-left:8.333333%;
+
+        .innerMainSection {
+
+          .welcomeBackBanner {
+            h2 {
+              margin: 3rem 0rem 0rem 0rem;
+            }
+          }
+
+        }
+
+      }
+    }
+  }
+}

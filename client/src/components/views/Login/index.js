@@ -1,6 +1,7 @@
 import React from "react";
 import NavbarLoginSignup from "../login-signup-navbar.js";
 import { Container, Row, Col } from 'react-bootstrap';
+import './css_module.scss';
 
 export default ({ handleFormSubmit }) => (
   <Container fluid='true' className="loginPage">

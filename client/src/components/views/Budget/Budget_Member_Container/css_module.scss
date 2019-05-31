@@ -1,0 +1,70 @@
+.usersAside {
+  margin-top:1rem;
+
+  .budgetMembers {
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+    h3 {
+      margin-top:1rem;
+    }
+    .userName {
+      margin-bottom:0px;
+      font-weight:bold;
+    }
+    .userEmail {
+      font-size: 12px;
+      color: #AFB4B7;
+    }
+
+    span {
+      font-weight:bold;
+    }
+
+    .notificationWrap {
+      button, .notifSubmit {
+        width:100%;
+        margin-bottom:10px;
+        background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+        border:none;
+        border-radius:5px;
+        padding:5px;
+        color:#ffffff;
+        font-weight:700;
+      }
+      button:hover, .notifSubmit:hover {
+        background: linear-gradient(90deg, $orange1 0%, $orange2 100%);
+      }
+
+      .notificationForm {
+        display:none;
+      }
+      form {
+        input, textarea {
+          width:100%;
+          margin-bottom:10px;
+        }
+        textarea {
+          resize:none;
+        }
+        p {
+          margin-bottom:0px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .usersAside {
+    margin-top:3.23rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .usersAside {
+    margin-top:5.2rem;
+    padding:1rem;
+
+  }
+}
