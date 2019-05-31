@@ -3,14 +3,14 @@ import { Container, Row, Col } from "react-bootstrap";
 import DashboardTopNav from "../../common/Topnav/dashboard-top-nav.js";
 import DashboardSidebar from "../../common/Sidebar/dashboard-sidebar.js";
 import WelcomeBanner from "../../common/WelcomeBanner/welcomeBanner.js";
-import LoadingSpinner from  "../../common/Loading/index.js";
+import LoadingSpinner from "../../common/Loading/index.js";
 import BudgetCard from './budgetCard/';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: { id: 1, first: 'Karl', last: 'Johansson' },
+      user: { id: 1, first: 'Andrea', last: 'Mastratoni' },
       budget: []
     };
   }
@@ -23,8 +23,8 @@ class Dashboard extends Component {
       ).then(resp => resp.json());
     }
     function delay(t, v) {
-      return new Promise(function(resolve) {
-          setTimeout(resolve.bind(null, v), t)
+      return new Promise(function (resolve) {
+        setTimeout(resolve.bind(null, v), t)
       });
     }
 
@@ -66,9 +66,9 @@ class Dashboard extends Component {
                   <Container fluid="true">
                     <WelcomeBanner userName={user} />
                     <Row className="budgetCardWraps">
-                    {this.state.budget.map(item => (
-                      <BudgetCard key={item.id} budgetName={item.name} />
-                    ))}
+                      {this.state.budget.map(item => (
+                        <BudgetCard key={item.id} budgetName={item.name} />
+                      ))}
                     </Row>
                   </Container>
                 </Col>
