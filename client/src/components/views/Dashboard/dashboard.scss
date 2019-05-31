@@ -167,32 +167,7 @@ $orange2: #FB4E5B;
             line-height: 32px;
           }
         }
-        .budgetInfo {
-          border-radius: 4px;
-          background-color: #FFFFFF;
-          box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
-          padding:1rem;
-          margin-bottom:20px;
 
-          .container {
-            padding: 0px;
-          }
-
-          .budgetTotal {
-            text-align:left;
-
-            p {
-              font-size:18px;
-              span {
-                font-weight:bold;
-              }
-            }
-          }
-          .createdDate {
-            font-size:12px;
-            color: #AFB4B7;
-          }
-        }
       }
     }
   }
@@ -415,11 +390,7 @@ footer {
               margin: 3rem 0rem 0rem 0rem;
             }
           }
-          .budgetInfo {
-            .budgetTotal {
-              text-align:right;
-            }
-          }
+
         }
         .usersAside {
           margin-top:5.2rem;
