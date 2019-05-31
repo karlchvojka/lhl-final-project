@@ -1,0 +1,18 @@
+.dashboardTopNav {
+  background: linear-gradient(0deg, #FFFFFF 0%, #FAFBFC 100%);
+  box-shadow: 0 4px 10px 0 rgba(0,81,131,0.12);
+
+  .navbar-brand {
+    color: #313A46;
+    font-family: "Titillium Web";
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 30px;
+    text-transform:uppercase;
+    img {
+      width:35px;
+      margin-right:5px;
+      margin-left:15px;
+    }
+  }
+}

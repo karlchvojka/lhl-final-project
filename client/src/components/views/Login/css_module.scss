@@ -1,17 +1,16 @@
-
-.loginPage {
+.loginPage{
   padding:0px;
 
-  // START LOGIN NAV STYLES
   .loginSignupNav {
+    height:72px;
     height: 72px;
-  	background: linear-gradient(148.8deg, #1CC4C8 0%, #3DD6A5 100%);
+    background: linear-gradient(148.8deg, #1CC4C8 0%, #3DD6A5 100%);
     padding:0px;
 
-    .col-2 {
+    .backWrap {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: left;
 
       a:link, a:visited {
         color: #FFFFFF;
@@ -20,10 +19,10 @@
         line-height: 23px;
         margin-bottom:0px;
       }
-
-
     }
-    .col-10{
+
+
+    .logoCol{
       display: flex;
       align-items: center;
       justify-content: center;
@@ -47,7 +46,6 @@
       }
     }
   }
-  // END LOGIN NAV STYLES
 
   #loginForm {
     height: 100vh;
@@ -75,12 +73,62 @@
       }
     }
   }
+}
 
-  .loginForm {
+@media (min-width: 576px) {
+}
 
-    h1 {
-      text-align:center;
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+
+  .loginPage {
+    .loginSignupNav {
+      .backWrap {
+        justify-content: center;
+      }
     }
-  }
 
+    #loginForm {
+
+      #login-form {
+        border:1px solid #e6e6e6;
+        padding: 10px;
+        margin-bottom: 10px;
+
+        input {
+          width:100%;
+          border-radius:5px;
+          border: 1px solid #e6e6e6;
+        }
+
+        p {
+          font-weight:700;
+        }
+
+        .loginSubmit {
+          background: linear-gradient(90deg, #FB6649 0%, #FB4E5B 100%);
+          color:#fff;
+          padding:5px 0px;
+        }
+      }
+    }
+
+    .loginForm {
+
+      h1 {
+        text-align:center;
+      }
+    }
+
+  }
 }

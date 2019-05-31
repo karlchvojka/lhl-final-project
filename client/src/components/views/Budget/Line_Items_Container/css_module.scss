@@ -1,0 +1,100 @@
+.lineItemsContainer {
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+  margin-top:20px;
+  padding:1rem;
+
+  .addFormButtonRow {
+    margin-bottom:10px;
+
+    span {
+      font-weight:bold;
+    }
+    .yourTotal {
+
+      p {
+        margin-top:.5rem;
+      }
+    }
+    button.addItems {
+      background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+      border: none;
+      font-weight:bold;
+      width:9rem;
+      border-radius: 5px;
+      height: 37px;
+    }
+
+    button.addItems:hover {
+      background: linear-gradient(90deg, $orange1 0%, $orange2 100%);
+      border-color: $tealBlue;
+    }
+  }
+
+  #addItemForm {
+
+    #create-new-item-form {
+      border:1px solid #e6e6e6;
+      padding: 10px;
+      margin-bottom: 10px;
+            input, .react-numeric-input {
+              width:100%;
+              border-radius:5px;
+              border: 1px solid #e6e6e6;
+            }
+
+      input {
+        width:100%;
+        border-radius:5px;
+        border: 1px solid #e6e6e6;
+        margin-bottom:10px;
+      }
+
+      p {
+        font-weight:700;
+        margin-bottom:0px;
+      }
+
+      .addItemSubmit {
+        background: linear-gradient(90deg, $orange1 0%, $orange2 100%);
+        color:#fff;
+        padding:5px 0px;
+        font-weight:700;
+      }
+
+      .addItemSubmit:hover {
+        background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+        border-color: $tealBlue;
+      }
+    }
+  }
+
+  .lineItem {
+    border-bottom: solid 1px $tealBlue;
+    margin-bottom: 10px;
+
+    .itemName {
+      margin-bottom: 0px;
+      font-weight:700;
+    }
+
+    .itemCreator {
+      font-size:12px;
+      color: grey;
+    }
+
+    .itemTotal, .itemOwe, .itemDelete {
+      font-size:15px;
+
+      span {
+        font-weight:700;
+      }
+    }
+
+    .icon {
+      margin-bottom:5px;
+      color:$tealBlue;
+    }
+  }
+}
