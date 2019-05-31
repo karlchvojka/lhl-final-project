@@ -16,7 +16,7 @@ class BudgetMembersContainer extends Component {
       <Container className="budgetMembers" fluid='true'>
         <Row>
           <Col xl={12} lg={12} md={12} sm={12} xs={12}>
-          <h3>Budget Members</h3>
+          <h3>Squabble Members</h3>
           </Col>
         </Row>
         {this.props.budget_members.map(member => (

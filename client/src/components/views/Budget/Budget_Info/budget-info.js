@@ -20,9 +20,9 @@ class BudgetInfo extends Component {
                 <p className="createdDate">Created on: {new Date(newDate).toDateString()}</p>
               </Col>
               <Col className="budgetTotal" xl={6} lg={6} md={12} sm={12} xs={12}>
-                <p><span>Overall total:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.budget_total.overall_total} /> </p>
-                <p><span>Shared total:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.budget_total.shared_total} /> </p>
-                <p><span>Squabbled expenses:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.budget_total.other_total} /></p>
+                <div><span>Overall total:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.budget_total.overall_total} /> </div>
+                <div><span>Shared total:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.budget_total.shared_total} /> </div>
+                <div><span>Squabbled expenses:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.budget_total.other_total} /></div>
               </Col>
             </Row>
           </Container>

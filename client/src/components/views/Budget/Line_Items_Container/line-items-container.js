@@ -32,7 +32,7 @@ class LineItemsContainer extends Component {
                 <Button className="addItems Butto ml-auto" onClick={this.handleClick} variant="primary">{this.state.formVisible ? 'Close' : 'New Item'} <FontAwesomeIcon icon={this.state.formVisible ? faChevronUp : faChevronDown} /></Button>
               </Col>
               <Col className="yourTotal" xl={6} lg={6} md={6} sm={6} xs={6}>
-                <p style={{ textAlign: 'right' }}><span>You owe:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.currentUserSubtotal} /></p>
+                <div style={{ textAlign: 'right' }}><span>You owe:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.currentUserSubtotal} /></div>
               </Col>
             </Row>
             <LineItemsForm

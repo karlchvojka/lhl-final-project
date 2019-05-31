@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DashboardTopNav from "../../common/Topnav/dashboard-top-nav.js";
-import WelcomeBanner from "./welcomeBanner.js";
+import WelcomeBanner from "../../common/WelcomeBanner/welcomeBanner.js";
 import DashboardSidebar from "../../common/Sidebar/dashboard-sidebar.js";
 import BudgetInfo from "./Budget_Info/budget-info.js";
 import BudgetMembersContainer from "./Budget_Member_Container/budget-members-container.js";
