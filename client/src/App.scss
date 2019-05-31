@@ -20,7 +20,7 @@
   border-color:none !important;
 }
 @import "/styles/large.scss";
-@import "/styles/home-page.scss";
+@import "./components/views/Home/home-page.scss";
 
 // IMPORT COMPONENT FILES
 @import '/components/views/Login/login.scss';

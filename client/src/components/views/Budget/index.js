@@ -207,7 +207,7 @@ class Budget extends Component {
     return (
 
       <Container className="budgetDashboard no-gutters noGutters" fluid="true" >
-        <LoadingSpinner  />
+        <LoadingSpinner className="loadingSpinner" />
         <DashboardTopNav userName={user} />
         <Row className="budgetDashboardInner" noGutters="true">
           <Col xl={1} lg={12} md={12} sm={12} xs={12}>
