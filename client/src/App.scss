@@ -20,11 +20,9 @@
   border-color:none !important;
 }
 @import "/styles/large.scss";
-@import "./components/views/Home/home-page.scss";
+@import "/styles/home-page.scss";
 
 // IMPORT COMPONENT FILES
 @import '/components/views/Login/login.scss';
 @import '/components/views/Signup/signup.scss';
-@import '/components/common/Sidebar/dashboard-sidebar.scss';
-@import '/components/common/Topnav/dashboard-top-nav.scss';
-@import '/styles/overall.scss';
+@import '/components/views/Dashboard/dashboard.scss';

@@ -6,8 +6,7 @@ import Aboutpg from "./components/views/About/";
 import HomeFooter from "./components/views/footer.js";
 import Login from "./components/views/Login/";
 import Signup from "./components/views/Signup";
-import Dashboard from "./components/views/Dashboard";
-import Budget from "./components/views/Budget/";
+import Dashboard from "./components/views/Dashboard/";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStroopwafel, faEdit, faTrashAlt, faSave, faSortDown, faChevronUp, faChevronDown, faUser, faHome, faFileInvoiceDollar, faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -27,7 +26,7 @@ export default class App extends Component {
   handleLoginSubmit = evt => {
     evt.preventDefault();
     // console.log(evt.target.email.value, evt.target.password.value);
-    window.location.href = '/budget';
+    window.location.href = '/dashboard';
     return false;
   };
 
@@ -62,7 +61,6 @@ export default class App extends Component {
           )}
         />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/budget" component={Budget} />
         <HomeFooter />
       </Router>
     );
