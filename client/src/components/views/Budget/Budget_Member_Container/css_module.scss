@@ -17,6 +17,22 @@
       color: #AFB4B7;
     }
 
+    .odometer.odometer-auto-theme, .odometer.odometer-theme-plaza {
+      background-color:#ffffff;
+      border-radius:0px;
+      border:none;
+      vertical-align:auto;
+    }
+    .odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-plaza .odometer-digit {
+      color:#000000;
+      font-weight:400;
+    }
+    .odometer.odometer-auto-theme .odometer-digit .odometer-value, .odometer.odometer-theme-plaza .odometer-digit .odometer-value {
+      font-weight:400;
+      font-family: "Open Sans";
+
+    }
+
     span {
       font-weight:bold;
     }
