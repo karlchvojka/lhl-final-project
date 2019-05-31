@@ -134,8 +134,8 @@ class Budget extends Component {
     const budget_id = this.state.budget.id;
     const user_id = this.state.user.id;
     const oldLineitems = this.state.line_items
-
-    axios.post(`api/v1/budgets/${budget_id}/line_items`, {
+    console.log("THis is the budget", this.state.budget)
+    axios.post(`/api/v1/budgets/${budget_id}/line_items`, {
       budget_id: budget_id,
       name: name,
       amount: amount,
@@ -159,7 +159,7 @@ class Budget extends Component {
 
     const oldLineitems = this.state.line_items
     const newLineItems = oldLineitems.filter(item => item.id !== id)
-    axios.delete(`api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
+    axios.delete(`/api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
       .then(() => {
         this.setState({ line_items: [...newLineItems] })
       })
@@ -171,7 +171,7 @@ class Budget extends Component {
   }
 
   handleLineItemUpdate = line_item => {
-    fetch(`api/v1/budgets/${this.state.budget.id}/line_items/${line_item.id}`,
+    fetch(`/api/v1/budgets/${this.state.budget.id}/line_items/${line_item.id}`,
       {
         method: 'PUT',
         body: JSON.stringify(line_item),
