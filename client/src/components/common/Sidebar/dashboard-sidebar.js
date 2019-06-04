@@ -8,7 +8,7 @@ class BudgetSidebar extends Component {
   render() {
     return (
       <Nav defaultActiveKey="/home" className="sidebarComp">
-        <Nav.Link href="/">
+        <Nav.Link href="/dashboard">
           <FontAwesomeIcon icon={faHome} />
           <p>Dashboard</p>
         </Nav.Link>

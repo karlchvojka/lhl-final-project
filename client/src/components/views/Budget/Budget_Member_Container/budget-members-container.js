@@ -3,11 +3,21 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import BudgetMember from "./budget-member.js";
 
+
+
 class BudgetMembersContainer extends Component {
+
   render() {
     const { subtotals } = this.props
     const emailString = this.props.budget_members.map(member => (member.email)).join(', ');
     const notForm = document.getElementsByClassName('notificationForm');
+    const { first, last } = this.props.user
+    const greeting = `Hello Squabbler!\nYou have received an auto-generated notification from Squabble from ${first} ${last} for ${this.props.budgetName}. `
+    const owings = this.props.budget_members.map(member => (
+      `${member.first} owes ${subtotals[member.id]}.`
+    )).join(' ')
+    const closing = ` Please check out more details of your Squabble here.\nThanks!\nSquabble Team`
+    
     function notificationClick() {
       notForm[0].style.display = 'block';
     };
@@ -30,9 +40,9 @@ class BudgetMembersContainer extends Component {
                 <p>To:</p>
                 <input type="text" value={emailString} />
                 <p>Subject</p>
-                <input type="text" value={this.props.budgetName + ' Squabble Notification'} />
+                <input type="text" value={this.props.budgetName + ' | Squabble Notification'} />
                 <p>Message</p>
-                <textarea></textarea>
+                <textarea type="text" value={greeting + owings + closing} ></textarea>
                 <input className="notifSubmit" type="submit" />
               </form>
             </div>

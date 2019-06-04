@@ -234,7 +234,7 @@ class Budget extends Component {
                   </Container>
                 </Col>
                 <Col className="usersAside" xl={4} lg={6} md={12} sm={12} xs={12}>
-                  <BudgetMembersContainer budget_members={budget_members} subtotals={budget_members_subtotals} budgetName={budget.name} />
+                  <BudgetMembersContainer user={user} budget_members={budget_members} subtotals={budget_members_subtotals} budgetName={budget.name} />
                 </Col>
               </Row>
             </Container>
