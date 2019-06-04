@@ -4,6 +4,16 @@ import { Container, Row, Col } from "react-bootstrap";
 import BudgetMember from "./budget-member.js";
 
 class BudgetMembersContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { noteFormVisible: false };
+    this.handleNoteClick = this.handleNoteClick.bind(this);
+  }
+  handleNoteClick() {
+    this.setState({
+      noteFormVisible: !this.state.noteFormVisible
+    })
+  }
   render() {
     const { subtotals } = this.props
     const emailString = this.props.budget_members.map(member => (member.email)).join(', ');
@@ -24,8 +34,8 @@ class BudgetMembersContainer extends Component {
         ))}
         <Row className="notificationWrap">
           <Col xl={12} lg={12} md={12} sm={12} xs={12}>
-            <button onClick={notificationClick} >Notify Budget Members</button>
-            <div className="notificationForm">
+            <button onClick={this.handleNoteClick}>{this.state.noteFormVisible ? 'Close' : 'Notify Budget Members'}</button>
+            <div className={this.state.noteFormVisible ? 'notificationForm showForm' : 'notificationForm hiddenForm'}>
               <form>
                 <p>To:</p>
                 <input type="text" value={emailString} />

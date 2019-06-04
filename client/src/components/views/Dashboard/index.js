@@ -65,6 +65,11 @@ class Dashboard extends Component {
                 <Col className="innerMainSection" xl={7} lg={6} md={12} sm={12} xs={12}>
                   <Container fluid="true">
                     <WelcomeBanner userName={user} />
+                    <Row>
+                      <Col  xl={1} lg={12} md={12} sm={12} xs={12}>
+                        <button className="btn new-budget-button">New Budget</button>
+                      </Col>
+                    </Row>
                     <Row className="budgetCardWraps">
                     {this.state.budget.map(item => (
                       <BudgetCard key={item.id} budgetName={item.name} budgetID={item.id} users={item.members} imgSrc={item.url}/>

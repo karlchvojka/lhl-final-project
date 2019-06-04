@@ -1,6 +1,12 @@
 .budgetCardWrap {
   margin-top:10px;
 
+  img {
+    max-height:220px;
+    width:auto;
+    overflow:hidden;
+  }
+
   .btn {
     height:auto;
   }
