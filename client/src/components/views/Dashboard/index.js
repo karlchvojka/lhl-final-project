@@ -53,7 +53,7 @@ class Dashboard extends Component {
     console.log(this.state.budget);
     return (
       <Container className="overallDashboard no-gutters noGutters" fluid="true">
-        <LoadingSpinner className="loadingSpinner" />
+        <LoadingSpinner className="loadingSpinner" message="Loading Squabbles..." />
         <DashboardTopNav userName={user} />
         <Row className="budgetDashboardInner" noGutters="true">
           <Col xl={1} lg={12} md={12} sm={12} xs={12}>
@@ -66,14 +66,14 @@ class Dashboard extends Component {
                   <Container fluid="true">
                     <WelcomeBanner userName={user} />
                     <Row>
-                      <Col  xl={1} lg={12} md={12} sm={12} xs={12}>
+                      <Col xl={1} lg={12} md={12} sm={12} xs={12}>
                         <button className="btn new-budget-button">New Budget</button>
                       </Col>
                     </Row>
                     <Row className="budgetCardWraps">
-                    {this.state.budget.map(item => (
-                      <BudgetCard key={item.id} budgetName={item.name} budgetID={item.id} users={item.members} imgSrc={item.url}/>
-                    ))}
+                      {this.state.budget.map(item => (
+                        <BudgetCard key={item.id} budgetName={item.name} budgetID={item.id} users={item.members} imgSrc={item.url} />
+                      ))}
                     </Row>
                   </Container>
                 </Col>
