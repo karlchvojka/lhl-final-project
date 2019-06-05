@@ -53,66 +53,49 @@ budget.line_items.create!({
 
 budget.line_items.create!({
   budget_id: budget.id,
-  name: "Internet",
-  amount: 100.00,
-  user_id: user2.id,
-  paid: false
-})
-
-budget.line_items.create!({
-  budget_id: budget.id,
-  name: "Hydro",
-  amount: 100.00,
-  user_id: user3.id,
-  paid: false
-})
-
-budget.line_items.create!({
-  budget_id: budget.id,
-  name: "Cups",
-  amount: 15.00,
-  user_id: user1.id,
-  paid: true
-})
-
-budget.line_items.create!({
-  budget_id: budget.id,
-  name: "BEEER",
-  amount: 60,
+  name: "Laudry Soap",
+  amount: 30.00,
   user_id: user2.id,
   paid: true
 })
 
-budget.line_items.create!({
-  budget_id: budget.id,
-  name: "Pizza",
-  amount: 24,
-  user_id: user3.id,
-  paid: true
-})
+
+
+
+
+
 #------Budget 2 -----------
 budget2.line_items.create!({
   budget_id: budget.id,
-  name: "Rent",
-  amount: 1500.00,
+  name: "Tickets to Pei",
+  amount: 1000.00,
   user_id: user1.id,
   paid: false
 })
 
 budget2.line_items.create!({
   budget_id: budget.id,
-  name: "Internet",
-  amount: 100.00,
+  name: "AirBNB",
+  amount: 333.00,
   user_id: user4.id,
   paid: false
 })
 
 budget2.line_items.create!({
   budget_id: budget.id,
-  name: "Hydro",
-  amount: 100.00,
+  name: "Dinner at Lobster house",
+  amount: 127.00,
   user_id: user1.id,
-  paid: false
+  paid: true
 })
+
+budget2.line_items.create!({
+  budget_id: budget.id,
+  name: "Whale Watching",
+  amount: 300.00,
+  user_id: user4.id,
+  paid: true
+})
+
 
 puts "DONE SEEDING!"
