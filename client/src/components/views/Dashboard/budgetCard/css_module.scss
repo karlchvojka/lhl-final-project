@@ -1,0 +1,43 @@
+.budgetCardWrap {
+  margin-top:10px;
+
+  img {
+    max-height:220px;
+    width:auto;
+    overflow:hidden;
+  }
+
+  .btn {
+    height:auto;
+  }
+}
+
+
+
+@media (min-width: 576px) {
+  .budgetCardWrap {
+    margin-top:0px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .budgetCardWrap {
+    margin-top:0px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .budgetCardWrap {
+    margin-top:0px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .budgetCardWrap {
+    margin-top:0px;
+  }
+}
+/* END OF 1200 MEDIA QUERY */

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 
-const numeral = require('numeral');
+import Odometer from 'react-odometerjs'
+import 'odometer/themes/odometer-theme-plaza.css'
 
 
 class BudgetMember extends Component {
@@ -15,7 +16,7 @@ class BudgetMember extends Component {
           <p className="userEmail">{email} </p>
         </Col>
         <Col xl={5} lg={5} md={5} sm={5} xs={5}>
-          <span>Owes:</span> {numeral(subtotal).format('$ 0,0[.]00')}
+          <span>Owes:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={subtotal} />
         </Col>
       </Row>
     );

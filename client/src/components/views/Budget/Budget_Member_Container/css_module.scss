@@ -1,0 +1,86 @@
+.usersAside {
+  margin-top:1rem;
+
+  .budgetMembers {
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px 5px rgba(23,128,224,0.12);
+    h3 {
+      margin-top:1rem;
+    }
+    .userName {
+      margin-bottom:0px;
+      font-weight:bold;
+    }
+    .userEmail {
+      font-size: 12px;
+      color: #AFB4B7;
+    }
+
+    .odometer.odometer-auto-theme, .odometer.odometer-theme-plaza {
+      background-color:#ffffff;
+      border-radius:0px;
+      border:none;
+      vertical-align:auto;
+    }
+    .odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-plaza .odometer-digit {
+      color:#000000;
+      font-weight:400;
+    }
+    .odometer.odometer-auto-theme .odometer-digit .odometer-value, .odometer.odometer-theme-plaza .odometer-digit .odometer-value {
+      font-weight:400;
+      font-family: "Open Sans";
+
+    }
+
+    span {
+      font-weight:bold;
+    }
+
+    .notificationWrap {
+      button, .notifSubmit {
+        width:100%;
+        margin-bottom:10px;
+        background: linear-gradient($tealBlue 0%, $tealGreen 100%);
+        border:none;
+        border-radius:5px;
+        padding:5px;
+        color:#ffffff;
+        font-weight:700;
+      }
+      button:hover, .notifSubmit:hover {
+        background: linear-gradient(90deg, $orange1 0%, $orange2 100%);
+      }
+
+      .notificationForm {
+      }
+      form {
+        input, textarea {
+          width:100%;
+          margin-bottom:10px;
+        }
+        textarea {
+          resize:none;
+          height: auto;
+        }
+        p {
+          margin-bottom:0px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .usersAside {
+    margin-top:3.23rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .usersAside {
+    margin-top:5.2rem;
+    padding:1rem;
+
+  }
+}

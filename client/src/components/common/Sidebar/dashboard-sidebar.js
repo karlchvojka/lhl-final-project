@@ -1,14 +1,14 @@
+// Standard imports
 import React, { Component } from 'react';
 import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faHome, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
 
-
-class DashboardSidebar extends Component {
+class BudgetSidebar extends Component {
   render() {
     return (
       <Nav defaultActiveKey="/home" className="sidebarComp">
-        <Nav.Link href="/">
+        <Nav.Link href="/dashboard">
           <FontAwesomeIcon icon={faHome} />
           <p>Dashboard</p>
         </Nav.Link>
@@ -16,13 +16,13 @@ class DashboardSidebar extends Component {
           <FontAwesomeIcon icon={faFileInvoiceDollar} />
           <p>Bills</p>
         </Nav.Link>
-        <Nav.Link eventKey="link-2">
+        {/* <Nav.Link eventKey="link-2">
           <FontAwesomeIcon icon={faUser} />
           <p>Roommates</p>
-        </Nav.Link>
+        </Nav.Link> */}
       </Nav>
       )
     }
   }
 
-  export default DashboardSidebar;
+  export default BudgetSidebar;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-const numeral = require('numeral');
+import Odometer from 'react-odometerjs'
+import 'odometer/themes/odometer-theme-plaza.css'
+
 
 class BudgetInfo extends Component {
   // let { budget, line_items, budget_members, sumObjectValues} = props;
@@ -18,9 +20,9 @@ class BudgetInfo extends Component {
                 <p className="createdDate">Created on: {new Date(newDate).toDateString()}</p>
               </Col>
               <Col className="budgetTotal" xl={6} lg={6} md={12} sm={12} xs={12}>
-                <p><span>Overall total:</span> {numeral(this.props.budget_total.overall_total).format('$ 0,0[.]00')}</p>
-                <p><span>Shared total:</span> {numeral(this.props.budget_total.shared_total).format('$ 0,0[.]00')}</p>
-                <p><span>Squabbled expenses:</span> {numeral(this.props.budget_total.other_total).format('$ 0,0[.]00')}</p>
+                <div><span>Overall total:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.budget_total.overall_total} /> </div>
+                <div><span>Shared total:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.budget_total.shared_total} /> </div>
+                <div><span>Squabbled expenses:</span> $ <Odometer animation="count" format="(,ddd).dd" duration={1500} value={this.props.budget_total.other_total} /></div>
               </Col>
             </Row>
           </Container>

@@ -1,0 +1,20 @@
+.welcomeBackBanner {
+  margin-bottom:20px;
+
+  h2 {
+    margin: 0rem 0rem 0rem 0rem;
+    color: #FFFFFF;
+    font-family: "Open Sans";
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .welcomeBackBanner {
+    h2 {
+      margin: 3rem 0rem 0rem 0rem;
+    }
+  }
+}

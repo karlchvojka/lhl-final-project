@@ -1,18 +1,21 @@
+// CSS Imports
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.scss";
+
 // React imports
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/views/Home/";
 import Aboutpg from "./components/views/About/";
-import HomeFooter from "./components/views/footer.js";
+import HomeFooter from "./components/views/Footer/footer.js";
 import Login from "./components/views/Login/";
 import Signup from "./components/views/Signup";
-import Dashboard from "./components/views/Dashboard/";
+import Dashboard from "./components/views/Dashboard";
+import Budget from "./components/views/Budget/";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStroopwafel, faEdit, faTrashAlt, faSave, faSortDown, faChevronUp, faChevronDown, faUser, faHome, faFileInvoiceDollar, faBars } from '@fortawesome/free-solid-svg-icons';
 
-// CSS Imports
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.scss";
+
 
 library.add(faStroopwafel, faEdit, faTrashAlt, faSave, faSortDown, faChevronUp, faChevronDown, faUser, faHome, faFileInvoiceDollar, faBars)
 
@@ -61,6 +64,7 @@ export default class App extends Component {
           )}
         />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/budgets/:id" component={Budget} />
         <HomeFooter />
       </Router>
     );

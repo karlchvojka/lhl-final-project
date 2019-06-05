@@ -16,25 +16,26 @@ puts "Seeding db data"
 
 puts "Seeding budget"
 
-budget = Budget.create(name: '24 Sussex Drive', total: 0.00)
+budget = Budget.create(name: '24 Sussex Drive', total: 0.00, url: "https://postmediaottawacitizen2.files.wordpress.com/2015/09/undated-undated-handout-photo-of-exterior-of-24-sussex-dr.jpeg")
 
-budget2 = Budget.create(name: 'testing', total: 0.00)
+budget2 = Budget.create(name: 'Vacation', total: 0.00, url: "https://www.tourismpei.com/sites/default/files/homepage-cta/aboutpei_homepage_cta.jpg")
 
 ## USERS
 
 puts "Seeding users"
 
-user1 = budget.users.create_with({last: 'Johansson', email: 'karl@email.com'}).find_or_create_by! first: 'Karl'
-user2 = budget.users.create_with({last: 'Johansson', email: 'andrea@email.com'}).find_or_create_by! first: 'Andrea'
-user3 = budget.users.create_with({last: 'Johansson', email: 'eden@email.com'}).find_or_create_by! first: 'Eden'
+user1 = budget.users.create_with({last: 'Mastrantoni', email: 'andrea@email.com'}).find_or_create_by! first: 'Andrea'
+user2 = budget.users.create_with({last: 'Chvojka', email: 'karl@email.com'}).find_or_create_by! first: 'Karl'
+user3 = budget.users.create_with({last: 'Yeung', email: 'eden@email.com'}).find_or_create_by! first: 'Eden'
 
-user4 = budget2.users.create_with({last: 'Mctest', email: 'eden@email.com'}).find_or_create_by! first: 'Testy'
+user4 = budget2.users.create_with({last: 'Mackey', email: 'britney@email.com'}).find_or_create_by! first: 'Britney'
+
 
 ## BUDGET_MEMBERS
 
 puts "Add budget members"
 
-# BudgetMember.find_or_create_by!(user_id: user1.id, budget_id: budget.id)
+BudgetMember.find_or_create_by!(user_id: user1.id, budget_id: budget2.id)
 # BudgetMember.find_or_create_by!(user_id: user2.id, budget_id: budget.id)
 # BudgetMember.find_or_create_by!(user_id: user3.id, budget_id: budget.id)
 
@@ -52,66 +53,49 @@ budget.line_items.create!({
 
 budget.line_items.create!({
   budget_id: budget.id,
-  name: "Internet",
-  amount: 100.00,
+  name: "Laudry Soap",
+  amount: 30.00,
   user_id: user2.id,
+  paid: true
+})
+
+
+
+
+
+
+#------Budget 2 -----------
+budget2.line_items.create!({
+  budget_id: budget.id,
+  name: "Tickets to Pei",
+  amount: 1000.00,
+  user_id: user1.id,
   paid: false
 })
 
-budget.line_items.create!({
+budget2.line_items.create!({
   budget_id: budget.id,
-  name: "Hydro",
-  amount: 100.00,
-  user_id: user3.id,
+  name: "AirBNB",
+  amount: 333.00,
+  user_id: user4.id,
   paid: false
 })
 
-budget.line_items.create!({
+budget2.line_items.create!({
   budget_id: budget.id,
-  name: "Cups",
-  amount: 15.00,
+  name: "Dinner at Lobster house",
+  amount: 127.00,
   user_id: user1.id,
   paid: true
 })
 
-budget.line_items.create!({
+budget2.line_items.create!({
   budget_id: budget.id,
-  name: "BEEER",
-  amount: 60,
-  user_id: user2.id,
+  name: "Whale Watching",
+  amount: 300.00,
+  user_id: user4.id,
   paid: true
 })
 
-budget.line_items.create!({
-  budget_id: budget.id,
-  name: "Pizza",
-  amount: 24,
-  user_id: user3.id,
-  paid: true
-})
-
-budget2.line_items.create!({
-  budget_id: budget.id,
-  name: "Rent",
-  amount: 1500.00,
-  user_id: user4.id,
-  paid: false
-})
-
-budget2.line_items.create!({
-  budget_id: budget.id,
-  name: "Internet",
-  amount: 100.00,
-  user_id: user4.id,
-  paid: false
-})
-
-budget2.line_items.create!({
-  budget_id: budget.id,
-  name: "Hydro",
-  amount: 100.00,
-  user_id: user4.id,
-  paid: false
-})
 
 puts "DONE SEEDING!"
