@@ -1,4 +1,5 @@
 # Final Project - Budget Sharing
+!['Screenshot1'](https://github.com/karlchvojka/lhl-final-project/blob/master/docs/budget.png)
 
 ## Getting Started
 clone the repo down into a folder.
