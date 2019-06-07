@@ -14,7 +14,7 @@ Its purpose is to handle data, and export a JSON api.
 The client folder is a react app built seperately from the server.
 This is just React.
 
-### Prerequisits
+### Prerequisites
 
 ### Setup
 
