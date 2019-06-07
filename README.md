@@ -1,8 +1,12 @@
-# Final Project - Budget Sharing
+# Final Project - SQUABBLE - Budget Splitting app.
+
 !['Screenshot1'](https://github.com/karlchvojka/lhl-final-project/blob/master/docs/budget.png)
 
+## Contributors
+[Karl Chvojka](https://www.google.com), [Andrea Masrantoni](https://github.com/andmast), [Eden Yeung ](https://github.com/basktballer)
+
 ## Getting Started
-clone the repo down into a folder.
+Clone the repo down into a folder.
 
 There are two folders within the root.
 
@@ -15,7 +19,8 @@ The client folder is a react app built seperately from the server.
 This is just React.
 
 ### Prerequisits
-
+- NPM
+- Rails
 ### Setup
 
 #### Server
@@ -30,27 +35,3 @@ This is just React.
 2. npm install
 3. npm start
 4. In your browser: localhost:3001
-
-### Setup
-## Git Flow
-### DELETE BEFORE SUBMITTING
-1. Pull Develop and then Branch -> Feature/
-```
-git checkout develop
-git pull origin master
-git pull origin develop
-git checkout -b feature/<branch name>
-```
-2. Code done in FEATURE branches off develop
-3. Test in Feature branch.
-4. If 3 passes, Merge into Develop.
-```
-git checkout develop
-git merge feature/branch-name
-```
-5. Test on Develop branch
-6. Push into Remote develop
-```
-git push origin develop
-```
-7. Create pull request on Github website
