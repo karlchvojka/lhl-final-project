@@ -53,16 +53,11 @@ budget.line_items.create!({
 
 budget.line_items.create!({
   budget_id: budget.id,
-  name: "Laudry Soap",
+  name: "Laundry Soap",
   amount: 30.00,
   user_id: user2.id,
   paid: true
 })
-
-
-
-
-
 
 #------Budget 2 -----------
 budget2.line_items.create!({
