@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DashboardTopNav from "../../common/Topnav/dashboard-top-nav.js";
 import WelcomeBanner from "../../common/WelcomeBanner/welcomeBanner.js";
@@ -10,22 +10,18 @@ import LoadingSpinner from '../../common/Loading/';
 import axios from 'axios';
 
 
-class Budget extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      budget: [],
-      line_items: [],
-      budget_members: [],
-      user: { id: 1, first: 'Andrea', last: 'Mastrantoni' },
-      budget_members_subtotals: [],
-      budget_total: {},
-    };
-  }
+const Budget = props => {
+  let budget = [], 
+        // budget_members = [],
+        user = { id: 1, first: 'Andrea', last: 'Mastrantoni' },
+        budget_members_subtotals = [],
+        budget_total = {};
+  
+  const [lineitems, setLineitems] = useState([]);
+  const [budgetmembers, setBudgetmembers] = useState([]);
 
-  componentDidMount() {
-    const that = this;
-    const { match: { params } } = that.props;
+  // useEffect(() => {
+    const { match: { params } } = props;
     console.log("This is the id", params.id)
 
     function getBudget() {
@@ -65,23 +61,32 @@ class Budget extends Component {
     //   return line_items.filter(item => item.user_id === user_id);
     // }
 
-    getAPIdata().then(([budget, line_items, budget_members]) => {
+    getAPIdata().then(([pullbudget, pullline_items, pullbudget_members]) => {
       let spinnerElement = document.getElementsByClassName("loadingSpinner");
-      that.setState({
-        budget: budget,
-        line_items: line_items,
-        budget_members: budget_members
-      });
-      that.setState({ budget_total: this.sumObjectValues(line_items) });
-      that.setState({ budget_members_subtotals: this.budgetMembersSubtotals(line_items, budget_members) });
+      // console.log(pullbudget, pullline_items, pullbudget_members)
+      budget = {...pullbudget};
+      setBudgetmembers([...pullbudget_members]);
+      setLineitems([...pullline_items]);
       spinnerElement[0].style.display = "none";
       console.log(
         // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
+        lineitems, budgetmembers, budget, budget_total, budget_members_subtotals
       );
+    }).then(() => {
+      // budget_total = sumObjectValues(lineitems);
+      // budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers);
     });
-  }
 
-  budgetMembersSubtotals(line_items, budget_members) {
+    useEffect(() => {
+      budget_total = sumObjectValues(lineitems);
+      budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers);
+    })
+  // } 
+  // ,
+  // []
+  // );
+
+  const budgetMembersSubtotals = (line_items, budget_members) => {
     const results = {};
     budget_members.forEach(budget_member => {
       results[budget_member.id] = []
@@ -108,7 +113,7 @@ class Budget extends Component {
     return results
   }
 
-  sumObjectValues = (line_items) => {
+  const sumObjectValues = (line_items) => {
     let sum = {
       overall_total: 0,
       shared_total: 0,
@@ -122,18 +127,19 @@ class Budget extends Component {
         sum.shared_total += line_item.amount
       }
     });
+    console.log("This isthe sum", sum)
     return sum
   }
 
-  clearNewItemForm = () => {
+  const clearNewItemForm = () => {
     document.getElementById("create-new-item-form").reset()
   }
 
-  handleNewLineItemFormSubmit = line_item => {
+  const handleNewLineItemFormSubmit = line_item => {
     const { name, amount, paid } = line_item;
-    const budget_id = this.state.budget.id;
-    const user_id = this.state.user.id;
-    const oldLineitems = this.state.line_items
+    const budget_id = budget.id;
+    const user_id = user.id;
+    const oldLineitems = [...lineitems];
     console.log("THis is the budget", this.state.budget)
     axios.post(`/api/v1/budgets/${budget_id}/line_items`, {
       budget_id: budget_id,
@@ -143,35 +149,36 @@ class Budget extends Component {
       user_id: user_id
     })
       .then(resp => {
-        this.setState({ line_items: [resp.data, ...oldLineitems] })
-        this.setState({ budget_total: this.sumObjectValues(this.state.line_items) });
-        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) })
-        this.clearNewItemForm();
+        
+        setLineitems([resp.data, ...oldLineitems])
+        budget_total = sumObjectValues(lineitems);
+        budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers)
+        clearNewItemForm();
       })
       .catch(error => {
         console.log("Error in posting a new line item", error)
       });
 
-    this.setState({ name: '', amount: '', paid: false }) // <= here
+    // this.setState({ name: '', amount: '', paid: false }) // <= here
   };
 
-  handleLineItemDelete = id => {
+  const handleLineItemDelete = id => {
 
-    const oldLineitems = this.state.line_items
+    const oldLineitems = [...lineitems];
     const newLineItems = oldLineitems.filter(item => item.id !== id)
-    axios.delete(`/api/v1/budgets/${this.state.budget.id}/line_items/${id}`)
+    axios.delete(`/api/v1/budgets/${budget.id}/line_items/${id}`)
       .then(() => {
-        this.setState({ line_items: [...newLineItems] })
+        setLineitems([...newLineItems])
       })
       .then(() => {
-        this.setState({ budget_total: this.sumObjectValues(this.state.line_items) });
-        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) });
+        budget_total = sumObjectValues(lineitems);
+        budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers);
       })
       .catch(error => console.log(error));
   }
 
-  handleLineItemUpdate = line_item => {
-    fetch(`/api/v1/budgets/${this.state.budget.id}/line_items/${line_item.id}`,
+  const handleLineItemUpdate = line_item => {
+    fetch(`/api/v1/budgets/${budget.id}/line_items/${line_item.id}`,
       {
         method: 'PUT',
         body: JSON.stringify(line_item),
@@ -182,67 +189,62 @@ class Budget extends Component {
       .then(() => {
         console.log("update posted, now updating set state", line_item)
         this.updateLineItem(line_item)
-        this.setState({ budget_total: this.sumObjectValues(this.state.line_items) });
-        this.setState({ budget_members_subtotals: this.budgetMembersSubtotals(this.state.line_items, this.state.budget_members) });
+        budget_total = sumObjectValues(lineitems);
+        budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers);
       })
       .catch(error => {
         console.log("Error in updating new line item", error)
       })
   }
 
-  updateLineItem = item => {
-    let newLineItems = this.state.line_items.filter((f) => f.id !== item.id)
+  const updateLineItem = item => {
+    let newLineItems = lineitems.filter((f) => f.id !== item.id)
     newLineItems.push(item)
     newLineItems.sort(function (a, b) {
       return b.id - a.id;
     });
-    this.setState({
-      line_items: newLineItems
-    })
-
+    setLineitems([...newLineItems]);
   }
 
-  render() {
-    var { budget, line_items, budget_members, budget_total, user, budget_members_subtotals } = this.state;
-    var currentUserSubtotal = budget_members_subtotals[user.id]
-    return (
+  var currentUserSubtotal = budget_members_subtotals[user.id]
+  return (
 
-      <Container className="budgetDashboard no-gutters noGutters" fluid="true" >
-        <LoadingSpinner className="loadingSpinner" message="Settling Squabbles..." />
-        <DashboardTopNav userName={user} />
-        <Row className="budgetDashboardInner" noGutters="true">
-          <Col xl={1} lg={12} md={12} sm={12} xs={12}>
-            <DashboardSidebar />
-          </Col>
-          <Col className="mainSectionWrap" xl={11} lg={12} md={12} sm={12} xs={12}>
-            <Container fluid="true">
-              <Row>
-                <Col className="innerMainSection" xl={7} lg={6} md={12} sm={12} xs={12}>
-                  <Container fluid="true">
-                    <WelcomeBanner userName={user} />
-                    <BudgetInfo budget={budget} line_items={line_items} budget_members={budget_members} budget_total={budget_total} />
-                    <LineItemsContainer
-                      line_items={line_items}
-                      user={user}
-                      budget_members={budget_members}
-                      handleFormSubmit={this.handleNewLineItemFormSubmit}
-                      budget_id={this.state.budget.id}
-                      handleLineItemDelete={this.handleLineItemDelete}
-                      handleLineItemUpdate={this.handleLineItemUpdate}
-                      currentUserSubtotal={currentUserSubtotal}
-                    />
-                  </Container>
-                </Col>
-                <Col className="usersAside" xl={4} lg={6} md={12} sm={12} xs={12}>
-                  <BudgetMembersContainer user={user} budget_members={budget_members} subtotals={budget_members_subtotals} budgetName={budget.name} />
-                </Col>
-              </Row>
-            </Container>
-          </Col>
-        </Row>
-      </Container >
-    );
-  }
+    <Container className="budgetDashboard no-gutters noGutters" fluid="true" >
+      <LoadingSpinner className="loadingSpinner" message="Settling Squabbles..." />
+      <DashboardTopNav userName={user} />
+      <Row className="budgetDashboardInner" noGutters="true">
+        <Col xl={1} lg={12} md={12} sm={12} xs={12}>
+          <DashboardSidebar />
+        </Col>
+        <Col className="mainSectionWrap" xl={11} lg={12} md={12} sm={12} xs={12}>
+          <Container fluid="true">
+            <Row>
+              <Col className="innerMainSection" xl={7} lg={6} md={12} sm={12} xs={12}>
+                <Container fluid="true">
+                  <WelcomeBanner userName={user} />
+                  <BudgetInfo budget={budget} line_items={lineitems} budget_members={budgetmembers} budget_total={budget_total} />
+                  <LineItemsContainer
+                    line_items={lineitems}
+                    user={user}
+                    budget_members={budgetmembers}
+                    handleFormSubmit={handleNewLineItemFormSubmit}
+                    budget_id={budget.id}
+                    handleLineItemDelete={handleLineItemDelete}
+                    handleLineItemUpdate={handleLineItemUpdate}
+                    currentUserSubtotal={currentUserSubtotal}
+                  />
+                </Container>
+              </Col>
+              <Col className="usersAside" xl={4} lg={6} md={12} sm={12} xs={12}>
+                <BudgetMembersContainer user={user} budget_members={budgetmembers} subtotals={budget_members_subtotals} budgetName={budget.name} />
+              </Col>
+            </Row>
+          </Container>
+        </Col>
+      </Row>
+    </Container >
+  );
+  
 }
 
 export default Budget;

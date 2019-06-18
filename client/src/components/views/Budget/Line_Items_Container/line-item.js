@@ -111,6 +111,7 @@ class LineItem extends Component {
   render() {
     const { budget_members, item, user } = this.props;
     const { user_id, amount, name, id, budget_id } = item;
+    console.log(budget_members, item, user)
     const lineItemCreator = budget_members.find(function (element) {
       if (user_id === element.id) {
         return element;
