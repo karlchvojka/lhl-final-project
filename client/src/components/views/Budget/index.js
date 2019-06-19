@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext, useContext, useReducer } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DashboardTopNav from "../../common/Topnav/dashboard-top-nav.js";
 import WelcomeBanner from "../../common/WelcomeBanner/welcomeBanner.js";
@@ -9,24 +9,30 @@ import LineItemsContainer from "./Line_Items_Container/line-items-container.js";
 import LoadingSpinner from '../../common/Loading/';
 import axios from 'axios';
 
+// import React, {} from 'react';
+import { lineitemReducer } from "../../../hooks/reducers.js";
+
+const StateContext = createContext(null);
 
 const Budget = props => {
   let budget = [], 
         // budget_members = [],
-        user = { id: 1, first: 'Andrea', last: 'Mastrantoni' },
-        budget_members_subtotals = [],
-        budget_total = {};
+        user = { id: 1, first: 'Andrea', last: 'Mastrantoni' };
+        // budget_members_subtotals = [],
+        // budget_total = {};
   
-  const [lineitems, setLineitems] = useState([]);
+  const [lineitems, setLineitems] = useState([]); //useReducer(lineitemReducer, []);
   const [budgetmembers, setBudgetmembers] = useState([]);
+  const [budgetmemberssubtotals, setBudgetmemberssubtotals] = useState([])
+  const [budgettotal, setBudgettotal] = useState({});
 
-  // useEffect(() => {
+  useEffect(() => {
     const { match: { params } } = props;
     console.log("This is the id", params.id)
 
-    function getBudget() {
+    function getBudget(budget_id) {
       return fetch(
-        `http://localhost:3000/api/v1/budgets/${params.id}`
+        `http://localhost:3000/api/v1/budgets/${budget_id}`
       ).then(resp => resp.json());
     }
 
@@ -50,7 +56,7 @@ const Budget = props => {
 
     function getAPIdata() {
       return Promise.all([
-        getBudget(),
+        getBudget(params.id),
         getLineItems(params.id),
         getBudgetMembers(params.id),
         delay(1500)
@@ -65,26 +71,30 @@ const Budget = props => {
       let spinnerElement = document.getElementsByClassName("loadingSpinner");
       // console.log(pullbudget, pullline_items, pullbudget_members)
       budget = {...pullbudget};
-      setBudgetmembers([...pullbudget_members]);
-      setLineitems([...pullline_items]);
+      setBudgetmembers(prevMembers => ([...pullbudget_members]));
+      setLineitems(prevLineitems => ([...pullline_items]));
       spinnerElement[0].style.display = "none";
+      // setBudgettotal(sumObjectValues(lineitems));
+      // setBudgetmemberssubtotals({...budgetMembersSubtotals(lineitems, budgetmembers)});
+
       console.log(
         // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
-        lineitems, budgetmembers, budget, budget_total, budget_members_subtotals
+        lineitems, budgetmembers, budget, budgettotal, budgetmemberssubtotals
       );
-    }).then(() => {
-      // budget_total = sumObjectValues(lineitems);
-      // budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers);
     });
 
-    useEffect(() => {
-      budget_total = sumObjectValues(lineitems);
-      budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers);
-    })
-  // } 
-  // ,
-  // []
-  // );
+  }, [] );
+
+  useEffect(() => {
+    // budgettotal = sumObjectValues(lineitems);
+    // budgetmemberssubtotals = budgetMembersSubtotals(lineitems, budgetmembers);
+    setBudgettotal(sumObjectValues(lineitems));
+    setBudgetmemberssubtotals({...budgetMembersSubtotals(lineitems, budgetmembers)});
+    console.log(
+      // `user line items ${JSON.stringify(getUsersLineItems(line_items, 1))}`
+      'part 2', lineitems, budgetmembers, budget, budgettotal, budgetmemberssubtotals
+    );
+  }, [lineitems, budgetmembers])
 
   const budgetMembersSubtotals = (line_items, budget_members) => {
     const results = {};
@@ -151,8 +161,8 @@ const Budget = props => {
       .then(resp => {
         
         setLineitems([resp.data, ...oldLineitems])
-        budget_total = sumObjectValues(lineitems);
-        budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers)
+        setBudgettotal(sumObjectValues(lineitems));
+        setBudgetmemberssubtotals({...budgetMembersSubtotals(lineitems, budgetmembers)});
         clearNewItemForm();
       })
       .catch(error => {
@@ -171,8 +181,8 @@ const Budget = props => {
         setLineitems([...newLineItems])
       })
       .then(() => {
-        budget_total = sumObjectValues(lineitems);
-        budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers);
+        setBudgettotal([...sumObjectValues(lineitems)]);
+        setBudgetmemberssubtotals({...budgetMembersSubtotals(lineitems, budgetmembers)});
       })
       .catch(error => console.log(error));
   }
@@ -189,8 +199,8 @@ const Budget = props => {
       .then(() => {
         console.log("update posted, now updating set state", line_item)
         this.updateLineItem(line_item)
-        budget_total = sumObjectValues(lineitems);
-        budget_members_subtotals = budgetMembersSubtotals(lineitems, budgetmembers);
+        setBudgettotal([...sumObjectValues(lineitems)]);
+        setBudgetmemberssubtotals({...budgetMembersSubtotals(lineitems, budgetmembers)});
       })
       .catch(error => {
         console.log("Error in updating new line item", error)
@@ -206,7 +216,7 @@ const Budget = props => {
     setLineitems([...newLineItems]);
   }
 
-  var currentUserSubtotal = budget_members_subtotals[user.id]
+  var currentUserSubtotal = budgetmemberssubtotals[user.id]
   return (
 
     <Container className="budgetDashboard no-gutters noGutters" fluid="true" >
@@ -222,7 +232,7 @@ const Budget = props => {
               <Col className="innerMainSection" xl={7} lg={6} md={12} sm={12} xs={12}>
                 <Container fluid="true">
                   <WelcomeBanner userName={user} />
-                  <BudgetInfo budget={budget} line_items={lineitems} budget_members={budgetmembers} budget_total={budget_total} />
+                  <BudgetInfo budget={budget} line_items={lineitems} budget_members={budgetmembers} budget_total={budgettotal} />
                   <LineItemsContainer
                     line_items={lineitems}
                     user={user}
@@ -236,7 +246,7 @@ const Budget = props => {
                 </Container>
               </Col>
               <Col className="usersAside" xl={4} lg={6} md={12} sm={12} xs={12}>
-                <BudgetMembersContainer user={user} budget_members={budgetmembers} subtotals={budget_members_subtotals} budgetName={budget.name} />
+                <BudgetMembersContainer user={user} budget_members={budgetmembers} subtotals={budgetmemberssubtotals} budgetName={budget.name} />
               </Col>
             </Row>
           </Container>
